@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://trendhive.vercel.app/sitemap.xml
+Sitemap: https://viralshop-one.vercel.app/sitemap.xml
