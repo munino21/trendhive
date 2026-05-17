@@ -49,6 +49,28 @@
   }
   </script>
 
+  <!-- Google Analytics 4 — reemplazá G-XXXXXXXXXX con tu Measurement ID de GA4 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-XXXXXXXXXX');
+  </script>
+
+  <!-- Meta Pixel — reemplazá XXXXXXXXXXXXXXXX con tu Pixel ID de Meta/Facebook -->
+  <script>
+  !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+  n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+  document,'script','https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init', 'XXXXXXXXXXXXXXXX');
+  fbq('track', 'PageView');
+  </script>
+  <noscript><img height="1" width="1" style="display:none"
+  src="https://www.facebook.com/tr?id=XXXXXXXXXXXXXXXX&ev=PageView&noscript=1"/></noscript>
+
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
@@ -1647,6 +1669,17 @@
   <button class="btn-cookie" onclick="acceptCookies()">Aceptar</button>
 </div>
 
+<!-- ── PANEL ADMIN (accedé con ?admin en la URL, ej: trendhive.com.ar/?admin) ── -->
+<div id="admin-panel" style="display:none; position:fixed; inset:0; background:#0F0F1A; z-index:99999; overflow-y:auto; padding:2rem; color:#fff; font-family:'Poppins',sans-serif;">
+  <div style="max-width:940px; margin:0 auto;">
+    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:2rem; flex-wrap:wrap; gap:1rem;">
+      <h1 style="font-size:1.6rem; font-weight:900;">📊 TrendHive Analytics</h1>
+      <button onclick="document.getElementById('admin-panel').style.display='none'" style="background:#7C3AED;color:#fff;border:none;border-radius:50px;padding:8px 22px;cursor:pointer;font-family:'Poppins',sans-serif;font-weight:700;font-size:.9rem;">✕ Cerrar</button>
+    </div>
+    <div id="admin-content" style="color:#fff"></div>
+  </div>
+</div>
+
 <!-- ── WHATSAPP FLOAT ── -->
 <div class="wpp-float">
   <a href="https://wa.me/5491158452021?text=Hola%20TrendHive!%20Quiero%20hacer%20un%20pedido%20%F0%9F%98%8A" target="_blank" aria-label="Contactar por WhatsApp">
@@ -1655,6 +1688,43 @@
 </div>
 
 <script>
+  // ── ANALYTICS LOCAL + GA4 + META PIXEL ──
+  const TH = {
+    track(event, data = {}) {
+      let stats = JSON.parse(localStorage.getItem('th_stats') || '{"sessions":0,"pageviews":0,"atc":0,"checkouts":0,"orders":0,"revenue":0,"products":{},"dates":{}}');
+      let today = new Date().toISOString().slice(0,10);
+      if (!stats.dates[today]) stats.dates[today] = { pageviews:0, atc:0, orders:0, revenue:0 };
+      if (event === 'session') { stats.sessions++; }
+      if (event === 'pageview') { stats.pageviews++; stats.dates[today].pageviews++; }
+      if (event === 'add_to_cart') {
+        stats.atc++; stats.dates[today].atc++;
+        if (data.name) stats.products[data.name] = (stats.products[data.name] || 0) + 1;
+        if (typeof gtag !== 'undefined') gtag('event','add_to_cart',{currency:'ARS',value:data.price,items:[{item_name:data.name}]});
+        if (typeof fbq !== 'undefined') fbq('track','AddToCart',{content_name:data.name,value:data.price,currency:'ARS'});
+      }
+      if (event === 'begin_checkout') {
+        stats.checkouts++;
+        if (typeof gtag !== 'undefined') gtag('event','begin_checkout',{currency:'ARS',value:data.value});
+        if (typeof fbq !== 'undefined') fbq('track','InitiateCheckout',{value:data.value,currency:'ARS'});
+      }
+      if (event === 'purchase') {
+        stats.orders++; stats.revenue += data.value || 0;
+        stats.dates[today].orders++; stats.dates[today].revenue += data.value || 0;
+        if (typeof gtag !== 'undefined') gtag('event','purchase',{transaction_id:'TH'+Date.now(),currency:'ARS',value:data.value});
+        if (typeof fbq !== 'undefined') fbq('track','Purchase',{value:data.value,currency:'ARS'});
+      }
+      localStorage.setItem('th_stats', JSON.stringify(stats));
+    },
+    session() {
+      let last = localStorage.getItem('th_last_visit');
+      let now = Date.now();
+      if (!last || now - parseInt(last) > 1800000) this.track('session');
+      localStorage.setItem('th_last_visit', now);
+      this.track('pageview');
+    }
+  };
+  TH.session();
+
   // ── ESTADO ──
   let cart = [];
   let selectedPayment = 'tarjeta';
@@ -1726,6 +1796,7 @@
     } else {
       cart.push({ name, price, emoji, qty: 1 });
     }
+    TH.track('add_to_cart', { name, price });
     updateCart();
     openCart();
 
@@ -1805,6 +1876,7 @@
     closeCart();
     let total = cart.reduce((s, i) => s + i.price * i.qty, 0);
     let shipping = total >= 50000 ? 0 : 4990;
+    TH.track('begin_checkout', { value: total + shipping });
     let summaryEl = document.getElementById('order-summary-mini');
     summaryEl.innerHTML = `
       <div class="row"><span>Subtotal</span><span>${formatARS(total)}</span></div>
@@ -1851,6 +1923,10 @@
       `💰 *Total:* ${formatARS(total + shipping)} ARS\n\n` +
       `¡Gracias por elegir TrendHive! 🚀`
     );
+
+    let orderTotal = cart.reduce((s, i) => s + i.price * i.qty, 0);
+    let orderShipping = orderTotal >= 50000 ? 0 : 4990;
+    TH.track('purchase', { value: orderTotal + orderShipping });
 
     closeCheckout();
     cart = [];
@@ -1924,6 +2000,69 @@
   }
   if (localStorage.getItem('th_cookies') === '1') {
     document.getElementById('cookie-banner').classList.add('hidden');
+  }
+
+  // ── PANEL ADMIN ──
+  if (new URLSearchParams(window.location.search).has('admin')) {
+    document.getElementById('admin-panel').style.display = 'block';
+    renderAdmin();
+  }
+
+  function renderAdmin() {
+    let stats = JSON.parse(localStorage.getItem('th_stats') || '{"sessions":0,"pageviews":0,"atc":0,"checkouts":0,"orders":0,"revenue":0,"products":{},"dates":{}}');
+    let conv = stats.pageviews > 0 ? ((stats.orders / stats.pageviews) * 100).toFixed(1) : '0.0';
+    let dates = Object.keys(stats.dates).sort().slice(-7);
+    let prodRanking = Object.entries(stats.products || {}).sort(([,a],[,b]) => b-a).slice(0,5)
+      .map(([n,c]) => `<div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid #2a2a3e"><span style="font-size:.82rem">${n}</span><span style="color:#A78BFA;font-weight:700">${c} veces</span></div>`)
+      .join('') || '<p style="color:#6B7280;font-size:.82rem;padding:8px 0">Sin datos aún</p>';
+
+    let kpis = [
+      ['👁️','Visitas',stats.pageviews],
+      ['🔄','Sesiones',stats.sessions],
+      ['🛒','Add to Cart',stats.atc],
+      ['📋','Checkouts',stats.checkouts],
+      ['✅','Pedidos WPP',stats.orders],
+      ['💰','Revenue Est.',formatARS(stats.revenue)],
+      ['📈','Conversión',conv+'%'],
+      ['🛒→✅','ATC→Pedido', stats.atc > 0 ? ((stats.orders/stats.atc)*100).toFixed(1)+'%' : '0%'],
+    ].map(([icon,label,val]) => `<div style="background:#1C1C2E;border-radius:16px;padding:1.25rem;text-align:center"><div style="font-size:1.8rem">${icon}</div><div style="font-size:1.4rem;font-weight:900;margin:.25rem 0">${val}</div><div style="font-size:.72rem;color:#9CA3AF">${label}</div></div>`).join('');
+
+    let funnel = [
+      ['Visitas', stats.pageviews, 100],
+      ['Add to Cart', stats.atc, stats.pageviews ? Math.round(stats.atc/stats.pageviews*100) : 0],
+      ['Checkouts', stats.checkouts, stats.pageviews ? Math.round(stats.checkouts/stats.pageviews*100) : 0],
+      ['Pedidos', stats.orders, stats.pageviews ? Math.round(stats.orders/stats.pageviews*100) : 0],
+    ].map(([l,v,p]) => `<div style="margin-bottom:.75rem"><div style="display:flex;justify-content:space-between;margin-bottom:4px;font-size:.82rem"><span>${l}</span><span style="color:#A78BFA;font-weight:700">${v} (${p}%)</span></div><div style="background:#2a2a3e;border-radius:50px;height:8px"><div style="background:linear-gradient(135deg,#7C3AED,#A855F7);height:100%;width:${Math.min(p,100)}%;border-radius:50px"></div></div></div>`).join('');
+
+    let tableRows = dates.length
+      ? dates.map(d => { let r = stats.dates[d]; return `<tr><td style="padding:8px;border-bottom:1px solid #1a1a2e">${d}</td><td style="text-align:center;padding:8px;border-bottom:1px solid #1a1a2e">${r.pageviews||0}</td><td style="text-align:center;padding:8px;border-bottom:1px solid #1a1a2e">${r.atc||0}</td><td style="text-align:center;padding:8px;border-bottom:1px solid #1a1a2e">${r.orders||0}</td><td style="text-align:right;padding:8px;border-bottom:1px solid #1a1a2e;color:#A78BFA;font-weight:700">${formatARS(r.revenue||0)}</td></tr>`; }).join('')
+      : '<tr><td colspan="5" style="padding:1rem;text-align:center;color:#6B7280;font-size:.82rem">Sin datos aún — las estadísticas aparecen cuando hay visitas reales</td></tr>';
+
+    document.getElementById('admin-content').innerHTML = `
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:1rem;margin-bottom:1.5rem">${kpis}</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1.5rem">
+        <div style="background:#1C1C2E;border-radius:16px;padding:1.5rem">
+          <h3 style="font-size:.95rem;font-weight:800;margin-bottom:1rem">🔥 Productos más agregados</h3>${prodRanking}
+        </div>
+        <div style="background:#1C1C2E;border-radius:16px;padding:1.5rem">
+          <h3 style="font-size:.95rem;font-weight:800;margin-bottom:1rem">🔽 Embudo de Conversión</h3>${funnel}
+        </div>
+      </div>
+      <div style="background:#1C1C2E;border-radius:16px;padding:1.5rem;margin-bottom:1.5rem">
+        <h3 style="font-size:.95rem;font-weight:800;margin-bottom:1rem">📅 Últimos 7 días</h3>
+        <div style="overflow-x:auto"><table style="width:100%;border-collapse:collapse;font-size:.82rem">
+          <thead><tr style="color:#9CA3AF"><th style="text-align:left;padding:8px;border-bottom:1px solid #2a2a3e">Fecha</th><th style="text-align:center;padding:8px;border-bottom:1px solid #2a2a3e">Visitas</th><th style="text-align:center;padding:8px;border-bottom:1px solid #2a2a3e">ATC</th><th style="text-align:center;padding:8px;border-bottom:1px solid #2a2a3e">Pedidos</th><th style="text-align:right;padding:8px;border-bottom:1px solid #2a2a3e">Revenue</th></tr></thead>
+          <tbody>${tableRows}</tbody>
+        </table></div>
+      </div>
+      <div style="background:#1a1a2e;border-radius:12px;padding:1.25rem;font-size:.78rem;color:#9CA3AF;line-height:1.8">
+        <strong style="color:#A78BFA;font-size:.85rem">Cómo conectar GA4 y Meta Pixel:</strong><br>
+        1. Creá una propiedad en <strong style="color:#fff">analytics.google.com</strong> → copiá el Measurement ID (G-XXXXXXXX) → reemplazalo en el index.html<br>
+        2. Creá un Pixel en <strong style="color:#fff">business.facebook.com/events-manager</strong> → copiá el Pixel ID → reemplazalo en el index.html<br>
+        3. Subí los cambios: <code style="color:#F59E0B;background:#2a2a3e;padding:2px 6px;border-radius:4px">vercel --prod --scope munino21s-projects</code> en la carpeta viralshop<br><br>
+        <button onclick="if(confirm('¿Borrar todas las estadísticas?')){localStorage.removeItem('th_stats');localStorage.removeItem('th_last_visit');location.reload()}" style="background:#EF4444;color:#fff;border:none;border-radius:8px;padding:6px 14px;cursor:pointer;font-size:.75rem;font-family:'Poppins',sans-serif">🗑️ Resetear estadísticas</button>
+      </div>
+    `;
   }
 </script>
 </body>
