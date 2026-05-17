@@ -1,0 +1,960 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="ViralShop - Productos virales y ganadores 2026. Envío rápido, mejor precio y garantía total.">
+    <meta property="og:title" content="ViralShop | Productos Virales 2026">
+    <meta property="og:description" content="Los productos que están arrasando en ventas. Envío gratis +$50.">
+    <title>ViralShop | Productos Ganadores 2026</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <style>
+        *{margin:0;padding:0;box-sizing:border-box}
+        :root{
+            --primary:#6C63FF;
+            --grad:linear-gradient(135deg,#667eea,#764ba2);
+            --dark:#1a1a2e;
+            --gray:#6c757d;
+            --light:#f8f9fa;
+            --white:#fff;
+            --danger:#e74c3c;
+            --success:#27ae60;
+            --orange:#FF6B35;
+            --shadow:0 4px 20px rgba(108,99,255,.15);
+            --shadow2:0 8px 30px rgba(108,99,255,.28);
+            --r:16px;
+        }
+        body{font-family:'Poppins',sans-serif;background:var(--light);color:var(--dark);overflow-x:hidden}
+
+        /* ── ANNOUNCEMENT BAR ── */
+        #annoBar{
+            background:var(--dark);color:white;
+            text-align:center;padding:.5rem 1rem;
+            font-size:.8rem;font-weight:500;
+            display:flex;align-items:center;justify-content:center;gap:1rem;
+            position:relative;z-index:1001;
+        }
+        #annoBar a{color:#a78bfa;text-decoration:none;font-weight:700}
+        #annoTimer{font-weight:700;color:#FFD700;margin-left:.3rem}
+
+        /* ── HEADER ── */
+        header{background:var(--white);box-shadow:0 2px 20px rgba(0,0,0,.07);position:sticky;top:0;z-index:1000;padding:0 2rem}
+        .header-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:66px}
+        .logo{font-size:1.55rem;font-weight:800;background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;text-decoration:none}
+        nav{display:flex;gap:2rem}
+        nav a{text-decoration:none;color:var(--dark);font-weight:500;font-size:.88rem;transition:color .2s}
+        nav a:hover{color:var(--primary)}
+        .cart-btn{background:var(--grad);color:white;border:none;padding:.6rem 1.3rem;border-radius:50px;cursor:pointer;font-family:'Poppins',sans-serif;font-weight:600;font-size:.88rem;display:flex;align-items:center;gap:.5rem;transition:transform .2s,box-shadow .2s;position:relative}
+        .cart-btn:hover{transform:translateY(-2px);box-shadow:var(--shadow2)}
+        .cart-badge{background:#FF4B2B;color:white;border-radius:50%;width:20px;height:20px;display:flex;align-items:center;justify-content:center;font-size:.68rem;font-weight:700;position:absolute;top:-7px;right:-7px;transition:transform .3s}
+
+        /* ── HERO ── */
+        .hero{background:var(--grad);padding:5rem 2rem 4rem;text-align:center;color:white;position:relative;overflow:hidden}
+        .hero::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 70% 40%,rgba(255,255,255,.07),transparent 60%)}
+        .hero-badge{display:inline-block;background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.3);padding:.4rem 1.2rem;border-radius:50px;font-size:.82rem;font-weight:500;margin-bottom:1.4rem;backdrop-filter:blur(8px)}
+        .hero h1{font-size:clamp(1.9rem,5vw,3.3rem);font-weight:800;line-height:1.2;margin-bottom:.9rem}
+        .hero p{font-size:1.02rem;opacity:.88;max-width:560px;margin:0 auto 1.8rem;font-weight:300}
+        .hero-cta{display:inline-flex;align-items:center;gap:.5rem;background:white;color:var(--primary);padding:1rem 2.5rem;border-radius:50px;font-weight:700;font-size:1rem;text-decoration:none;transition:transform .3s,box-shadow .3s;box-shadow:0 4px 20px rgba(0,0,0,.2)}
+        .hero-cta:hover{transform:translateY(-3px);box-shadow:0 8px 28px rgba(0,0,0,.25)}
+        .hero-stats{display:flex;justify-content:center;gap:3rem;margin-top:2.8rem;flex-wrap:wrap}
+        .stat-number{font-size:1.75rem;font-weight:800}
+        .stat-label{font-size:.75rem;opacity:.78}
+
+        /* ── FEATURES BAR ── */
+        .features-bar{background:var(--white);border-bottom:1px solid #eee;padding:1.1rem 2rem}
+        .features-inner{max-width:1200px;margin:0 auto;display:flex;justify-content:center;gap:2.5rem;flex-wrap:wrap}
+        .feature-item{display:flex;align-items:center;gap:.55rem;font-size:.82rem;font-weight:500}
+        .feature-item i{color:var(--primary);font-size:.95rem}
+
+        /* ── PRODUCTS ── */
+        .products-section{max-width:1200px;margin:0 auto;padding:3.5rem 2rem}
+        .section-header{text-align:center;margin-bottom:2.2rem}
+        .section-tag{display:inline-block;background:rgba(108,99,255,.1);color:var(--primary);padding:.28rem .9rem;border-radius:50px;font-size:.75rem;font-weight:600;margin-bottom:.6rem;text-transform:uppercase;letter-spacing:1px}
+        .section-header h2{font-size:2rem;font-weight:800;margin-bottom:.3rem}
+        .section-header p{color:var(--gray);font-size:.92rem}
+        .products-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(255px,1fr));gap:1.4rem}
+
+        .product-card{background:var(--white);border-radius:var(--r);overflow:hidden;box-shadow:var(--shadow);transition:transform .3s,box-shadow .3s;position:relative}
+        .product-card:hover{transform:translateY(-7px);box-shadow:var(--shadow2)}
+        .product-badge{position:absolute;top:11px;left:11px;background:#FF4B2B;color:white;padding:.22rem .7rem;border-radius:50px;font-size:.65rem;font-weight:700;text-transform:uppercase;letter-spacing:.5px;z-index:2}
+        .product-badge.new{background:var(--primary)}
+        .product-badge.bestseller{background:#FF9500}
+        .savings-badge{position:absolute;top:11px;right:11px;background:var(--success);color:white;padding:.22rem .7rem;border-radius:50px;font-size:.65rem;font-weight:700;z-index:2}
+        .product-image{width:100%;height:215px;object-fit:cover;display:block}
+        .product-info{padding:1.1rem}
+        .product-category{font-size:.7rem;color:var(--primary);font-weight:600;text-transform:uppercase;letter-spacing:.5px;margin-bottom:.25rem}
+        .product-name{font-size:.95rem;font-weight:700;margin-bottom:.25rem;line-height:1.4}
+        .product-description{font-size:.76rem;color:var(--gray);margin-bottom:.6rem;line-height:1.5}
+        .product-rating{display:flex;align-items:center;gap:.35rem;margin-bottom:.5rem}
+        .stars{color:#FFD700;font-size:.78rem}
+        .rating-count{font-size:.7rem;color:var(--gray)}
+        .product-social{display:flex;gap:.8rem;margin-bottom:.7rem;flex-wrap:wrap}
+        .social-pill{font-size:.68rem;font-weight:600;padding:.2rem .55rem;border-radius:50px;display:flex;align-items:center;gap:.3rem}
+        .pill-red{background:#FFF0F0;color:#e74c3c}
+        .pill-green{background:#F0FFF4;color:#27ae60}
+        .pill-purple{background:#F3F0FF;color:var(--primary)}
+        .product-footer{display:flex;align-items:center;justify-content:space-between}
+        .price-current{font-size:1.2rem;font-weight:800;color:var(--primary)}
+        .price-original{font-size:.75rem;color:var(--gray);text-decoration:line-through}
+        .add-to-cart{background:var(--grad);color:white;border:none;padding:.62rem 1.05rem;border-radius:50px;cursor:pointer;font-family:'Poppins',sans-serif;font-weight:600;font-size:.82rem;display:flex;align-items:center;gap:.38rem;transition:transform .2s,box-shadow .2s}
+        .add-to-cart:hover{transform:scale(1.05);box-shadow:0 4px 14px rgba(108,99,255,.4)}
+        .add-to-cart:active{transform:scale(.95)}
+
+        /* ── HOW IT WORKS ── */
+        .how-section{background:var(--white);padding:4rem 2rem;border-top:1px solid #eee}
+        .how-inner{max-width:1200px;margin:0 auto}
+        .steps-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;margin-top:2rem}
+        .step{text-align:center;padding:1.5rem}
+        .step-icon{width:70px;height:70px;background:var(--grad);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 1rem;font-size:1.6rem;color:white}
+        .step h3{font-size:1rem;font-weight:700;margin-bottom:.4rem}
+        .step p{font-size:.83rem;color:var(--gray);line-height:1.6}
+
+        /* ── TESTIMONIALS ── */
+        .testimonials{padding:4rem 2rem;max-width:1200px;margin:0 auto}
+        .testi-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:1.4rem;margin-top:2rem}
+        .testi-card{background:var(--white);border-radius:var(--r);padding:1.4rem;box-shadow:var(--shadow)}
+        .testi-header{display:flex;align-items:center;gap:.8rem;margin-bottom:.8rem}
+        .testi-avatar{width:46px;height:46px;border-radius:50%;object-fit:cover}
+        .testi-name{font-weight:700;font-size:.88rem}
+        .testi-loc{font-size:.73rem;color:var(--gray)}
+        .testi-stars{color:#FFD700;font-size:.8rem;margin-bottom:.5rem}
+        .testi-text{font-size:.82rem;color:var(--gray);line-height:1.6;font-style:italic}
+        .testi-product{font-size:.72rem;color:var(--primary);font-weight:600;margin-top:.5rem}
+        .verified{font-size:.65rem;color:var(--success);font-weight:600;display:flex;align-items:center;gap:.2rem;margin-top:.3rem}
+
+        /* ── NEWSLETTER ── */
+        .newsletter{background:var(--grad);padding:3.5rem 2rem;text-align:center;color:white}
+        .newsletter h2{font-size:1.8rem;font-weight:800;margin-bottom:.5rem}
+        .newsletter p{opacity:.88;margin-bottom:1.5rem;font-weight:300}
+        .newsletter-form{display:flex;gap:.6rem;max-width:480px;margin:0 auto;flex-wrap:wrap;justify-content:center}
+        .newsletter-form input{flex:1;min-width:220px;padding:.8rem 1.2rem;border:none;border-radius:50px;font-family:'Poppins',sans-serif;font-size:.88rem;outline:none}
+        .newsletter-form button{background:var(--dark);color:white;border:none;padding:.8rem 1.8rem;border-radius:50px;font-family:'Poppins',sans-serif;font-weight:700;font-size:.88rem;cursor:pointer;transition:background .2s}
+        .newsletter-form button:hover{background:#333}
+
+        /* ── FOOTER ── */
+        footer{background:var(--dark);color:rgba(255,255,255,.62);padding:3rem 2rem 1.5rem;margin-top:0}
+        .footer-inner{max-width:1200px;margin:0 auto}
+        .footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:2rem;margin-bottom:2rem}
+        .footer-brand .logo{display:block;margin-bottom:.7rem;font-size:1.35rem}
+        .footer-brand p{font-size:.8rem;line-height:1.7}
+        .footer-col h4{color:white;font-size:.82rem;font-weight:700;margin-bottom:.85rem;text-transform:uppercase;letter-spacing:.5px}
+        .footer-col ul{list-style:none}
+        .footer-col ul li{margin-bottom:.4rem}
+        .footer-col ul li a{color:rgba(255,255,255,.52);text-decoration:none;font-size:.8rem;transition:color .2s}
+        .footer-col ul li a:hover{color:white}
+        .footer-bottom{border-top:1px solid rgba(255,255,255,.1);padding-top:1.3rem;display:flex;justify-content:space-between;align-items:center;font-size:.75rem;flex-wrap:wrap;gap:.8rem}
+        .social-links{display:flex;gap:1rem}
+        .social-links a{color:rgba(255,255,255,.52);text-decoration:none;font-size:1.05rem;transition:color .2s}
+        .social-links a:hover{color:var(--primary)}
+
+        /* ── CART ── */
+        .cart-overlay{position:fixed;inset:0;background:rgba(0,0,0,.5);backdrop-filter:blur(4px);z-index:2000;opacity:0;pointer-events:none;transition:opacity .3s}
+        .cart-overlay.active{opacity:1;pointer-events:all}
+        .cart-sidebar{position:fixed;top:0;right:-430px;width:420px;max-width:100vw;height:100vh;background:var(--white);z-index:2001;display:flex;flex-direction:column;transition:right .3s cubic-bezier(.4,0,.2,1);box-shadow:-10px 0 40px rgba(0,0,0,.12)}
+        .cart-sidebar.active{right:0}
+        .cart-header{padding:1.3rem 1.5rem;border-bottom:1px solid #eee;display:flex;align-items:center;justify-content:space-between}
+        .cart-header h3{font-size:1.05rem;font-weight:700}
+        .close-cart{background:none;border:none;font-size:1.3rem;cursor:pointer;color:var(--gray);transition:color .2s}
+        .close-cart:hover{color:var(--dark)}
+        .shipping-progress-wrap{padding:.8rem 1.5rem;background:#f8f9ff;border-bottom:1px solid #eee}
+        .shipping-progress-text{font-size:.75rem;font-weight:600;margin-bottom:.4rem;color:var(--dark)}
+        .shipping-bar{background:#e0e0e0;border-radius:50px;height:6px;overflow:hidden}
+        .shipping-fill{background:var(--grad);height:100%;border-radius:50px;transition:width .5s ease}
+        .cart-items{flex:1;overflow-y:auto;padding:1rem 1.5rem}
+        .cart-empty{display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%;color:var(--gray);text-align:center;gap:.7rem}
+        .cart-empty i{font-size:2.8rem;opacity:.22}
+        .cart-item{display:flex;gap:.9rem;padding:.9rem 0;border-bottom:1px solid #f0f0f0;align-items:center}
+        .cart-item img{width:66px;height:66px;object-fit:cover;border-radius:10px}
+        .cart-item-info{flex:1}
+        .cart-item-name{font-size:.86rem;font-weight:600;margin-bottom:.18rem}
+        .cart-item-price{color:var(--primary);font-weight:700;font-size:.86rem}
+        .cart-item-controls{display:flex;align-items:center;gap:.45rem;margin-top:.38rem}
+        .qty-btn{background:var(--light);border:none;width:25px;height:25px;border-radius:50%;cursor:pointer;font-size:.88rem;display:flex;align-items:center;justify-content:center;transition:background .2s,color .2s}
+        .qty-btn:hover{background:var(--primary);color:white}
+        .qty-display{font-weight:600;min-width:20px;text-align:center;font-size:.86rem}
+        .remove-item{background:none;border:none;color:#ccc;cursor:pointer;font-size:.82rem;transition:color .2s;margin-left:auto}
+        .remove-item:hover{color:var(--danger)}
+        .cart-footer{padding:1.3rem 1.5rem;border-top:1px solid #eee;background:var(--light)}
+        .cart-subtotal{display:flex;justify-content:space-between;font-size:.86rem;margin-bottom:.38rem}
+        .cart-total{display:flex;justify-content:space-between;font-size:1.1rem;font-weight:800;margin-bottom:1.1rem;padding-top:.75rem;border-top:2px solid #ddd}
+        .checkout-btn{width:100%;background:var(--grad);color:white;border:none;padding:1rem;border-radius:50px;font-family:'Poppins',sans-serif;font-weight:700;font-size:.95rem;cursor:pointer;transition:transform .2s,box-shadow .2s;display:flex;align-items:center;justify-content:center;gap:.5rem}
+        .checkout-btn:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(108,99,255,.4)}
+
+        /* ── PURCHASE NOTIFICATION ── */
+        #buyNotif{position:fixed;bottom:1.5rem;left:1.5rem;z-index:3000;max-width:280px;background:white;border-radius:12px;padding:.8rem 1rem;box-shadow:0 4px 20px rgba(0,0,0,.15);display:flex;align-items:center;gap:.8rem;transform:translateX(-320px);transition:transform .4s cubic-bezier(.4,0,.2,1)}
+        #buyNotif.show{transform:translateX(0)}
+        .notif-img{width:46px;height:46px;object-fit:cover;border-radius:8px;flex-shrink:0}
+        .notif-text{font-size:.75rem;color:var(--dark)}
+        .notif-text strong{font-weight:700}
+        .notif-text span{color:var(--gray)}
+        .notif-dot{width:8px;height:8px;background:var(--success);border-radius:50%;flex-shrink:0}
+
+        /* ── TOAST ── */
+        .toast-container{position:fixed;bottom:1.5rem;right:1.5rem;z-index:3500;display:flex;flex-direction:column;gap:.5rem}
+        .toast{background:var(--dark);color:white;padding:.72rem 1.3rem;border-radius:50px;font-size:.8rem;font-weight:500;display:flex;align-items:center;gap:.55rem;transform:translateX(120%);transition:transform .3s cubic-bezier(.4,0,.2,1);box-shadow:0 4px 20px rgba(0,0,0,.2)}
+        .toast.show{transform:translateX(0)}
+        .toast i{color:#4CAF50}
+
+        /* ── UPSELL MODAL ── */
+        .upsell-overlay{position:fixed;inset:0;background:rgba(0,0,0,.55);backdrop-filter:blur(4px);z-index:4500;display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .3s;padding:1rem}
+        .upsell-overlay.active{opacity:1;pointer-events:all}
+        .upsell-modal{background:white;border-radius:20px;padding:1.8rem;width:100%;max-width:400px;transform:scale(.9);transition:transform .3s}
+        .upsell-overlay.active .upsell-modal{transform:scale(1)}
+        .upsell-title{font-size:1.05rem;font-weight:800;margin-bottom:.3rem;text-align:center}
+        .upsell-sub{font-size:.8rem;color:var(--gray);text-align:center;margin-bottom:1.2rem}
+        .upsell-product{display:flex;gap:1rem;align-items:center;background:var(--light);border-radius:12px;padding:.9rem;margin-bottom:1.2rem}
+        .upsell-img{width:65px;height:65px;object-fit:cover;border-radius:10px}
+        .upsell-info .upsell-pname{font-size:.88rem;font-weight:700;margin-bottom:.2rem}
+        .upsell-info .upsell-pprice{color:var(--primary);font-weight:800;font-size:.95rem}
+        .upsell-info .upsell-orig{font-size:.72rem;color:var(--gray);text-decoration:line-through}
+        .upsell-btns{display:flex;gap:.8rem}
+        .upsell-yes{flex:1;background:var(--grad);color:white;border:none;padding:.75rem;border-radius:50px;font-family:'Poppins',sans-serif;font-weight:700;font-size:.85rem;cursor:pointer;transition:transform .2s}
+        .upsell-yes:hover{transform:scale(1.03)}
+        .upsell-no{flex:1;background:none;border:2px solid #ddd;color:var(--gray);padding:.75rem;border-radius:50px;font-family:'Poppins',sans-serif;font-weight:600;font-size:.82rem;cursor:pointer;transition:border-color .2s}
+        .upsell-no:hover{border-color:var(--gray)}
+
+        /* ── EXIT POPUP ── */
+        .exit-overlay{position:fixed;inset:0;background:rgba(0,0,0,.6);backdrop-filter:blur(5px);z-index:5000;display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .3s;padding:1rem}
+        .exit-overlay.active{opacity:1;pointer-events:all}
+        .exit-modal{background:white;border-radius:20px;overflow:hidden;max-width:460px;width:100%;transform:scale(.88);transition:transform .3s}
+        .exit-overlay.active .exit-modal{transform:scale(1)}
+        .exit-top{background:var(--grad);padding:2rem;text-align:center;color:white}
+        .exit-top .big{font-size:2.5rem;font-weight:800}
+        .exit-top p{font-size:.88rem;opacity:.88;margin-top:.3rem}
+        .exit-body{padding:1.5rem}
+        .exit-body p{font-size:.88rem;color:var(--gray);text-align:center;margin-bottom:1rem}
+        .exit-code{text-align:center;background:var(--light);border-radius:10px;padding:.9rem;font-size:1.3rem;font-weight:800;letter-spacing:3px;color:var(--primary);margin-bottom:1rem;border:2px dashed var(--primary)}
+        .exit-email{display:flex;gap:.5rem;flex-wrap:wrap}
+        .exit-email input{flex:1;min-width:180px;padding:.7rem 1rem;border:2px solid #eee;border-radius:50px;font-family:'Poppins',sans-serif;font-size:.85rem;outline:none}
+        .exit-email input:focus{border-color:var(--primary)}
+        .exit-email button{background:var(--grad);color:white;border:none;padding:.7rem 1.4rem;border-radius:50px;font-family:'Poppins',sans-serif;font-weight:700;font-size:.85rem;cursor:pointer}
+        .exit-close{display:block;text-align:center;margin-top:.8rem;font-size:.78rem;color:var(--gray);cursor:pointer;text-decoration:underline}
+
+        /* ── CHECKOUT ── */
+        .modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.6);backdrop-filter:blur(4px);z-index:4000;display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .3s;padding:1rem}
+        .modal-overlay.active{opacity:1;pointer-events:all}
+        .modal{background:white;border-radius:20px;padding:1.8rem;width:100%;max-width:480px;max-height:90vh;overflow-y:auto;transform:scale(.92);transition:transform .3s}
+        .modal-overlay.active .modal{transform:scale(1)}
+        .modal-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:1.3rem}
+        .modal-header h3{font-size:1.1rem;font-weight:700}
+        .close-modal{background:none;border:none;font-size:1.3rem;cursor:pointer;color:var(--gray)}
+        .form-group{margin-bottom:.85rem}
+        .form-row{display:grid;grid-template-columns:1fr 1fr;gap:.9rem}
+        label{display:block;font-size:.78rem;font-weight:600;margin-bottom:.3rem}
+        input,select{width:100%;padding:.68rem .95rem;border:2px solid #eee;border-radius:10px;font-family:'Poppins',sans-serif;font-size:.86rem;outline:none;transition:border-color .2s}
+        input:focus,select:focus{border-color:var(--primary)}
+        .form-divider{font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--gray);margin:1.2rem 0 .85rem}
+        .order-summary-mini{background:var(--light);border-radius:12px;padding:.95rem;margin-bottom:1.1rem}
+        .order-summary-mini h4{font-size:.78rem;font-weight:700;text-transform:uppercase;letter-spacing:.5px;margin-bottom:.65rem}
+        .summary-item{display:flex;justify-content:space-between;font-size:.8rem;margin-bottom:.28rem}
+        .summary-total{display:flex;justify-content:space-between;font-weight:800;margin-top:.65rem;padding-top:.65rem;border-top:1px solid #ddd}
+        .place-order-btn{width:100%;background:var(--grad);color:white;border:none;padding:1rem;border-radius:50px;font-family:'Poppins',sans-serif;font-weight:700;font-size:.95rem;cursor:pointer;transition:transform .2s,box-shadow .2s;margin-top:.4rem}
+        .place-order-btn:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(108,99,255,.4)}
+        .success-screen{text-align:center;padding:1rem}
+        .success-icon{width:76px;height:76px;background:linear-gradient(135deg,#56CCF2,#2F80ED);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 1.3rem;font-size:1.9rem;color:white}
+
+        /* ── WHATSAPP ── */
+        .whatsapp-btn{position:fixed;bottom:5rem;right:1.5rem;background:#25D366;color:white;width:52px;height:52px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.55rem;text-decoration:none;box-shadow:0 4px 16px rgba(37,211,102,.5);z-index:1500;transition:transform .2s,box-shadow .2s}
+        .whatsapp-btn:hover{transform:scale(1.1);box-shadow:0 6px 22px rgba(37,211,102,.6)}
+        .whatsapp-tooltip{position:absolute;right:62px;background:var(--dark);color:white;padding:.35rem .75rem;border-radius:8px;font-size:.72rem;font-weight:600;white-space:nowrap;opacity:0;pointer-events:none;transition:opacity .2s}
+        .whatsapp-btn:hover .whatsapp-tooltip{opacity:1}
+
+        /* ── SCROLL TOP ── */
+        .scroll-top{position:fixed;bottom:1.5rem;left:1.5rem;background:var(--grad);color:white;border:none;width:42px;height:42px;border-radius:50%;cursor:pointer;font-size:.95rem;display:flex;align-items:center;justify-content:center;box-shadow:var(--shadow);z-index:1500;opacity:0;transform:translateY(20px);transition:opacity .3s,transform .3s}
+        .scroll-top.visible{opacity:1;transform:translateY(0)}
+
+        /* ── RESPONSIVE ── */
+        @media(max-width:768px){
+            nav{display:none}
+            .hero{padding:2.8rem 1.5rem}
+            .hero-stats{gap:1.3rem}
+            .products-grid{grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:.9rem}
+            .product-image{height:148px}
+            .steps-grid{grid-template-columns:1fr}
+            .footer-grid{grid-template-columns:1fr 1fr}
+            .form-row{grid-template-columns:1fr}
+            #buyNotif{max-width:240px}
+        }
+        @keyframes badgePulse{0%,100%{transform:scale(1)}50%{transform:scale(1.25)}}
+        .badge-anim{animation:badgePulse .35s ease}
+        @keyframes fadeInUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+        .fade-in{animation:fadeInUp .5s ease both}
+    </style>
+</head>
+<body>
+
+<!-- ANNOUNCEMENT BAR -->
+<div id="annoBar">
+    🔥 &nbsp;OFERTA FLASH — Envío GRATIS en todos los pedidos hoy &nbsp;|&nbsp; Termina en:
+    <span id="annoTimer">00:00:00</span>
+    &nbsp;|&nbsp; <a href="#productos">Ver Ofertas →</a>
+</div>
+
+<!-- HEADER -->
+<header>
+    <div class="header-inner">
+        <a href="#" class="logo">ViralShop</a>
+        <nav>
+            <a href="#productos">Productos</a>
+            <a href="#como-funciona">Cómo funciona</a>
+            <a href="#opiniones">Opiniones</a>
+            <a href="#contacto">Contacto</a>
+        </nav>
+        <button class="cart-btn" onclick="toggleCart()">
+            <i class="fas fa-shopping-bag"></i> Carrito
+            <span class="cart-badge" id="cartBadge">0</span>
+        </button>
+    </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+    <div class="hero-badge">🏆 +15,000 clientes satisfechos — 4.9★ media</div>
+    <h1>Los Productos Más<br>Virales del Momento</h1>
+    <p>Descubre lo que está arrasando en ventas. Calidad premium, precios imbatibles y envío rápido.</p>
+    <a href="#productos" class="hero-cta"><i class="fas fa-bolt"></i> Ver Productos</a>
+    <div class="hero-stats">
+        <div class="stat"><div class="stat-number">+15K</div><div class="stat-label">Clientes felices</div></div>
+        <div class="stat"><div class="stat-number">4.9★</div><div class="stat-label">Valoración media</div></div>
+        <div class="stat"><div class="stat-number">48h</div><div class="stat-label">Envío express</div></div>
+        <div class="stat"><div class="stat-number">100%</div><div class="stat-label">Garantía devolución</div></div>
+    </div>
+</section>
+
+<!-- FEATURES BAR -->
+<div class="features-bar">
+    <div class="features-inner">
+        <div class="feature-item"><i class="fas fa-shipping-fast"></i><span>Envío gratis hoy</span></div>
+        <div class="feature-item"><i class="fas fa-shield-alt"></i><span>Pago 100% seguro</span></div>
+        <div class="feature-item"><i class="fas fa-undo"></i><span>30 días devolución</span></div>
+        <div class="feature-item"><i class="fas fa-headset"></i><span>Soporte 24/7</span></div>
+        <div class="feature-item"><i class="fas fa-certificate"></i><span>Calidad verificada</span></div>
+    </div>
+</div>
+
+<!-- PRODUCTS -->
+<section class="products-section" id="productos">
+    <div class="section-header">
+        <div class="section-tag">🔥 Productos Ganadores 2026</div>
+        <h2>Lo Más Trending Ahora Mismo</h2>
+        <p>Seleccionados por demanda real, márgenes y valoraciones verificadas</p>
+    </div>
+    <div class="products-grid" id="productsGrid"></div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="how-section" id="como-funciona">
+    <div class="how-inner">
+        <div class="section-header">
+            <div class="section-tag">Simple y rápido</div>
+            <h2>¿Cómo funciona?</h2>
+            <p>Comprar en ViralShop es fácil, seguro y sin complicaciones</p>
+        </div>
+        <div class="steps-grid">
+            <div class="step fade-in">
+                <div class="step-icon"><i class="fas fa-search"></i></div>
+                <h3>1. Elige tu producto</h3>
+                <p>Explora nuestra selección de productos virales seleccionados por nuestro equipo. Todos probados y verificados.</p>
+            </div>
+            <div class="step fade-in">
+                <div class="step-icon"><i class="fas fa-credit-card"></i></div>
+                <h3>2. Paga de forma segura</h3>
+                <p>Acepta tarjeta, PayPal y más. Tu información está 100% encriptada con tecnología SSL de última generación.</p>
+            </div>
+            <div class="step fade-in">
+                <div class="step-icon"><i class="fas fa-box-open"></i></div>
+                <h3>3. Recibe en casa</h3>
+                <p>Tu pedido llega en 5-12 días hábiles. Tracking en tiempo real incluido. Garantía de devolución de 30 días.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials" id="opiniones">
+    <div class="section-header">
+        <div class="section-tag">⭐ Opiniones reales</div>
+        <h2>Clientes que ya lo Compraron</h2>
+        <p>Más de 15,000 personas ya confían en ViralShop</p>
+    </div>
+    <div class="testi-grid" id="testiGrid"></div>
+</section>
+
+<!-- NEWSLETTER -->
+<section class="newsletter">
+    <h2>Sé el primero en ver nuevos productos</h2>
+    <p>Únete a +8,000 compradores que reciben ofertas exclusivas antes que nadie</p>
+    <form class="newsletter-form" onsubmit="subscribeEmail(event)">
+        <input type="email" placeholder="Tu email aquí..." required>
+        <button type="submit"><i class="fas fa-bolt"></i> Suscribirme</button>
+    </form>
+</section>
+
+<!-- FOOTER -->
+<footer id="contacto">
+    <div class="footer-inner">
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <a href="#" class="logo">ViralShop</a>
+                <p>Tu tienda de productos virales y ganadores. Calidad garantizada con los mejores precios del mercado online.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Empresa</h4>
+                <ul>
+                    <li><a href="#">Sobre nosotros</a></li>
+                    <li><a href="#">Blog</a></li>
+                    <li><a href="#">Afiliados</a></li>
+                    <li><a href="#">Prensa</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Ayuda</h4>
+                <ul>
+                    <li><a href="#">Centro de ayuda</a></li>
+                    <li><a href="#">Envíos</a></li>
+                    <li><a href="#">Devoluciones</a></li>
+                    <li><a href="#">Seguimiento</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Legal</h4>
+                <ul>
+                    <li><a href="#">Privacidad</a></li>
+                    <li><a href="#">Términos</a></li>
+                    <li><a href="#">Cookies</a></li>
+                    <li><a href="#">Reembolsos</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <span>© 2026 ViralShop. Todos los derechos reservados.</span>
+            <div class="social-links">
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-tiktok"></i></a>
+                <a href="#"><i class="fab fa-facebook"></i></a>
+                <a href="#"><i class="fab fa-pinterest"></i></a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- CART SIDEBAR -->
+<div class="cart-overlay" id="cartOverlay" onclick="toggleCart()"></div>
+<div class="cart-sidebar" id="cartSidebar">
+    <div class="cart-header">
+        <h3><i class="fas fa-shopping-bag"></i> Mi Carrito</h3>
+        <button class="close-cart" onclick="toggleCart()"><i class="fas fa-times"></i></button>
+    </div>
+    <div class="shipping-progress-wrap" id="shippingProgressWrap">
+        <div class="shipping-progress-text" id="shippingProgressText">Agrega productos para ver el progreso</div>
+        <div class="shipping-bar"><div class="shipping-fill" id="shippingFill" style="width:0%"></div></div>
+    </div>
+    <div class="cart-items" id="cartItems">
+        <div class="cart-empty">
+            <i class="fas fa-shopping-bag"></i>
+            <p>Tu carrito está vacío</p>
+            <small>¡Agrega algo increíble!</small>
+        </div>
+    </div>
+    <div class="cart-footer" id="cartFooter" style="display:none">
+        <div class="cart-subtotal"><span>Subtotal</span><span id="cartSubtotal">$0.00</span></div>
+        <div class="cart-subtotal"><span>Envío</span><span style="color:var(--success);font-weight:700">🎉 GRATIS</span></div>
+        <div class="cart-total"><span>Total</span><span id="cartTotal">$0.00</span></div>
+        <button class="checkout-btn" onclick="openCheckout()"><i class="fas fa-lock"></i> Pagar Ahora</button>
+    </div>
+</div>
+
+<!-- UPSELL MODAL -->
+<div class="upsell-overlay" id="upsellOverlay">
+    <div class="upsell-modal">
+        <div class="upsell-title">¡Espera! Los clientes también llevan...</div>
+        <div class="upsell-sub">Muchos compradores que eligieron este producto también se llevaron:</div>
+        <div class="upsell-product" id="upsellProduct"></div>
+        <div class="upsell-btns">
+            <button class="upsell-yes" id="upsellYes"><i class="fas fa-plus"></i> Sí, ¡lo quiero!</button>
+            <button class="upsell-no" onclick="closeUpsell()">No gracias</button>
+        </div>
+    </div>
+</div>
+
+<!-- CHECKOUT MODAL -->
+<div class="modal-overlay" id="checkoutModal">
+    <div class="modal">
+        <div id="checkoutContent">
+            <div class="modal-header">
+                <h3><i class="fas fa-lock"></i> Pago Seguro</h3>
+                <button class="close-modal" onclick="closeCheckout()"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="order-summary-mini" id="orderSummaryMini"></div>
+            <div class="form-divider">📦 Datos de envío</div>
+            <div class="form-row">
+                <div class="form-group"><label>Nombre</label><input type="text" placeholder="Juan"></div>
+                <div class="form-group"><label>Apellido</label><input type="text" placeholder="García"></div>
+            </div>
+            <div class="form-group"><label>Email</label><input type="email" placeholder="juan@email.com"></div>
+            <div class="form-group"><label>Teléfono</label><input type="tel" placeholder="+1 555 000 0000"></div>
+            <div class="form-group"><label>Dirección</label><input type="text" placeholder="Calle Principal 123"></div>
+            <div class="form-row">
+                <div class="form-group"><label>Ciudad</label><input type="text" placeholder="Madrid"></div>
+                <div class="form-group">
+                    <label>País</label>
+                    <select>
+                        <option>España</option><option>México</option><option>Argentina</option>
+                        <option>Colombia</option><option>Chile</option><option>Perú</option>
+                        <option>Venezuela</option><option>Ecuador</option><option>Uruguay</option>
+                        <option>Bolivia</option><option>Paraguay</option><option>Costa Rica</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-divider">💳 Método de pago</div>
+            <div class="form-group">
+                <label>Número de tarjeta</label>
+                <input type="text" placeholder="1234 5678 9012 3456" maxlength="19" oninput="formatCard(this)">
+            </div>
+            <div class="form-row">
+                <div class="form-group"><label>Vencimiento</label><input type="text" placeholder="MM/AA" maxlength="5" oninput="formatExpiry(this)"></div>
+                <div class="form-group"><label>CVV</label><input type="text" placeholder="•••" maxlength="3" type="password"></div>
+            </div>
+            <button class="place-order-btn" onclick="placeOrder()"><i class="fas fa-lock"></i> Confirmar Pedido</button>
+        </div>
+    </div>
+</div>
+
+<!-- EXIT POPUP -->
+<div class="exit-overlay" id="exitOverlay">
+    <div class="exit-modal">
+        <div class="exit-top">
+            <div class="big">¡ESPERA!</div>
+            <p>Antes de irte, tenemos algo especial para ti</p>
+        </div>
+        <div class="exit-body">
+            <p>Usa este código y obtén <strong>10% de descuento</strong> en tu primer pedido:</p>
+            <div class="exit-code">VIRAL10</div>
+            <p style="font-size:.78rem;margin-bottom:.8rem">Deja tu email y te enviamos el código + ofertas exclusivas</p>
+            <div class="exit-email">
+                <input type="email" placeholder="tu@email.com" id="exitEmail">
+                <button onclick="claimDiscount()">Reclamar</button>
+            </div>
+            <span class="exit-close" onclick="closeExit()">No gracias, prefiero pagar precio completo</span>
+        </div>
+    </div>
+</div>
+
+<!-- PURCHASE NOTIFICATION -->
+<div id="buyNotif">
+    <span class="notif-dot"></span>
+    <img class="notif-img" id="notifImg" src="" alt="">
+    <div class="notif-text">
+        <strong id="notifName">María G.</strong> de <span id="notifCity">Madrid</span><br>
+        acaba de comprar <strong id="notifProduct">Masajeador LED</strong><br>
+        <span id="notifTime" style="color:var(--success);font-size:.68rem">hace 2 min ✓</span>
+    </div>
+</div>
+
+<!-- WHATSAPP -->
+<a href="https://wa.me/1234567890?text=Hola,%20me%20interesa%20un%20producto%20de%20ViralShop" target="_blank" class="whatsapp-btn">
+    <i class="fab fa-whatsapp"></i>
+    <span class="whatsapp-tooltip">Chatea con nosotros</span>
+</a>
+
+<!-- TOAST & SCROLL -->
+<div class="toast-container" id="toastContainer"></div>
+<button class="scroll-top" id="scrollTop" onclick="window.scrollTo({top:0,behavior:'smooth'})"><i class="fas fa-arrow-up"></i></button>
+
+<script>
+// ═══════════════════════════════════════
+//  DATOS: PRODUCTOS GANADORES
+// ═══════════════════════════════════════
+const FREE_SHIPPING_THRESHOLD = 50;
+
+const products = [
+    { id:1, name:"Masajeador de Cuello Eléctrico", category:"Bienestar",
+      description:"Alivio cervical inmediato con 6 modos, calor infrarrojo y vibración. Recargable USB.",
+      price:34.99, originalPrice:69.99, badge:"HOT", badgeClass:"",
+      rating:4.8, reviews:2847, stock:8, soldToday:47, viewers:14,
+      image:"https://images.unsplash.com/photo-1544161515-4ab6ce6db874?w=600&q=80" },
+    { id:2, name:"Cortauñas Eléctrico Premium", category:"Cuidado Personal",
+      description:"Recorta y lima uñas en segundos. Seguro para bebés, adultos y mayores. Sin dolor.",
+      price:22.99, originalPrice:44.99, badge:"BESTSELLER", badgeClass:"bestseller",
+      rating:4.9, reviews:4521, stock:5, soldToday:63, viewers:21,
+      image:"https://images.unsplash.com/photo-1583864697784-a0efc8379f70?w=600&q=80" },
+    { id:3, name:"Collar Minimalista Personalizable", category:"Joyería",
+      description:"Acero inoxidable antialérgico. Graba nombre o frase especial. El regalo perfecto.",
+      price:18.99, originalPrice:39.99, badge:"NUEVO", badgeClass:"new",
+      rating:4.7, reviews:1923, stock:15, soldToday:31, viewers:9,
+      image:"https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?w=600&q=80" },
+    { id:4, name:"Hoodie Doble Cara para Parejas", category:"Moda",
+      description:"El hoodie viral de TikTok. Dos capas para compartir momentos únicos juntos.",
+      price:49.99, originalPrice:89.99, badge:"VIRAL", badgeClass:"",
+      rating:4.8, reviews:3210, stock:12, soldToday:38, viewers:17,
+      image:"https://images.unsplash.com/photo-1556821840-3a63f15732ce?w=600&q=80" },
+    { id:5, name:"Suero Glow Peel Vitamina C", category:"Belleza",
+      description:"Elimina manchas y unifica el tono en 2 semanas. Con ácido kójico y cúrcuma natural.",
+      price:29.99, originalPrice:59.99, badge:"HOT", badgeClass:"",
+      rating:4.9, reviews:6782, stock:4, soldToday:89, viewers:26,
+      image:"https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?w=600&q=80" },
+    { id:6, name:"Masajeador Facial LED", category:"Belleza",
+      description:"Luz roja y azul. Reduce arrugas, acné y estimula colágeno desde casa. 3 modos.",
+      price:44.99, originalPrice:99.99, badge:"BESTSELLER", badgeClass:"bestseller",
+      rating:4.8, reviews:2156, stock:7, soldToday:52, viewers:19,
+      image:"https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=600&q=80" },
+    { id:7, name:"Set Anillos Apilables Minimalistas", category:"Joyería",
+      description:"Pack 3 anillos ajustables oro/plata en acero quirúrgico. Sin alergias ni manchas.",
+      price:14.99, originalPrice:29.99, badge:"NUEVO", badgeClass:"new",
+      rating:4.7, reviews:987, stock:20, soldToday:24, viewers:8,
+      image:"https://images.unsplash.com/photo-1605100804763-247f67b3557e?w=600&q=80" },
+    { id:8, name:"Botella Térmica Magnética 1L", category:"Lifestyle",
+      description:"Acero inoxidable 18/8. Temperatura 24h. Diseño minimalista antifugas. Varios colores.",
+      price:27.99, originalPrice:54.99, badge:"TRENDING", badgeClass:"",
+      rating:4.9, reviews:5431, stock:11, soldToday:71, viewers:23,
+      image:"https://images.unsplash.com/photo-1602143407151-7111542de6e8?w=600&q=80" }
+];
+
+// Upsell pairs: when product X is added, suggest Y
+const upsellMap = {1:6, 2:7, 3:7, 4:8, 5:6, 6:5, 7:3, 8:4};
+
+// Testimonials
+const testimonials = [
+    { name:"María González", city:"Madrid, España", rating:5,
+      text:"¡El masajeador de cuello es una maravilla! Llevo 3 semanas usándolo y el dolor que tenía por el trabajo en pantalla desapareció. Lo compré con dudas y ahora se lo recomiendo a todos.",
+      product:"Masajeador de Cuello Eléctrico",
+      avatar:"https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&q=80" },
+    { name:"Carlos Méndez", city:"Ciudad de México", rating:5,
+      text:"El suero Glow Peel funcionó de verdad. En 10 días ya noté la diferencia en mis manchas. Nunca había comprado online con tanta confianza. El envío llegó antes de lo esperado.",
+      product:"Suero Glow Peel Vitamina C",
+      avatar:"https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&q=80" },
+    { name:"Ana Lucía Herrera", city:"Bogotá, Colombia", rating:5,
+      text:"Compré el hoodie de pareja para mi aniversario y fue un hit. Mi novio y yo nos lo pusimos y la gente nos preguntaba dónde lo habíamos comprado. Calidad increíble para el precio.",
+      product:"Hoodie Doble Cara para Parejas",
+      avatar:"https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&q=80" },
+    { name:"Roberto Paz", city:"Santiago, Chile", rating:5,
+      text:"El masajeador facial LED lo compré escéptico pero llevo 1 mes usándolo y mi piel está notablemente mejor. El acné casi desapareció. Relación calidad-precio es brutal.",
+      product:"Masajeador Facial LED",
+      avatar:"https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100&q=80" }
+];
+
+// Purchase notifications
+const notifications = [
+    { name:"María G.", city:"Madrid", product:"Masajeador de Cuello", time:"hace 2 min", img:products[0].image },
+    { name:"Carlos M.", city:"México DF", product:"Suero Glow Peel", time:"hace 5 min", img:products[4].image },
+    { name:"Ana L.", city:"Buenos Aires", product:"Cortauñas Eléctrico", time:"hace 8 min", img:products[1].image },
+    { name:"Roberto P.", city:"Bogotá", product:"Masajeador Facial LED", time:"hace 11 min", img:products[5].image },
+    { name:"Laura S.", city:"Santiago", product:"Hoodie Doble Cara", time:"hace 14 min", img:products[3].image },
+    { name:"Diego F.", city:"Lima", product:"Collar Minimalista", time:"hace 18 min", img:products[2].image },
+    { name:"Sofía V.", city:"Monterrey", product:"Botella Térmica", time:"hace 22 min", img:products[7].image },
+    { name:"Pablo R.", city:"Caracas", product:"Set Anillos", time:"hace 25 min", img:products[6].image }
+];
+
+// ═══════════════════════════════════════
+//  CART STATE
+// ═══════════════════════════════════════
+let cart = [];
+let exitShown = false;
+let pendingUpsellId = null;
+
+// ═══════════════════════════════════════
+//  RENDER PRODUCTS
+// ═══════════════════════════════════════
+function renderProducts() {
+    document.getElementById('productsGrid').innerHTML = products.map(p => {
+        const savings = (p.originalPrice - p.price).toFixed(0);
+        const stockWarning = p.stock <= 5
+            ? `<span class="social-pill pill-red"><i class="fas fa-fire"></i> ¡Solo ${p.stock} disponibles!</span>`
+            : `<span class="social-pill pill-green"><i class="fas fa-check"></i> En stock</span>`;
+        return `
+        <div class="product-card">
+            ${p.badge ? `<div class="product-badge ${p.badgeClass}">${p.badge}</div>` : ''}
+            <div class="savings-badge">Ahorra $${savings}</div>
+            <img class="product-image" src="${p.image}" alt="${p.name}" loading="lazy"
+                 onerror="this.src='https://placehold.co/600x400/667eea/white?text=${encodeURIComponent(p.name)}'">
+            <div class="product-info">
+                <div class="product-category">${p.category}</div>
+                <div class="product-name">${p.name}</div>
+                <div class="product-description">${p.description}</div>
+                <div class="product-rating">
+                    <span class="stars">${'★'.repeat(Math.floor(p.rating))}</span>
+                    <span class="rating-count">${p.rating} (${p.reviews.toLocaleString()} reseñas)</span>
+                </div>
+                <div class="product-social">
+                    ${stockWarning}
+                    <span class="social-pill pill-purple"><i class="fas fa-eye"></i> ${p.viewers} viendo</span>
+                    <span class="social-pill pill-green"><i class="fas fa-shopping-cart"></i> ${p.soldToday} hoy</span>
+                </div>
+                <div class="product-footer">
+                    <div>
+                        <div class="price-current">$${p.price.toFixed(2)}</div>
+                        <div class="price-original">$${p.originalPrice.toFixed(2)}</div>
+                    </div>
+                    <button class="add-to-cart" onclick="addToCart(${p.id})">
+                        <i class="fas fa-plus"></i> Agregar
+                    </button>
+                </div>
+            </div>
+        </div>`;
+    }).join('');
+}
+
+// ═══════════════════════════════════════
+//  RENDER TESTIMONIALS
+// ═══════════════════════════════════════
+function renderTestimonials() {
+    document.getElementById('testiGrid').innerHTML = testimonials.map(t => `
+        <div class="testi-card fade-in">
+            <div class="testi-header">
+                <img class="testi-avatar" src="${t.avatar}" alt="${t.name}"
+                     onerror="this.src='https://placehold.co/46x46/667eea/white?text=${t.name[0]}'">
+                <div><div class="testi-name">${t.name}</div><div class="testi-loc">${t.city}</div></div>
+            </div>
+            <div class="testi-stars">${'★'.repeat(t.rating)}</div>
+            <div class="testi-text">"${t.text}"</div>
+            <div class="testi-product"><i class="fas fa-tag"></i> ${t.product}</div>
+            <div class="verified"><i class="fas fa-check-circle"></i> Compra verificada</div>
+        </div>`).join('');
+}
+
+// ═══════════════════════════════════════
+//  CART FUNCTIONS
+// ═══════════════════════════════════════
+function addToCart(id) {
+    const p = products.find(x => x.id === id);
+    const ex = cart.find(x => x.id === id);
+    ex ? ex.qty++ : cart.push({...p, qty:1});
+    updateCart();
+    showToast(`${p.name} agregado`);
+    animateBadge();
+    // Show upsell after short delay
+    const upsellId = upsellMap[id];
+    if (upsellId && !cart.find(x => x.id === upsellId)) {
+        pendingUpsellId = upsellId;
+        setTimeout(() => showUpsell(upsellId), 800);
+    }
+}
+
+function removeFromCart(id) {
+    cart = cart.filter(x => x.id !== id);
+    updateCart();
+}
+
+function changeQty(id, delta) {
+    const item = cart.find(x => x.id === id);
+    if (!item) return;
+    item.qty += delta;
+    if (item.qty <= 0) removeFromCart(id);
+    else updateCart();
+}
+
+function updateCart() {
+    const totalQty = cart.reduce((s,i) => s+i.qty, 0);
+    document.getElementById('cartBadge').textContent = totalQty;
+    const subtotal = cart.reduce((s,i) => s+i.price*i.qty, 0);
+
+    // Shipping progress
+    const progress = Math.min((subtotal / FREE_SHIPPING_THRESHOLD) * 100, 100);
+    document.getElementById('shippingFill').style.width = progress + '%';
+    const remaining = FREE_SHIPPING_THRESHOLD - subtotal;
+    document.getElementById('shippingProgressText').innerHTML = remaining > 0
+        ? `🚚 ¡Solo te faltan <strong>$${remaining.toFixed(2)}</strong> para envío gratis!`
+        : `🎉 <strong>¡Tienes envío GRATIS!</strong>`;
+
+    const itemsEl  = document.getElementById('cartItems');
+    const footerEl = document.getElementById('cartFooter');
+
+    if (cart.length === 0) {
+        itemsEl.innerHTML = `<div class="cart-empty"><i class="fas fa-shopping-bag"></i><p>Tu carrito está vacío</p><small>¡Agrega algo increíble!</small></div>`;
+        footerEl.style.display = 'none';
+        return;
+    }
+
+    itemsEl.innerHTML = cart.map(item => `
+        <div class="cart-item">
+            <img src="${item.image}" alt="${item.name}" onerror="this.src='https://placehold.co/66x66/667eea/white?text=P'">
+            <div class="cart-item-info">
+                <div class="cart-item-name">${item.name}</div>
+                <div class="cart-item-price">$${(item.price*item.qty).toFixed(2)}</div>
+                <div class="cart-item-controls">
+                    <button class="qty-btn" onclick="changeQty(${item.id},-1)">−</button>
+                    <span class="qty-display">${item.qty}</span>
+                    <button class="qty-btn" onclick="changeQty(${item.id},1)">+</button>
+                </div>
+            </div>
+            <button class="remove-item" onclick="removeFromCart(${item.id})"><i class="fas fa-trash"></i></button>
+        </div>`).join('');
+
+    footerEl.style.display = 'block';
+    document.getElementById('cartSubtotal').textContent = '$'+subtotal.toFixed(2);
+    document.getElementById('cartTotal').textContent    = '$'+subtotal.toFixed(2);
+}
+
+function toggleCart() {
+    document.getElementById('cartOverlay').classList.toggle('active');
+    document.getElementById('cartSidebar').classList.toggle('active');
+}
+
+function animateBadge() {
+    const b = document.getElementById('cartBadge');
+    b.classList.remove('badge-anim');
+    void b.offsetWidth;
+    b.classList.add('badge-anim');
+}
+
+// ═══════════════════════════════════════
+//  UPSELL
+// ═══════════════════════════════════════
+function showUpsell(id) {
+    const p = products.find(x => x.id === id);
+    document.getElementById('upsellProduct').innerHTML = `
+        <img class="upsell-img" src="${p.image}" alt="${p.name}"
+             onerror="this.src='https://placehold.co/65x65/667eea/white?text=P'">
+        <div class="upsell-info">
+            <div class="upsell-pname">${p.name}</div>
+            <div class="upsell-pprice">$${p.price.toFixed(2)}</div>
+            <div class="upsell-orig">Antes $${p.originalPrice.toFixed(2)}</div>
+        </div>`;
+    document.getElementById('upsellYes').onclick = () => { addToCart(id); closeUpsell(); };
+    document.getElementById('upsellOverlay').classList.add('active');
+}
+function closeUpsell() { document.getElementById('upsellOverlay').classList.remove('active'); }
+
+// ═══════════════════════════════════════
+//  CHECKOUT
+// ═══════════════════════════════════════
+function openCheckout() {
+    if (!cart.length) return;
+    toggleCart();
+    const subtotal = cart.reduce((s,i) => s+i.price*i.qty, 0);
+    document.getElementById('orderSummaryMini').innerHTML = `
+        <h4>Resumen del pedido</h4>
+        ${cart.map(i=>`<div class="summary-item"><span>${i.name} ×${i.qty}</span><span>$${(i.price*i.qty).toFixed(2)}</span></div>`).join('')}
+        <div class="summary-item"><span>Envío</span><span style="color:var(--success)">Gratis</span></div>
+        <div class="summary-total"><span>Total</span><span>$${subtotal.toFixed(2)}</span></div>`;
+    document.getElementById('checkoutModal').classList.add('active');
+}
+function closeCheckout() { document.getElementById('checkoutModal').classList.remove('active'); }
+
+function placeOrder() {
+    const orderId = '#VS' + Math.floor(Math.random()*90000+10000);
+    document.getElementById('checkoutContent').innerHTML = `
+        <div class="success-screen">
+            <div class="success-icon"><i class="fas fa-check"></i></div>
+            <h3 style="font-size:1.35rem;margin-bottom:.4rem">¡Pedido Confirmado! 🎉</h3>
+            <p style="color:var(--gray);margin-bottom:1.3rem;font-size:.88rem">Gracias por tu compra. Recibirás un email de confirmación en breve con el número de tracking.</p>
+            <div style="background:var(--light);border-radius:12px;padding:1rem;margin-bottom:1.2rem">
+                <p style="font-size:.78rem;color:var(--gray)">Número de pedido</p>
+                <p style="font-size:1.2rem;font-weight:800;color:var(--primary)">${orderId}</p>
+            </div>
+            <p style="font-size:.78rem;color:var(--gray)">Entrega estimada: 5–12 días hábiles</p>
+            <button onclick="finishOrder()" style="margin-top:1.3rem;background:var(--grad);color:white;border:none;padding:.8rem 2rem;border-radius:50px;font-family:Poppins,sans-serif;font-weight:700;cursor:pointer;font-size:.88rem">
+                Seguir comprando
+            </button>
+        </div>`;
+}
+function finishOrder() { cart=[]; updateCart(); closeCheckout(); setTimeout(()=>location.reload(),300); }
+
+// ═══════════════════════════════════════
+//  EXIT POPUP
+// ═══════════════════════════════════════
+document.addEventListener('mouseleave', e => {
+    if (e.clientY < 0 && !exitShown && cart.length === 0) {
+        document.getElementById('exitOverlay').classList.add('active');
+        exitShown = true;
+    }
+});
+function closeExit() { document.getElementById('exitOverlay').classList.remove('active'); }
+function claimDiscount() {
+    const email = document.getElementById('exitEmail').value;
+    if (email) {
+        closeExit();
+        showToast('¡Código VIRAL10 guardado para tu próxima compra!');
+    }
+}
+
+// ═══════════════════════════════════════
+//  TOAST
+// ═══════════════════════════════════════
+function showToast(msg) {
+    const c = document.getElementById('toastContainer');
+    const t = document.createElement('div');
+    t.className = 'toast';
+    t.innerHTML = `<i class="fas fa-check-circle"></i> ${msg}`;
+    c.appendChild(t);
+    requestAnimationFrame(()=>requestAnimationFrame(()=>t.classList.add('show')));
+    setTimeout(()=>{ t.classList.remove('show'); setTimeout(()=>t.remove(),300); }, 2500);
+}
+
+// ═══════════════════════════════════════
+//  NEWSLETTER
+// ═══════════════════════════════════════
+function subscribeEmail(e) {
+    e.preventDefault();
+    showToast('¡Suscrito! Revisa tu email para las ofertas 🎉');
+    e.target.reset();
+}
+
+// ═══════════════════════════════════════
+//  PURCHASE NOTIFICATIONS
+// ═══════════════════════════════════════
+let notifIdx = 0;
+function showNextNotif() {
+    const n = notifications[notifIdx % notifications.length];
+    notifIdx++;
+    document.getElementById('notifName').textContent    = n.name;
+    document.getElementById('notifCity').textContent    = n.city;
+    document.getElementById('notifProduct').textContent = n.product;
+    document.getElementById('notifTime').textContent    = n.time + ' ✓';
+    document.getElementById('notifImg').src             = n.img;
+    const el = document.getElementById('buyNotif');
+    el.classList.add('show');
+    setTimeout(()=>el.classList.remove('show'), 4000);
+}
+// Start notifications after 6s, repeat every 9s
+setTimeout(()=>{ showNextNotif(); setInterval(showNextNotif, 9000); }, 6000);
+
+// ═══════════════════════════════════════
+//  ANNOUNCEMENT BAR COUNTDOWN (24h)
+// ═══════════════════════════════════════
+function updateAnnoTimer() {
+    const key = 'vs_anno_end';
+    let end = localStorage.getItem(key);
+    if (!end) {
+        end = Date.now() + 24*60*60*1000;
+        localStorage.setItem(key, end);
+    }
+    const diff = Math.max(0, end - Date.now());
+    const h = String(Math.floor(diff/3600000)).padStart(2,'0');
+    const m = String(Math.floor((diff%3600000)/60000)).padStart(2,'0');
+    const s = String(Math.floor((diff%60000)/1000)).padStart(2,'0');
+    document.getElementById('annoTimer').textContent = `${h}:${m}:${s}`;
+    if (diff <= 0) { localStorage.removeItem(key); }
+}
+setInterval(updateAnnoTimer, 1000);
+updateAnnoTimer();
+
+// ═══════════════════════════════════════
+//  FORM HELPERS
+// ═══════════════════════════════════════
+function formatCard(el) {
+    let v = el.value.replace(/\D/g,'').substring(0,16);
+    el.value = v.replace(/(.{4})/g,'$1 ').trim();
+}
+function formatExpiry(el) {
+    let v = el.value.replace(/\D/g,'').substring(0,4);
+    if (v.length>=2) v=v.substring(0,2)+'/'+v.substring(2);
+    el.value=v;
+}
+
+// ═══════════════════════════════════════
+//  SCROLL TOP
+// ═══════════════════════════════════════
+window.addEventListener('scroll',()=>{
+    document.getElementById('scrollTop').classList.toggle('visible', window.scrollY>300);
+});
+
+// ═══════════════════════════════════════
+//  INIT
+// ═══════════════════════════════════════
+renderProducts();
+renderTestimonials();
+</script>
+</body>
+</html>

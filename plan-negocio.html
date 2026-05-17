@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Plan de Negocio — ViralShop Dropshipping</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--primary:#6C63FF;--grad:linear-gradient(135deg,#667eea,#764ba2);--dark:#1a1a2e;--gray:#6c757d;--light:#f8f9fa;--green:#27ae60;--orange:#e67e22;--red:#e74c3c}
+body{font-family:'Poppins',sans-serif;background:#f0f2ff;color:var(--dark)}
+.container{max-width:900px;margin:0 auto;padding:2rem}
+.cover{background:var(--grad);color:white;border-radius:20px;padding:3rem 2.5rem;text-align:center;margin-bottom:2rem}
+.cover .label{background:rgba(255,255,255,.2);border:1px solid rgba(255,255,255,.3);display:inline-block;padding:.3rem 1rem;border-radius:50px;font-size:.78rem;font-weight:600;margin-bottom:1rem;letter-spacing:1px}
+.cover h1{font-size:2.4rem;font-weight:800;margin-bottom:.5rem}
+.cover p{opacity:.88;font-size:.95rem;font-weight:300}
+.cover .meta{display:flex;justify-content:center;gap:2rem;margin-top:1.5rem;flex-wrap:wrap}
+.cover .meta span{background:rgba(255,255,255,.15);padding:.4rem 1rem;border-radius:50px;font-size:.8rem;font-weight:500}
+
+/* SECTION */
+.section{background:white;border-radius:16px;padding:2rem;margin-bottom:1.5rem;box-shadow:0 2px 16px rgba(0,0,0,.06)}
+.section-title{display:flex;align-items:center;gap:.8rem;margin-bottom:1.5rem}
+.section-icon{width:42px;height:42px;background:var(--grad);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.1rem;color:white;flex-shrink:0}
+.section-title h2{font-size:1.25rem;font-weight:700}
+.section-title p{font-size:.8rem;color:var(--gray);margin-top:.1rem}
+
+/* CARDS */
+.cards-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:1rem}
+.card{border-radius:12px;padding:1.2rem;text-align:center}
+.card.green{background:#f0fdf4;border:1px solid #bbf7d0}
+.card.blue{background:#f0f4ff;border:1px solid #c7d2fe}
+.card.orange{background:#fff7ed;border:1px solid #fed7aa}
+.card.red{background:#fff1f2;border:1px solid #fecdd3}
+.card .card-num{font-size:1.9rem;font-weight:800;margin-bottom:.2rem}
+.card .card-label{font-size:.75rem;color:var(--gray);font-weight:500}
+.card.green .card-num{color:var(--green)}
+.card.blue .card-num{color:var(--primary)}
+.card.orange .card-num{color:var(--orange)}
+.card.red .card-num{color:var(--red)}
+
+/* STEPS */
+.steps{display:flex;flex-direction:column;gap:1rem}
+.step-item{display:flex;gap:1rem;align-items:flex-start}
+.step-num{width:32px;height:32px;background:var(--grad);border-radius:50%;display:flex;align-items:center;justify-content:center;color:white;font-weight:700;font-size:.85rem;flex-shrink:0;margin-top:.1rem}
+.step-body h3{font-size:.95rem;font-weight:700;margin-bottom:.2rem}
+.step-body p{font-size:.82rem;color:var(--gray);line-height:1.6}
+.step-body a{color:var(--primary);font-weight:600;text-decoration:none}
+.step-body .tag{display:inline-block;background:rgba(108,99,255,.1);color:var(--primary);padding:.15rem .6rem;border-radius:50px;font-size:.7rem;font-weight:600;margin-left:.3rem}
+.step-body .tag.free{background:rgba(39,174,96,.1);color:var(--green)}
+.step-body .tag.paid{background:rgba(230,126,34,.1);color:var(--orange)}
+
+/* TABLE */
+table{width:100%;border-collapse:collapse;font-size:.83rem;margin-top:.5rem}
+th{background:var(--grad);color:white;padding:.7rem 1rem;text-align:left;font-weight:600}
+th:first-child{border-radius:10px 0 0 0}
+th:last-child{border-radius:0 10px 0 0}
+td{padding:.65rem 1rem;border-bottom:1px solid #f0f0f0}
+tr:last-child td{border-bottom:none}
+tr:nth-child(even) td{background:#fafafa}
+.badge-free{background:#f0fdf4;color:var(--green);padding:.2rem .6rem;border-radius:50px;font-size:.7rem;font-weight:700}
+.badge-paid{background:#fff7ed;color:var(--orange);padding:.2rem .6rem;border-radius:50px;font-size:.7rem;font-weight:700}
+
+/* TIMELINE */
+.timeline{display:flex;flex-direction:column;gap:1.2rem}
+.tl-item{display:flex;gap:1.2rem;align-items:flex-start}
+.tl-dot{width:14px;height:14px;border-radius:50%;background:var(--primary);flex-shrink:0;margin-top:.35rem;position:relative}
+.tl-dot::after{content:'';position:absolute;top:14px;left:50%;transform:translateX(-50%);width:2px;height:calc(100% + 1rem);background:#e0e0e0}
+.tl-item:last-child .tl-dot::after{display:none}
+.tl-body h3{font-size:.93rem;font-weight:700;margin-bottom:.15rem}
+.tl-body p{font-size:.8rem;color:var(--gray);line-height:1.6}
+.tl-month{font-size:.7rem;font-weight:700;color:var(--primary);text-transform:uppercase;letter-spacing:.5px;margin-bottom:.2rem}
+
+/* PROFIT CALCULATOR */
+.calc-box{background:linear-gradient(135deg,#f0f4ff,#f3f0ff);border-radius:14px;padding:1.5rem;margin-top:.5rem}
+.calc-row{display:flex;justify-content:space-between;align-items:center;padding:.5rem 0;border-bottom:1px solid rgba(108,99,255,.15)}
+.calc-row:last-child{border-bottom:none;font-weight:800;font-size:1rem;color:var(--primary)}
+.calc-label{font-size:.85rem;color:var(--gray)}
+.calc-value{font-weight:700;font-size:.88rem}
+.calc-value.red{color:var(--red)}
+.calc-value.green{color:var(--green)}
+
+/* FORMULA */
+.formula{background:var(--dark);color:white;border-radius:12px;padding:1rem 1.3rem;font-size:.88rem;font-weight:500;line-height:2;margin:.8rem 0}
+.formula span{background:var(--primary);padding:.1rem .5rem;border-radius:6px;font-weight:700}
+
+/* HIGHLIGHT BOX */
+.highlight{background:linear-gradient(135deg,rgba(108,99,255,.08),rgba(118,75,162,.08));border:2px solid rgba(108,99,255,.2);border-radius:14px;padding:1.2rem;margin:.8rem 0}
+.highlight h4{font-size:.9rem;font-weight:700;margin-bottom:.4rem;color:var(--primary)}
+.highlight p{font-size:.82rem;color:var(--dark);line-height:1.7}
+
+/* WARNING */
+.warning{background:#fff7ed;border:2px solid #fed7aa;border-radius:12px;padding:1rem;margin:.8rem 0;font-size:.82rem;color:#92400e;line-height:1.6}
+.warning strong{color:#c2410c}
+
+/* LIST */
+ul.check-list{list-style:none;display:flex;flex-direction:column;gap:.5rem}
+ul.check-list li{font-size:.85rem;display:flex;align-items:flex-start;gap:.6rem;line-height:1.5}
+ul.check-list li::before{content:'✓';color:var(--green);font-weight:800;margin-top:.05rem;flex-shrink:0}
+
+/* SUPPLIER CARDS */
+.supplier-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:1rem}
+.supplier-card{border:2px solid #eee;border-radius:12px;padding:1rem;transition:border-color .2s}
+.supplier-card:hover{border-color:var(--primary)}
+.supplier-card h3{font-size:.88rem;font-weight:700;margin-bottom:.3rem}
+.supplier-card p{font-size:.75rem;color:var(--gray);line-height:1.5;margin-bottom:.5rem}
+.supplier-pros{font-size:.72rem;color:var(--green);font-weight:600}
+.supplier-cons{font-size:.72rem;color:var(--red);font-weight:600;margin-top:.2rem}
+
+/* PLATFORM COMPARE */
+.platform-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}
+.platform-card{border-radius:12px;padding:1.2rem;border:2px solid #eee;text-align:center}
+.platform-card.recommended{border-color:var(--primary);position:relative}
+.platform-card.recommended::before{content:'RECOMENDADO';position:absolute;top:-11px;left:50%;transform:translateX(-50%);background:var(--primary);color:white;font-size:.62rem;font-weight:700;padding:.15rem .7rem;border-radius:50px;white-space:nowrap}
+.platform-name{font-size:.95rem;font-weight:800;margin-bottom:.3rem}
+.platform-price{font-size:1.3rem;font-weight:800;color:var(--primary);margin-bottom:.3rem}
+.platform-note{font-size:.72rem;color:var(--gray)}
+
+@media(max-width:600px){
+    .cards-grid{grid-template-columns:1fr 1fr}
+    .platform-grid{grid-template-columns:1fr}
+    .cover h1{font-size:1.7rem}
+}
+</style>
+</head>
+<body>
+<div class="container">
+
+<!-- COVER -->
+<div class="cover">
+    <div class="label">PLAN COMPLETO DE NEGOCIO</div>
+    <h1>ViralShop Dropshipping</h1>
+    <p>De 0 a tu primera venta en 7 días. Todo lo que necesitas saber para construir un negocio online rentable.</p>
+    <div class="meta">
+        <span>📅 Actualizado 2026</span>
+        <span>💰 Inversión mínima: $0</span>
+        <span>🚀 Primera venta: 7 días</span>
+        <span>📈 Meta mes 6: $3,000+/mes</span>
+    </div>
+</div>
+
+<!-- 1. QUÉ ES DROPSHIPPING -->
+<div class="section">
+    <div class="section-title">
+        <div class="section-icon">📦</div>
+        <div><h2>¿Qué es el Dropshipping?</h2><p>El modelo de negocio explicado en simple</p></div>
+    </div>
+    <div class="highlight">
+        <h4>Definición simple</h4>
+        <p>Vendes productos en tu tienda online <strong>sin tener inventario</strong>. Cuando alguien compra, tú le compras al proveedor y él envía directo al cliente. Tú te quedas la diferencia = tu ganancia.</p>
+    </div>
+    <div class="formula">
+        CLIENTE paga <span>$35</span> → Tú compras al proveedor por <span>$7</span> → Ganancia = <span>$28</span> (80% de margen)
+    </div>
+    <div class="cards-grid" style="margin-top:1rem">
+        <div class="card green"><div class="card-num">$0</div><div class="card-label">Inventario inicial</div></div>
+        <div class="card blue"><div class="card-num">70-85%</div><div class="card-label">Margen de ganancia</div></div>
+        <div class="card orange"><div class="card-num">7-15d</div><div class="card-label">Tiempo de envío China</div></div>
+        <div class="card green"><div class="card-num">∞</div><div class="card-label">Productos posibles</div></div>
+    </div>
+</div>
+
+<!-- 2. PRESUPUESTO -->
+<div class="section">
+    <div class="section-title">
+        <div class="section-icon">💰</div>
+        <div><h2>Presupuesto e Inversión</h2><p>Cuánto necesitas para empezar</p></div>
+    </div>
+    <table>
+        <tr><th>Herramienta / Servicio</th><th>Costo</th><th>Tipo</th><th>Alternativa gratis</th></tr>
+        <tr><td><strong>Dominio</strong> (.com)</td><td>~$10/año</td><td><span class="badge-paid">PAGADO</span></td><td>Usar el dominio gratis de Netlify</td></tr>
+        <tr><td><strong>Hosting</strong></td><td>$0</td><td><span class="badge-free">GRATIS</span></td><td>Netlify (gratis y rápido)</td></tr>
+        <tr><td><strong>Stripe</strong> (pagos)</td><td>2.9% + $0.30/venta</td><td><span class="badge-paid">% comisión</span></td><td>PayPal (3.5% + comisión)</td></tr>
+        <tr><td><strong>Facebook Ads</strong></td><td>$5-20/día</td><td><span class="badge-paid">PAGADO</span></td><td>TikTok orgánico (gratis)</td></tr>
+        <tr><td><strong>Canva Pro</strong> (diseño)</td><td>$0</td><td><span class="badge-free">GRATIS</span></td><td>Canva Free es suficiente</td></tr>
+        <tr><td><strong>DSers</strong> (automatización)</td><td>$0</td><td><span class="badge-free">GRATIS</span></td><td>Plan free cubre lo necesario</td></tr>
+        <tr><td><strong>Mailchimp</strong> (email)</td><td>$0</td><td><span class="badge-free">GRATIS</span></td><td>Hasta 500 suscriptores gratis</td></tr>
+        <tr><td><strong>Google Analytics</strong></td><td>$0</td><td><span class="badge-free">GRATIS</span></td><td>—</td></tr>
+    </table>
+    <div class="highlight" style="margin-top:1rem">
+        <h4>💡 Inversión recomendada para empezar</h4>
+        <p><strong>Opción A — $0:</strong> Usa TikTok orgánico para tráfico. Dominio de Netlify gratis. Puede tardar más pero es sin riesgo.<br>
+        <strong>Opción B — $200:</strong> $10 dominio + $150 en anuncios de prueba Facebook/TikTok + $40 buffer. Resultados en 2-4 semanas.<br>
+        <strong>Opción C — $500:</strong> La más recomendada. $10 dominio + $350 anuncios + $140 para escalar lo que funcione.</p>
+    </div>
+</div>
+
+<!-- 3. SETUP PASO A PASO -->
+<div class="section">
+    <div class="section-title">
+        <div class="section-icon">🔧</div>
+        <div><h2>Setup Paso a Paso</h2><p>De 0 a tienda online activa en 7 días</p></div>
+    </div>
+    <div class="steps">
+        <div class="step-item">
+            <div class="step-num">1</div>
+            <div class="step-body">
+                <h3>Día 1 — Publica tu tienda gratis en Netlify <span class="tag free">GRATIS</span></h3>
+                <p>Ve a <a href="https://netlify.com">netlify.com</a> → Sign Up → "Add new site" → "Deploy manually" → arrastra la carpeta <strong>viralshop</strong>. Tu tienda queda live en minutos con URL tipo <em>viralshop.netlify.app</em>.</p>
+            </div>
+        </div>
+        <div class="step-item">
+            <div class="step-num">2</div>
+            <div class="step-body">
+                <h3>Día 1 — Compra un dominio propio <span class="tag paid">$10/año</span></h3>
+                <p>Ve a <a href="https://namecheap.com">namecheap.com</a>. Busca <em>viralshop.com</em> o similar. Cuesta ~$10/año. Luego en Netlify → Domain settings → vincula el dominio. Imprescindible para parecer profesional.</p>
+            </div>
+        </div>
+        <div class="step-item">
+            <div class="step-num">3</div>
+            <div class="step-body">
+                <h3>Día 2 — Configura los pagos con Stripe <span class="tag free">2.9% comisión</span></h3>
+                <p>Crea cuenta en <a href="https://stripe.com">stripe.com</a>. Requiere identificación y cuenta bancaria. Una vez activo, te integran el botón de pago en el sitio. Alternativa más rápida: <a href="https://paypal.com">PayPal.me</a> o Mercado Pago.</p>
+            </div>
+        </div>
+        <div class="step-item">
+            <div class="step-num">4</div>
+            <div class="step-body">
+                <h3>Día 2 — Crea cuenta en CJ Dropshipping o AliExpress <span class="tag free">GRATIS</span></h3>
+                <p>Busca cada producto de tu tienda en <a href="https://cjdropshipping.com">CJDropshipping.com</a>. Tienen almacenes en USA/Europa = envío 5-8 días. Guarda los links de cada proveedor. Cuando llegue un pedido, lo compras ahí manualmente.</p>
+            </div>
+        </div>
+        <div class="step-item">
+            <div class="step-num">5</div>
+            <div class="step-body">
+                <h3>Día 3 — Abre cuentas en TikTok e Instagram <span class="tag free">GRATIS</span></h3>
+                <p>Nombre igual a tu tienda. Bio: "Productos virales 🔥 Envío gratis | Link en bio". Descarga las apps en el móvil. Empieza a seguir cuentas del nicho.</p>
+            </div>
+        </div>
+        <div class="step-item">
+            <div class="step-num">6</div>
+            <div class="step-body">
+                <h3>Día 4-7 — Graba y publica 2 videos diarios en TikTok <span class="tag free">GRATIS</span></h3>
+                <p>Filma el producto en uso. Desempaquetado. Antes/después (belleza). Reseña honesta. Añade texto "Solo $34.99 - Link en bio". Sin filtros = más auténtico = más viralidad. 1 video viral = 1000+ visitas a tu tienda.</p>
+            </div>
+        </div>
+        <div class="step-item">
+            <div class="step-num">7</div>
+            <div class="step-body">
+                <h3>Día 7+ — Primera venta, primer pedido <span class="tag paid">ACCIÓN</span></h3>
+                <p>Cuando llegue el primer pedido: (1) guarda los datos del cliente, (2) compra el producto en CJ Dropshipping con la dirección del cliente, (3) el proveedor envía directo. Confirma al cliente con número de tracking.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 4. PROVEEDORES -->
+<div class="section">
+    <div class="section-title">
+        <div class="section-icon">🏭</div>
+        <div><h2>Dónde Conseguir los Productos</h2><p>Los mejores proveedores de dropshipping 2026</p></div>
+    </div>
+    <div class="supplier-grid">
+        <div class="supplier-card">
+            <h3>🥇 CJ Dropshipping</h3>
+            <p>El mejor para principiantes. Almacenes en USA y Europa.</p>
+            <div class="supplier-pros">✓ Envío 5-10 días<br>✓ Mejor calidad control<br>✓ App automática</div>
+            <div class="supplier-cons">✗ Precios un poco más altos</div>
+        </div>
+        <div class="supplier-card">
+            <h3>🥈 AliExpress</h3>
+            <p>El más grande. Millones de productos. Envío más lento.</p>
+            <div class="supplier-pros">✓ Precios muy bajos<br>✓ Todo tipo de producto<br>✓ Fácil de usar</div>
+            <div class="supplier-cons">✗ 15-30 días envío<br>✗ Calidad variable</div>
+        </div>
+        <div class="supplier-card">
+            <h3>🥉 Spocket</h3>
+            <p>Proveedores en USA/Europa. Calidad alta, precio alto.</p>
+            <div class="supplier-pros">✓ 3-5 días envío<br>✓ Calidad premium<br>✓ Productos únicos</div>
+            <div class="supplier-cons">✗ Plan $24-99/mes<br>✗ Menos variedad</div>
+        </div>
+        <div class="supplier-card">
+            <h3>Zendrop</h3>
+            <p>Automatización total. Buena para cuando escales.</p>
+            <div class="supplier-pros">✓ Auto-fulfillment<br>✓ Branding propio<br>✓ Buena calidad</div>
+            <div class="supplier-cons">✗ Plan $49+/mes<br>✗ Para avanzados</div>
+        </div>
+    </div>
+    <div class="warning" style="margin-top:1rem">
+        <strong>⚠️ Importante:</strong> Antes de vender un producto, haz un pedido de prueba a tu propia dirección. Verifica la calidad real. Asegúrate de que la imagen de tu tienda coincide con el producto real. Esto evita devoluciones masivas.
+    </div>
+</div>
+
+<!-- 5. ESTRATEGIA DE PRECIOS -->
+<div class="section">
+    <div class="section-title">
+        <div class="section-icon">📊</div>
+        <div><h2>Estrategia de Precios</h2><p>Cómo calcular el precio correcto para ser rentable</p></div>
+    </div>
+    <div class="formula">
+        Precio de venta = Costo proveedor × <span>3.5 a 5x</span>
+    </div>
+    <div class="calc-box">
+        <div class="calc-row"><span class="calc-label">Precio proveedor (ej. masajeador)</span><span class="calc-value red">− $7.00</span></div>
+        <div class="calc-row"><span class="calc-label">Costo de envío a cliente</span><span class="calc-value red">− $3.00</span></div>
+        <div class="calc-row"><span class="calc-label">Comisión Stripe (2.9%+0.30)</span><span class="calc-value red">− $1.31</span></div>
+        <div class="calc-row"><span class="calc-label">Costo anuncio por venta (CPA)</span><span class="calc-value red">− $8.00</span></div>
+        <div class="calc-row"><span class="calc-label">Precio de venta</span><span class="calc-value">$34.99</span></div>
+        <div class="calc-row"><span>✅ GANANCIA NETA</span><span class="calc-value green">$15.68 (44%)</span></div>
+    </div>
+    <ul class="check-list" style="margin-top:1rem">
+        <li>Sweet spot de precio: <strong>$20-$60</strong> — Suficiente margen sin demasiada fricción al comprar</li>
+        <li>Precio psicológico: siempre termina en <strong>.99</strong> o <strong>.95</strong></li>
+        <li>Muestra siempre el precio "tachado" — el cliente necesita percibir que está ahorrando</li>
+        <li>Upsell: después de cada compra, ofrece un producto complementario con 20% descuento</li>
+        <li>Envío "gratis" incluido en precio — psicológicamente más efectivo que cobrar por envío</li>
+    </ul>
+</div>
+
+<!-- 6. MARKETING Y TRÁFICO -->
+<div class="section">
+    <div class="section-title">
+        <div class="section-icon">📣</div>
+        <div><h2>Estrategia de Marketing</h2><p>Cómo conseguir tráfico y convertirlo en ventas</p></div>
+    </div>
+
+    <h3 style="font-size:.95rem;font-weight:700;margin-bottom:1rem;color:var(--primary)">🎯 FASE 1: Tráfico orgánico (primeros 60 días, $0)</h3>
+    <div class="steps">
+        <div class="step-item">
+            <div class="step-num">A</div>
+            <div class="step-body">
+                <h3>TikTok — Tu arma más poderosa</h3>
+                <p>2 videos/día. Filma el producto en uso (30-60 seg). Musica trendy. Texto tipo: "Este masajeador quitó mi dolor de cuello en 10 min 😱". Responde comentarios con otros videos. Un video viral = +10,000 visitas gratis. Los mejores formatos: unboxing, antes/después, demostración, reacción.</p>
+            </div>
+        </div>
+        <div class="step-item">
+            <div class="step-num">B</div>
+            <div class="step-body">
+                <h3>Instagram Reels — Repurpose del contenido</h3>
+                <p>Sube los mismos videos de TikTok en Instagram Reels (quita el logo de TikTok con CapCut). Historias diarias con los productos. Etiqueta a otras cuentas del nicho. Responde mensajes rápido.</p>
+            </div>
+        </div>
+        <div class="step-item">
+            <div class="step-num">C</div>
+            <div class="step-body">
+                <h3>Pinterest — Ideal para joyería y belleza</h3>
+                <p>Crea tableros por categoría. Pines con fotos de calidad del producto. Descripción con palabras clave. El tráfico de Pinterest tiene intención de compra alta. 5-10 pines/día al principio.</p>
+            </div>
+        </div>
+    </div>
+
+    <h3 style="font-size:.95rem;font-weight:700;margin:1.5rem 0 1rem;color:var(--orange)">🚀 FASE 2: Anuncios pagados (mes 2-3)</h3>
+    <div class="steps">
+        <div class="step-item">
+            <div class="step-num">1</div>
+            <div class="step-body">
+                <h3>Empieza con $5/día en Facebook Ads</h3>
+                <p>Objetivo: Tráfico a la tienda. Segmentación: 25-45 años, intereses en el producto específico. Prueba 3-4 creatividades distintas. Deja correr 5 días sin tocar. El algoritmo aprende.</p>
+            </div>
+        </div>
+        <div class="step-item">
+            <div class="step-num">2</div>
+            <div class="step-body">
+                <h3>Mide los KPIs claves</h3>
+                <p><strong>CTR</strong> (click-through rate): debe ser +1.5%. <strong>CPC</strong> (costo por click): debe ser menos de $1.50. <strong>ROAS</strong> (retorno en ads): mínimo 2x para ser rentable, objetivo 4x+. <strong>CPM</strong>: costo por 1000 impresiones, máx $15.</p>
+            </div>
+        </div>
+        <div class="step-item">
+            <div class="step-num">3</div>
+            <div class="step-body">
+                <h3>Duplica el presupuesto del ad ganador</h3>
+                <p>Si un anuncio tiene ROAS +3x, duplica su presupuesto cada 3-4 días. Nunca subas más del 50% a la vez o Facebook reinicia el algoritmo. Escala gradualmente: $5 → $10 → $20 → $50/día.</p>
+            </div>
+        </div>
+    </div>
+
+    <h3 style="font-size:.95rem;font-weight:700;margin:1.5rem 0 1rem;color:var(--green)">📧 FASE 3: Email marketing (automático, $0)</h3>
+    <ul class="check-list">
+        <li>Mailchimp gratis hasta 500 suscriptores. Sube de nivel solo cuando necesites.</li>
+        <li>Secuencia automática: Email 1 (bienvenida + código 10%) → Email 3 (productos más vendidos) → Email 7 (urgencia oferta limitada)</li>
+        <li>Email de carrito abandonado: +15% de recuperación de ventas perdidas</li>
+        <li>Newsletter semanal: nuevo producto trendy + código descuento exclusivo</li>
+        <li>1 email de contenido de valor por cada 2 emails de venta</li>
+    </ul>
+</div>
+
+<!-- 7. PLATAFORMAS -->
+<div class="section">
+    <div class="section-title">
+        <div class="section-icon">💻</div>
+        <div><h2>¿Qué Plataforma Usar?</h2><p>Tu tienda ya está lista — pero aquí están las opciones</p></div>
+    </div>
+    <div class="platform-grid">
+        <div class="platform-card recommended">
+            <div class="platform-name">Tu tienda actual<br>(ViralShop HTML)</div>
+            <div class="platform-price">$0/mes</div>
+            <div class="platform-note">✅ Lista ahora mismo<br>✅ Sin comisiones<br>✅ Control total<br>❌ Integración manual</div>
+        </div>
+        <div class="platform-card">
+            <div class="platform-name">Shopify</div>
+            <div class="platform-price">$29/mes</div>
+            <div class="platform-note">✅ Todo integrado<br>✅ Apps de dropshipping<br>✅ Analytics avanzado<br>❌ Comisión por venta</div>
+        </div>
+        <div class="platform-card">
+            <div class="platform-name">WooCommerce</div>
+            <div class="platform-price">~$10/mes hosting</div>
+            <div class="platform-note">✅ Gratis open-source<br>✅ Muy flexible<br>❌ Requiere WordPress<br>❌ Más complejo</div>
+        </div>
+    </div>
+    <div class="highlight" style="margin-top:1rem">
+        <h4>💡 Recomendación de experto</h4>
+        <p>Empieza con <strong>tu tienda actual (gratis)</strong> para validar el negocio y hacer las primeras ventas. Cuando estés generando +$1,000/mes consistentemente, migra a <strong>Shopify</strong> para escalar con sus herramientas de automatización (DSers, Klaviyo, etc.).</p>
+    </div>
+</div>
+
+<!-- 8. PROYECCIONES -->
+<div class="section">
+    <div class="section-title">
+        <div class="section-icon">📈</div>
+        <div><h2>Proyecciones Financieras</h2><p>Estimados realistas mes a mes</p></div>
+    </div>
+    <div class="timeline">
+        <div class="tl-item">
+            <div class="tl-dot"></div>
+            <div class="tl-body">
+                <div class="tl-month">MES 1</div>
+                <h3>Validación — $0 a $500 en ventas</h3>
+                <p>Setup completo, primeros videos en TikTok, primeras 5-15 ventas. Aprende el proceso de pedidos. Identifica qué producto vende mejor. Reinvierte todo en más contenido.</p>
+            </div>
+        </div>
+        <div class="tl-item">
+            <div class="tl-dot"></div>
+            <div class="tl-body">
+                <div class="tl-month">MES 2-3</div>
+                <h3>Crecimiento — $500 a $2,000/mes</h3>
+                <p>TikTok orgánico consistente + primeros $5/día en Facebook Ads. Ya tienes datos sobre qué funciona. Comienzas a construir lista de emails. 20-60 ventas/mes. Ganancia neta: $300-$900.</p>
+            </div>
+        </div>
+        <div class="tl-item">
+            <div class="tl-dot"></div>
+            <div class="tl-body">
+                <div class="tl-month">MES 4-6</div>
+                <h3>Escalado — $2,000 a $8,000/mes</h3>
+                <p>Encontraste 1-2 productos ganadores. Escalas los anuncios. Migras a Shopify. Email marketing activo. Colaboras con micro-influencers (5k-50k seguidores). Ganancia neta: $800-$3,500/mes.</p>
+            </div>
+        </div>
+        <div class="tl-item">
+            <div class="tl-dot"></div>
+            <div class="tl-body">
+                <div class="tl-month">MES 7-12</div>
+                <h3>Automatización — $8,000 a $20,000+/mes</h3>
+                <p>Operaciones semi-automatizadas. Ads rentables y estables. Listas de email grandes. Posibilidad de contratar un asistente virtual ($200-400/mes) para manejar pedidos y atención al cliente. Ganancia neta: $3,000-$10,000/mes.</p>
+            </div>
+        </div>
+    </div>
+    <div class="warning" style="margin-top:1rem">
+        <strong>⚠️ Aviso importante:</strong> Estos números son estimados basados en dropshippers que aplican la estrategia consistentemente. Los resultados varían mucho. El 80% de quienes fracasan lo hacen por renunciar antes del mes 3. La clave es la consistencia y la iteración constante.
+    </div>
+</div>
+
+<!-- 9. HERRAMIENTAS -->
+<div class="section">
+    <div class="section-title">
+        <div class="section-icon">🛠</div>
+        <div><h2>Stack de Herramientas 2026</h2><p>Todo lo que necesitas, categorizado por prioridad</p></div>
+    </div>
+    <table>
+        <tr><th>Herramienta</th><th>Para qué sirve</th><th>Precio</th><th>Prioridad</th></tr>
+        <tr><td><strong>Netlify</strong></td><td>Hosting de la tienda</td><td>Gratis</td><td>🔴 Imprescindible</td></tr>
+        <tr><td><strong>Stripe / PayPal</strong></td><td>Procesar pagos</td><td>% comisión</td><td>🔴 Imprescindible</td></tr>
+        <tr><td><strong>CJ Dropshipping</strong></td><td>Proveedor de productos</td><td>Gratis</td><td>🔴 Imprescindible</td></tr>
+        <tr><td><strong>Canva</strong></td><td>Diseñar anuncios e imágenes</td><td>Gratis</td><td>🔴 Imprescindible</td></tr>
+        <tr><td><strong>CapCut</strong></td><td>Editar videos para TikTok</td><td>Gratis</td><td>🔴 Imprescindible</td></tr>
+        <tr><td><strong>Google Analytics</strong></td><td>Trackear visitas y conversiones</td><td>Gratis</td><td>🟡 Importante</td></tr>
+        <tr><td><strong>Mailchimp</strong></td><td>Email marketing automático</td><td>Gratis (-500 subs)</td><td>🟡 Importante</td></tr>
+        <tr><td><strong>Hotjar</strong></td><td>Ver cómo navegan los usuarios</td><td>Gratis</td><td>🟡 Importante</td></tr>
+        <tr><td><strong>Minea / AdSpy</strong></td><td>Investigar productos ganadores</td><td>$49-99/mes</td><td>🟢 Cuando escales</td></tr>
+        <tr><td><strong>Shopify</strong></td><td>Plataforma tienda avanzada</td><td>$29/mes</td><td>🟢 Cuando escales</td></tr>
+    </table>
+</div>
+
+<!-- 10. CHECKLIST -->
+<div class="section">
+    <div class="section-title">
+        <div class="section-icon">✅</div>
+        <div><h2>Checklist de Lanzamiento</h2><p>Todo lo que debes completar antes de tu primera venta</p></div>
+    </div>
+    <ul class="check-list">
+        <li>Tienda publicada en Netlify con URL funcionando</li>
+        <li>Dominio propio comprado y vinculado</li>
+        <li>Página de política de devoluciones creada (30 días sin preguntas)</li>
+        <li>Página de Términos y Condiciones</li>
+        <li>Email de soporte configurado (ej. soporte@viralshop.com)</li>
+        <li>WhatsApp de atención al cliente activo</li>
+        <li>Cuenta de Stripe o PayPal activa y probada con un pago de prueba</li>
+        <li>Proveedor identificado para cada producto (CJ Dropshipping links guardados)</li>
+        <li>Pedido de prueba hecho de al menos 1 producto a tu dirección</li>
+        <li>Cuenta de TikTok creada y bio configurada con link</li>
+        <li>Cuenta de Instagram creada con los mismos datos</li>
+        <li>Primeros 3 videos publicados en TikTok</li>
+        <li>Google Analytics instalado en la tienda</li>
+        <li>Mailchimp conectado con secuencia de bienvenida activa</li>
+        <li>Meta Business Manager creado para futuros anuncios</li>
+        <li>Spreadsheet o Notion para registrar cada venta y calcular ganancias</li>
+    </ul>
+</div>
+
+<!-- FOOTER -->
+<div style="text-align:center;padding:2rem;color:var(--gray);font-size:.78rem">
+    <p>ViralShop Business Plan — Actualizado Mayo 2026</p>
+    <p style="margin-top:.3rem">Imprime este documento y tenlo como referencia durante tu proceso</p>
+</div>
+
+</div>
+</body>
+</html>
