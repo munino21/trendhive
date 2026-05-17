@@ -458,23 +458,33 @@
     }
     .product-wishlist:hover, .product-wishlist.active { color: var(--danger); }
 
+    .product-img-container { position: relative; overflow: hidden; }
     .product-img {
       width: 100%;
-      height: 220px;
+      height: 240px;
       object-fit: cover;
       display: block;
-      background: linear-gradient(135deg, #e0e7ff 0%, #f3e8ff 100%);
-      position: relative;
+      transition: transform .4s ease;
     }
-    .product-img-placeholder {
-      width: 100%;
-      height: 220px;
+    .product-img-container:hover .product-img { transform: scale(1.05); }
+    .img-thumbs {
       display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 3.5rem;
-      background: linear-gradient(135deg, #EDE9FE 0%, #FCE7F3 100%);
+      gap: 5px;
+      padding: 7px 10px;
+      background: #F9FAFB;
+      border-top: 1px solid #F3F4F6;
     }
+    .img-thumbs img {
+      width: 46px; height: 46px;
+      object-fit: cover;
+      border-radius: 8px;
+      cursor: pointer;
+      border: 2px solid transparent;
+      transition: border-color .2s;
+      flex-shrink: 0;
+    }
+    .img-thumbs img.active,
+    .img-thumbs img:hover { border-color: var(--primary); }
 
     .product-body { padding: 1.2rem; flex: 1; display: flex; flex-direction: column; gap: 0.5rem; }
 
@@ -1149,7 +1159,14 @@
     <div class="product-card" data-cat="bienestar">
       <div class="product-badge viral">🔥 Viral</div>
       <button class="product-wishlist" onclick="toggleWish(this)"><i class="far fa-heart"></i></button>
-      <div class="product-img-placeholder">💆</div>
+      <div class="product-img-container">
+        <img src="https://d33yjn72e20ec6.cloudfront.net/argentina/products/1857/17586739136.jpg" class="product-img" id="img-p1" alt="Masajeador Cuello EMS">
+        <div class="img-thumbs">
+          <img src="https://d33yjn72e20ec6.cloudfront.net/argentina/products/1857/17586739136.jpg" onclick="switchImg('img-p1',this)" class="active" alt="">
+          <img src="https://d33yjn72e20ec6.cloudfront.net/argentina/products/1857/1767371171Captura%20de%20pantalla%202026-01-02%20a%20la(s)%201.25.35%E2%80%AFp.m..png" onclick="switchImg('img-p1',this)" alt="">
+          <img src="https://d33yjn72e20ec6.cloudfront.net/argentina/products/1857/1767371171Captura%20de%20pantalla%202026-01-02%20a%20la(s)%201.25.41%E2%80%AFp.m..png" onclick="switchImg('img-p1',this)" alt="">
+        </div>
+      </div>
       <div class="product-body">
         <div class="product-supplier">📦 Dropi · 24-72hs Argentina</div>
         <div class="product-name">Masajeador Cuello Electroestimulación EMS Cervical</div>
@@ -1171,7 +1188,14 @@
     <div class="product-card" data-cat="belleza">
       <div class="product-badge" style="background:#8B5CF6">💜 Premium</div>
       <button class="product-wishlist" onclick="toggleWish(this)"><i class="far fa-heart"></i></button>
-      <div class="product-img-placeholder">✨</div>
+      <div class="product-img-container">
+        <img src="https://d33yjn72e20ec6.cloudfront.net/argentina/products/8649/1777333924OIP%20(4).webp" class="product-img" id="img-p2" alt="Masajeador Facial 4D">
+        <div class="img-thumbs">
+          <img src="https://d33yjn72e20ec6.cloudfront.net/argentina/products/8649/1777333924OIP%20(4).webp" onclick="switchImg('img-p2',this)" class="active" alt="">
+          <img src="https://d33yjn72e20ec6.cloudfront.net/argentina/products/8649/1777333924OIP%20(3).webp" onclick="switchImg('img-p2',this)" alt="">
+          <img src="https://d33yjn72e20ec6.cloudfront.net/argentina/products/8649/1777333924OIP%20(5).webp" onclick="switchImg('img-p2',this)" alt="">
+        </div>
+      </div>
       <div class="product-body">
         <div class="product-supplier">📦 Dropi · 24-72hs Argentina · Gral. San Martín</div>
         <div class="product-name">Masajeador Facial 4D Microcorriente Anti-Age Lifting</div>
@@ -1193,7 +1217,14 @@
     <div class="product-card" data-cat="joyeria">
       <div class="product-badge hot">⚡ Hot</div>
       <button class="product-wishlist" onclick="toggleWish(this)"><i class="far fa-heart"></i></button>
-      <div class="product-img-placeholder">💛</div>
+      <div class="product-img-container">
+        <img src="https://d33yjn72e20ec6.cloudfront.net/argentina/products/3685/175985307422.png" class="product-img" id="img-p3" alt="Collar Largo de Corazón">
+        <div class="img-thumbs">
+          <img src="https://d33yjn72e20ec6.cloudfront.net/argentina/products/3685/175985307422.png" onclick="switchImg('img-p3',this)" class="active" alt="">
+          <img src="https://d33yjn72e20ec6.cloudfront.net/argentina/products/3685/175985307424.png" onclick="switchImg('img-p3',this)" alt="">
+          <img src="https://d33yjn72e20ec6.cloudfront.net/argentina/products/3685/175985307523.png" onclick="switchImg('img-p3',this)" alt="">
+        </div>
+      </div>
       <div class="product-body">
         <div class="product-supplier">📦 Dropi · 24-72hs Argentina · Flores</div>
         <div class="product-name">Collar Largo de Corazón Acero Inoxidable Lezenza</div>
@@ -1215,7 +1246,13 @@
     <div class="product-card" data-cat="joyeria">
       <div class="product-badge" style="background:var(--danger)">❤️ Regalo</div>
       <button class="product-wishlist" onclick="toggleWish(this)"><i class="far fa-heart"></i></button>
-      <div class="product-img-placeholder">💌</div>
+      <div class="product-img-container">
+        <img src="https://d33yjn72e20ec6.cloudfront.net/argentina/products/6968/176963418061wUaan0MvL._AC_UY1000_.jpg" class="product-img" id="img-p4" alt="Collar I Love You">
+        <div class="img-thumbs">
+          <img src="https://d33yjn72e20ec6.cloudfront.net/argentina/products/6968/176963418061wUaan0MvL._AC_UY1000_.jpg" onclick="switchImg('img-p4',this)" class="active" alt="">
+          <img src="https://d33yjn72e20ec6.cloudfront.net/argentina/products/6968/1769634180c786c6db-6e6e-4146-b96f-731ccc5451a7.__CR0,0,800,600_PT0_SX800_V1___.jpg" onclick="switchImg('img-p4',this)" alt="">
+        </div>
+      </div>
       <div class="product-body">
         <div class="product-supplier">📦 Dropi · 24-72hs Argentina · San Jerónimo Norte</div>
         <div class="product-name">Collar Carta de Amor "I Love You" — Joya Romántica</div>
@@ -1669,6 +1706,13 @@
       });
     });
   });
+
+  // ── GALERÍA DE IMÁGENES ──
+  function switchImg(imgId, thumb) {
+    document.getElementById(imgId).src = thumb.src;
+    thumb.closest('.img-thumbs').querySelectorAll('img').forEach(t => t.classList.remove('active'));
+    thumb.classList.add('active');
+  }
 
   // ── WISHLIST ──
   function toggleWish(btn) {
