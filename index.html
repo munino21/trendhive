@@ -1,960 +1,1968 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="ViralShop - Productos virales y ganadores 2026. Envío rápido, mejor precio y garantía total.">
-    <meta property="og:title" content="ViralShop | Productos Virales 2026">
-    <meta property="og:description" content="Los productos que están arrasando en ventas. Envío gratis +$50.">
-    <title>ViralShop | Productos Ganadores 2026</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-    <style>
-        *{margin:0;padding:0;box-sizing:border-box}
-        :root{
-            --primary:#6C63FF;
-            --grad:linear-gradient(135deg,#667eea,#764ba2);
-            --dark:#1a1a2e;
-            --gray:#6c757d;
-            --light:#f8f9fa;
-            --white:#fff;
-            --danger:#e74c3c;
-            --success:#27ae60;
-            --orange:#FF6B35;
-            --shadow:0 4px 20px rgba(108,99,255,.15);
-            --shadow2:0 8px 30px rgba(108,99,255,.28);
-            --r:16px;
-        }
-        body{font-family:'Poppins',sans-serif;background:var(--light);color:var(--dark);overflow-x:hidden}
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TrendHive | Productos Virales para Latinoamérica 2026</title>
+  <meta name="description" content="TrendHive — Los productos más virales y ganadores de 2026. Envío rápido a toda Latinoamérica. Pago contra entrega disponible.">
+  <meta name="keywords" content="dropshipping latinoamerica, productos virales, productos ganadores, tienda online argentina, pago contra entrega">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://trendhive.vercel.app/">
 
-        /* ── ANNOUNCEMENT BAR ── */
-        #annoBar{
-            background:var(--dark);color:white;
-            text-align:center;padding:.5rem 1rem;
-            font-size:.8rem;font-weight:500;
-            display:flex;align-items:center;justify-content:center;gap:1rem;
-            position:relative;z-index:1001;
-        }
-        #annoBar a{color:#a78bfa;text-decoration:none;font-weight:700}
-        #annoTimer{font-weight:700;color:#FFD700;margin-left:.3rem}
+  <!-- Open Graph -->
+  <meta property="og:title" content="TrendHive | Productos Virales LATAM 2026">
+  <meta property="og:description" content="Los productos más virales y ganadores de 2026. Envío rápido a toda Latinoamérica.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://trendhive.vercel.app/">
+  <meta property="og:image" content="https://trendhive.vercel.app/og-image.jpg">
+  <meta property="og:locale" content="es_AR">
 
-        /* ── HEADER ── */
-        header{background:var(--white);box-shadow:0 2px 20px rgba(0,0,0,.07);position:sticky;top:0;z-index:1000;padding:0 2rem}
-        .header-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:66px}
-        .logo{font-size:1.55rem;font-weight:800;background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;text-decoration:none}
-        nav{display:flex;gap:2rem}
-        nav a{text-decoration:none;color:var(--dark);font-weight:500;font-size:.88rem;transition:color .2s}
-        nav a:hover{color:var(--primary)}
-        .cart-btn{background:var(--grad);color:white;border:none;padding:.6rem 1.3rem;border-radius:50px;cursor:pointer;font-family:'Poppins',sans-serif;font-weight:600;font-size:.88rem;display:flex;align-items:center;gap:.5rem;transition:transform .2s,box-shadow .2s;position:relative}
-        .cart-btn:hover{transform:translateY(-2px);box-shadow:var(--shadow2)}
-        .cart-badge{background:#FF4B2B;color:white;border-radius:50%;width:20px;height:20px;display:flex;align-items:center;justify-content:center;font-size:.68rem;font-weight:700;position:absolute;top:-7px;right:-7px;transition:transform .3s}
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="TrendHive | Productos Virales LATAM">
+  <meta name="twitter:description" content="Los productos más virales 2026. Pago contra entrega disponible.">
 
-        /* ── HERO ── */
-        .hero{background:var(--grad);padding:5rem 2rem 4rem;text-align:center;color:white;position:relative;overflow:hidden}
-        .hero::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 70% 40%,rgba(255,255,255,.07),transparent 60%)}
-        .hero-badge{display:inline-block;background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.3);padding:.4rem 1.2rem;border-radius:50px;font-size:.82rem;font-weight:500;margin-bottom:1.4rem;backdrop-filter:blur(8px)}
-        .hero h1{font-size:clamp(1.9rem,5vw,3.3rem);font-weight:800;line-height:1.2;margin-bottom:.9rem}
-        .hero p{font-size:1.02rem;opacity:.88;max-width:560px;margin:0 auto 1.8rem;font-weight:300}
-        .hero-cta{display:inline-flex;align-items:center;gap:.5rem;background:white;color:var(--primary);padding:1rem 2.5rem;border-radius:50px;font-weight:700;font-size:1rem;text-decoration:none;transition:transform .3s,box-shadow .3s;box-shadow:0 4px 20px rgba(0,0,0,.2)}
-        .hero-cta:hover{transform:translateY(-3px);box-shadow:0 8px 28px rgba(0,0,0,.25)}
-        .hero-stats{display:flex;justify-content:center;gap:3rem;margin-top:2.8rem;flex-wrap:wrap}
-        .stat-number{font-size:1.75rem;font-weight:800}
-        .stat-label{font-size:.75rem;opacity:.78}
+  <!-- Schema.org JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Store",
+    "name": "TrendHive",
+    "url": "https://trendhive.vercel.app",
+    "description": "Tienda de productos virales y ganadores para Latinoamérica",
+    "telephone": "+5491158452021",
+    "email": "lautaro.leito@gmail.com",
+    "address": {
+      "@type": "PostalAddress",
+      "addressCountry": "AR",
+      "addressRegion": "Buenos Aires"
+    },
+    "areaServed": ["AR","MX","CO","CL","PE","UY","BO","EC","PY","VE"],
+    "currenciesAccepted": "ARS, USD, MXN, COP, CLP",
+    "paymentAccepted": "Cash, Credit Card, Mercado Pago",
+    "openingHours": "Mo-Su 00:00-24:00",
+    "sameAs": [
+      "https://www.instagram.com/trendhive_latam",
+      "https://www.tiktok.com/@trendhive_latam",
+      "https://www.facebook.com/trendhivelatam"
+    ]
+  }
+  </script>
 
-        /* ── FEATURES BAR ── */
-        .features-bar{background:var(--white);border-bottom:1px solid #eee;padding:1.1rem 2rem}
-        .features-inner{max-width:1200px;margin:0 auto;display:flex;justify-content:center;gap:2.5rem;flex-wrap:wrap}
-        .feature-item{display:flex;align-items:center;gap:.55rem;font-size:.82rem;font-weight:500}
-        .feature-item i{color:var(--primary);font-size:.95rem}
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
-        /* ── PRODUCTS ── */
-        .products-section{max-width:1200px;margin:0 auto;padding:3.5rem 2rem}
-        .section-header{text-align:center;margin-bottom:2.2rem}
-        .section-tag{display:inline-block;background:rgba(108,99,255,.1);color:var(--primary);padding:.28rem .9rem;border-radius:50px;font-size:.75rem;font-weight:600;margin-bottom:.6rem;text-transform:uppercase;letter-spacing:1px}
-        .section-header h2{font-size:2rem;font-weight:800;margin-bottom:.3rem}
-        .section-header p{color:var(--gray);font-size:.92rem}
-        .products-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(255px,1fr));gap:1.4rem}
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
-        .product-card{background:var(--white);border-radius:var(--r);overflow:hidden;box-shadow:var(--shadow);transition:transform .3s,box-shadow .3s;position:relative}
-        .product-card:hover{transform:translateY(-7px);box-shadow:var(--shadow2)}
-        .product-badge{position:absolute;top:11px;left:11px;background:#FF4B2B;color:white;padding:.22rem .7rem;border-radius:50px;font-size:.65rem;font-weight:700;text-transform:uppercase;letter-spacing:.5px;z-index:2}
-        .product-badge.new{background:var(--primary)}
-        .product-badge.bestseller{background:#FF9500}
-        .savings-badge{position:absolute;top:11px;right:11px;background:var(--success);color:white;padding:.22rem .7rem;border-radius:50px;font-size:.65rem;font-weight:700;z-index:2}
-        .product-image{width:100%;height:215px;object-fit:cover;display:block}
-        .product-info{padding:1.1rem}
-        .product-category{font-size:.7rem;color:var(--primary);font-weight:600;text-transform:uppercase;letter-spacing:.5px;margin-bottom:.25rem}
-        .product-name{font-size:.95rem;font-weight:700;margin-bottom:.25rem;line-height:1.4}
-        .product-description{font-size:.76rem;color:var(--gray);margin-bottom:.6rem;line-height:1.5}
-        .product-rating{display:flex;align-items:center;gap:.35rem;margin-bottom:.5rem}
-        .stars{color:#FFD700;font-size:.78rem}
-        .rating-count{font-size:.7rem;color:var(--gray)}
-        .product-social{display:flex;gap:.8rem;margin-bottom:.7rem;flex-wrap:wrap}
-        .social-pill{font-size:.68rem;font-weight:600;padding:.2rem .55rem;border-radius:50px;display:flex;align-items:center;gap:.3rem}
-        .pill-red{background:#FFF0F0;color:#e74c3c}
-        .pill-green{background:#F0FFF4;color:#27ae60}
-        .pill-purple{background:#F3F0FF;color:var(--primary)}
-        .product-footer{display:flex;align-items:center;justify-content:space-between}
-        .price-current{font-size:1.2rem;font-weight:800;color:var(--primary)}
-        .price-original{font-size:.75rem;color:var(--gray);text-decoration:line-through}
-        .add-to-cart{background:var(--grad);color:white;border:none;padding:.62rem 1.05rem;border-radius:50px;cursor:pointer;font-family:'Poppins',sans-serif;font-weight:600;font-size:.82rem;display:flex;align-items:center;gap:.38rem;transition:transform .2s,box-shadow .2s}
-        .add-to-cart:hover{transform:scale(1.05);box-shadow:0 4px 14px rgba(108,99,255,.4)}
-        .add-to-cart:active{transform:scale(.95)}
+    :root {
+      --primary: #7C3AED;
+      --primary-dark: #6D28D9;
+      --accent: #F59E0B;
+      --gradient: linear-gradient(135deg, #7C3AED 0%, #A855F7 100%);
+      --gradient2: linear-gradient(135deg, #F59E0B 0%, #EF4444 100%);
+      --dark: #0F0F1A;
+      --dark2: #1C1C2E;
+      --gray: #6B7280;
+      --light-gray: #F3F4F6;
+      --white: #FFFFFF;
+      --danger: #EF4444;
+      --success: #10B981;
+      --shadow: 0 4px 24px rgba(124,58,237,0.15);
+      --shadow-hover: 0 12px 40px rgba(124,58,237,0.3);
+      --radius: 16px;
+      --radius-sm: 8px;
+    }
 
-        /* ── HOW IT WORKS ── */
-        .how-section{background:var(--white);padding:4rem 2rem;border-top:1px solid #eee}
-        .how-inner{max-width:1200px;margin:0 auto}
-        .steps-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;margin-top:2rem}
-        .step{text-align:center;padding:1.5rem}
-        .step-icon{width:70px;height:70px;background:var(--grad);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 1rem;font-size:1.6rem;color:white}
-        .step h3{font-size:1rem;font-weight:700;margin-bottom:.4rem}
-        .step p{font-size:.83rem;color:var(--gray);line-height:1.6}
+    html { scroll-behavior: smooth; }
 
-        /* ── TESTIMONIALS ── */
-        .testimonials{padding:4rem 2rem;max-width:1200px;margin:0 auto}
-        .testi-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:1.4rem;margin-top:2rem}
-        .testi-card{background:var(--white);border-radius:var(--r);padding:1.4rem;box-shadow:var(--shadow)}
-        .testi-header{display:flex;align-items:center;gap:.8rem;margin-bottom:.8rem}
-        .testi-avatar{width:46px;height:46px;border-radius:50%;object-fit:cover}
-        .testi-name{font-weight:700;font-size:.88rem}
-        .testi-loc{font-size:.73rem;color:var(--gray)}
-        .testi-stars{color:#FFD700;font-size:.8rem;margin-bottom:.5rem}
-        .testi-text{font-size:.82rem;color:var(--gray);line-height:1.6;font-style:italic}
-        .testi-product{font-size:.72rem;color:var(--primary);font-weight:600;margin-top:.5rem}
-        .verified{font-size:.65rem;color:var(--success);font-weight:600;display:flex;align-items:center;gap:.2rem;margin-top:.3rem}
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: var(--light-gray);
+      color: var(--dark);
+      overflow-x: hidden;
+    }
 
-        /* ── NEWSLETTER ── */
-        .newsletter{background:var(--grad);padding:3.5rem 2rem;text-align:center;color:white}
-        .newsletter h2{font-size:1.8rem;font-weight:800;margin-bottom:.5rem}
-        .newsletter p{opacity:.88;margin-bottom:1.5rem;font-weight:300}
-        .newsletter-form{display:flex;gap:.6rem;max-width:480px;margin:0 auto;flex-wrap:wrap;justify-content:center}
-        .newsletter-form input{flex:1;min-width:220px;padding:.8rem 1.2rem;border:none;border-radius:50px;font-family:'Poppins',sans-serif;font-size:.88rem;outline:none}
-        .newsletter-form button{background:var(--dark);color:white;border:none;padding:.8rem 1.8rem;border-radius:50px;font-family:'Poppins',sans-serif;font-weight:700;font-size:.88rem;cursor:pointer;transition:background .2s}
-        .newsletter-form button:hover{background:#333}
+    /* ── ANNOUNCEMENT BAR ── */
+    #announcement-bar {
+      background: var(--gradient);
+      color: #fff;
+      text-align: center;
+      padding: 10px 1rem;
+      font-size: 0.82rem;
+      font-weight: 600;
+      position: relative;
+      z-index: 1001;
+      letter-spacing: 0.3px;
+    }
+    #announcement-bar span.timer { font-weight: 800; color: #FCD34D; }
+    #announcement-bar a { color: #FCD34D; text-decoration: underline; margin-left: 8px; }
 
-        /* ── FOOTER ── */
-        footer{background:var(--dark);color:rgba(255,255,255,.62);padding:3rem 2rem 1.5rem;margin-top:0}
-        .footer-inner{max-width:1200px;margin:0 auto}
-        .footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:2rem;margin-bottom:2rem}
-        .footer-brand .logo{display:block;margin-bottom:.7rem;font-size:1.35rem}
-        .footer-brand p{font-size:.8rem;line-height:1.7}
-        .footer-col h4{color:white;font-size:.82rem;font-weight:700;margin-bottom:.85rem;text-transform:uppercase;letter-spacing:.5px}
-        .footer-col ul{list-style:none}
-        .footer-col ul li{margin-bottom:.4rem}
-        .footer-col ul li a{color:rgba(255,255,255,.52);text-decoration:none;font-size:.8rem;transition:color .2s}
-        .footer-col ul li a:hover{color:white}
-        .footer-bottom{border-top:1px solid rgba(255,255,255,.1);padding-top:1.3rem;display:flex;justify-content:space-between;align-items:center;font-size:.75rem;flex-wrap:wrap;gap:.8rem}
-        .social-links{display:flex;gap:1rem}
-        .social-links a{color:rgba(255,255,255,.52);text-decoration:none;font-size:1.05rem;transition:color .2s}
-        .social-links a:hover{color:var(--primary)}
+    /* ── HEADER ── */
+    header {
+      background: var(--white);
+      box-shadow: 0 2px 20px rgba(0,0,0,0.07);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      padding: 0 1.5rem;
+    }
+    .header-inner {
+      max-width: 1240px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 66px;
+      gap: 1rem;
+    }
+    .logo {
+      font-size: 1.6rem;
+      font-weight: 900;
+      text-decoration: none;
+      line-height: 1;
+      flex-shrink: 0;
+    }
+    .logo .trend { background: var(--gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .logo .hive { color: var(--dark); }
 
-        /* ── CART ── */
-        .cart-overlay{position:fixed;inset:0;background:rgba(0,0,0,.5);backdrop-filter:blur(4px);z-index:2000;opacity:0;pointer-events:none;transition:opacity .3s}
-        .cart-overlay.active{opacity:1;pointer-events:all}
-        .cart-sidebar{position:fixed;top:0;right:-430px;width:420px;max-width:100vw;height:100vh;background:var(--white);z-index:2001;display:flex;flex-direction:column;transition:right .3s cubic-bezier(.4,0,.2,1);box-shadow:-10px 0 40px rgba(0,0,0,.12)}
-        .cart-sidebar.active{right:0}
-        .cart-header{padding:1.3rem 1.5rem;border-bottom:1px solid #eee;display:flex;align-items:center;justify-content:space-between}
-        .cart-header h3{font-size:1.05rem;font-weight:700}
-        .close-cart{background:none;border:none;font-size:1.3rem;cursor:pointer;color:var(--gray);transition:color .2s}
-        .close-cart:hover{color:var(--dark)}
-        .shipping-progress-wrap{padding:.8rem 1.5rem;background:#f8f9ff;border-bottom:1px solid #eee}
-        .shipping-progress-text{font-size:.75rem;font-weight:600;margin-bottom:.4rem;color:var(--dark)}
-        .shipping-bar{background:#e0e0e0;border-radius:50px;height:6px;overflow:hidden}
-        .shipping-fill{background:var(--grad);height:100%;border-radius:50px;transition:width .5s ease}
-        .cart-items{flex:1;overflow-y:auto;padding:1rem 1.5rem}
-        .cart-empty{display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%;color:var(--gray);text-align:center;gap:.7rem}
-        .cart-empty i{font-size:2.8rem;opacity:.22}
-        .cart-item{display:flex;gap:.9rem;padding:.9rem 0;border-bottom:1px solid #f0f0f0;align-items:center}
-        .cart-item img{width:66px;height:66px;object-fit:cover;border-radius:10px}
-        .cart-item-info{flex:1}
-        .cart-item-name{font-size:.86rem;font-weight:600;margin-bottom:.18rem}
-        .cart-item-price{color:var(--primary);font-weight:700;font-size:.86rem}
-        .cart-item-controls{display:flex;align-items:center;gap:.45rem;margin-top:.38rem}
-        .qty-btn{background:var(--light);border:none;width:25px;height:25px;border-radius:50%;cursor:pointer;font-size:.88rem;display:flex;align-items:center;justify-content:center;transition:background .2s,color .2s}
-        .qty-btn:hover{background:var(--primary);color:white}
-        .qty-display{font-weight:600;min-width:20px;text-align:center;font-size:.86rem}
-        .remove-item{background:none;border:none;color:#ccc;cursor:pointer;font-size:.82rem;transition:color .2s;margin-left:auto}
-        .remove-item:hover{color:var(--danger)}
-        .cart-footer{padding:1.3rem 1.5rem;border-top:1px solid #eee;background:var(--light)}
-        .cart-subtotal{display:flex;justify-content:space-between;font-size:.86rem;margin-bottom:.38rem}
-        .cart-total{display:flex;justify-content:space-between;font-size:1.1rem;font-weight:800;margin-bottom:1.1rem;padding-top:.75rem;border-top:2px solid #ddd}
-        .checkout-btn{width:100%;background:var(--grad);color:white;border:none;padding:1rem;border-radius:50px;font-family:'Poppins',sans-serif;font-weight:700;font-size:.95rem;cursor:pointer;transition:transform .2s,box-shadow .2s;display:flex;align-items:center;justify-content:center;gap:.5rem}
-        .checkout-btn:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(108,99,255,.4)}
+    nav.desktop-nav { display: flex; gap: 1.5rem; align-items: center; }
+    nav.desktop-nav a {
+      text-decoration: none;
+      color: var(--gray);
+      font-size: 0.88rem;
+      font-weight: 500;
+      transition: color .2s;
+    }
+    nav.desktop-nav a:hover { color: var(--primary); }
 
-        /* ── PURCHASE NOTIFICATION ── */
-        #buyNotif{position:fixed;bottom:1.5rem;left:1.5rem;z-index:3000;max-width:280px;background:white;border-radius:12px;padding:.8rem 1rem;box-shadow:0 4px 20px rgba(0,0,0,.15);display:flex;align-items:center;gap:.8rem;transform:translateX(-320px);transition:transform .4s cubic-bezier(.4,0,.2,1)}
-        #buyNotif.show{transform:translateX(0)}
-        .notif-img{width:46px;height:46px;object-fit:cover;border-radius:8px;flex-shrink:0}
-        .notif-text{font-size:.75rem;color:var(--dark)}
-        .notif-text strong{font-weight:700}
-        .notif-text span{color:var(--gray)}
-        .notif-dot{width:8px;height:8px;background:var(--success);border-radius:50%;flex-shrink:0}
+    .header-actions { display: flex; align-items: center; gap: 0.75rem; flex-shrink: 0; }
+    .btn-whatsapp-header {
+      background: #25D366;
+      color: #fff;
+      border: none;
+      border-radius: 50px;
+      padding: 8px 16px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      text-decoration: none;
+      transition: all .2s;
+    }
+    .btn-whatsapp-header:hover { background: #128C7E; transform: scale(1.04); }
 
-        /* ── TOAST ── */
-        .toast-container{position:fixed;bottom:1.5rem;right:1.5rem;z-index:3500;display:flex;flex-direction:column;gap:.5rem}
-        .toast{background:var(--dark);color:white;padding:.72rem 1.3rem;border-radius:50px;font-size:.8rem;font-weight:500;display:flex;align-items:center;gap:.55rem;transform:translateX(120%);transition:transform .3s cubic-bezier(.4,0,.2,1);box-shadow:0 4px 20px rgba(0,0,0,.2)}
-        .toast.show{transform:translateX(0)}
-        .toast i{color:#4CAF50}
+    .cart-btn {
+      position: relative;
+      background: var(--gradient);
+      color: #fff;
+      border: none;
+      border-radius: 50px;
+      padding: 8px 18px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: all .2s;
+    }
+    .cart-btn:hover { transform: scale(1.04); box-shadow: var(--shadow-hover); }
+    .cart-count {
+      background: var(--accent);
+      color: var(--dark);
+      border-radius: 50%;
+      width: 20px; height: 20px;
+      font-size: 0.7rem;
+      font-weight: 800;
+      display: flex; align-items: center; justify-content: center;
+    }
 
-        /* ── UPSELL MODAL ── */
-        .upsell-overlay{position:fixed;inset:0;background:rgba(0,0,0,.55);backdrop-filter:blur(4px);z-index:4500;display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .3s;padding:1rem}
-        .upsell-overlay.active{opacity:1;pointer-events:all}
-        .upsell-modal{background:white;border-radius:20px;padding:1.8rem;width:100%;max-width:400px;transform:scale(.9);transition:transform .3s}
-        .upsell-overlay.active .upsell-modal{transform:scale(1)}
-        .upsell-title{font-size:1.05rem;font-weight:800;margin-bottom:.3rem;text-align:center}
-        .upsell-sub{font-size:.8rem;color:var(--gray);text-align:center;margin-bottom:1.2rem}
-        .upsell-product{display:flex;gap:1rem;align-items:center;background:var(--light);border-radius:12px;padding:.9rem;margin-bottom:1.2rem}
-        .upsell-img{width:65px;height:65px;object-fit:cover;border-radius:10px}
-        .upsell-info .upsell-pname{font-size:.88rem;font-weight:700;margin-bottom:.2rem}
-        .upsell-info .upsell-pprice{color:var(--primary);font-weight:800;font-size:.95rem}
-        .upsell-info .upsell-orig{font-size:.72rem;color:var(--gray);text-decoration:line-through}
-        .upsell-btns{display:flex;gap:.8rem}
-        .upsell-yes{flex:1;background:var(--grad);color:white;border:none;padding:.75rem;border-radius:50px;font-family:'Poppins',sans-serif;font-weight:700;font-size:.85rem;cursor:pointer;transition:transform .2s}
-        .upsell-yes:hover{transform:scale(1.03)}
-        .upsell-no{flex:1;background:none;border:2px solid #ddd;color:var(--gray);padding:.75rem;border-radius:50px;font-family:'Poppins',sans-serif;font-weight:600;font-size:.82rem;cursor:pointer;transition:border-color .2s}
-        .upsell-no:hover{border-color:var(--gray)}
+    /* Hamburger */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 4px;
+      background: none;
+      border: none;
+    }
+    .hamburger span {
+      display: block;
+      width: 24px; height: 2.5px;
+      background: var(--dark);
+      border-radius: 2px;
+      transition: all .3s;
+    }
+    .hamburger.open span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
 
-        /* ── EXIT POPUP ── */
-        .exit-overlay{position:fixed;inset:0;background:rgba(0,0,0,.6);backdrop-filter:blur(5px);z-index:5000;display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .3s;padding:1rem}
-        .exit-overlay.active{opacity:1;pointer-events:all}
-        .exit-modal{background:white;border-radius:20px;overflow:hidden;max-width:460px;width:100%;transform:scale(.88);transition:transform .3s}
-        .exit-overlay.active .exit-modal{transform:scale(1)}
-        .exit-top{background:var(--grad);padding:2rem;text-align:center;color:white}
-        .exit-top .big{font-size:2.5rem;font-weight:800}
-        .exit-top p{font-size:.88rem;opacity:.88;margin-top:.3rem}
-        .exit-body{padding:1.5rem}
-        .exit-body p{font-size:.88rem;color:var(--gray);text-align:center;margin-bottom:1rem}
-        .exit-code{text-align:center;background:var(--light);border-radius:10px;padding:.9rem;font-size:1.3rem;font-weight:800;letter-spacing:3px;color:var(--primary);margin-bottom:1rem;border:2px dashed var(--primary)}
-        .exit-email{display:flex;gap:.5rem;flex-wrap:wrap}
-        .exit-email input{flex:1;min-width:180px;padding:.7rem 1rem;border:2px solid #eee;border-radius:50px;font-family:'Poppins',sans-serif;font-size:.85rem;outline:none}
-        .exit-email input:focus{border-color:var(--primary)}
-        .exit-email button{background:var(--grad);color:white;border:none;padding:.7rem 1.4rem;border-radius:50px;font-family:'Poppins',sans-serif;font-weight:700;font-size:.85rem;cursor:pointer}
-        .exit-close{display:block;text-align:center;margin-top:.8rem;font-size:.78rem;color:var(--gray);cursor:pointer;text-decoration:underline}
+    .mobile-nav {
+      display: none;
+      flex-direction: column;
+      background: var(--white);
+      padding: 1rem 1.5rem;
+      border-top: 1px solid #e5e7eb;
+      gap: 0.75rem;
+    }
+    .mobile-nav.open { display: flex; }
+    .mobile-nav a { text-decoration: none; color: var(--dark); font-weight: 500; font-size: 0.9rem; }
 
-        /* ── CHECKOUT ── */
-        .modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.6);backdrop-filter:blur(4px);z-index:4000;display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .3s;padding:1rem}
-        .modal-overlay.active{opacity:1;pointer-events:all}
-        .modal{background:white;border-radius:20px;padding:1.8rem;width:100%;max-width:480px;max-height:90vh;overflow-y:auto;transform:scale(.92);transition:transform .3s}
-        .modal-overlay.active .modal{transform:scale(1)}
-        .modal-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:1.3rem}
-        .modal-header h3{font-size:1.1rem;font-weight:700}
-        .close-modal{background:none;border:none;font-size:1.3rem;cursor:pointer;color:var(--gray)}
-        .form-group{margin-bottom:.85rem}
-        .form-row{display:grid;grid-template-columns:1fr 1fr;gap:.9rem}
-        label{display:block;font-size:.78rem;font-weight:600;margin-bottom:.3rem}
-        input,select{width:100%;padding:.68rem .95rem;border:2px solid #eee;border-radius:10px;font-family:'Poppins',sans-serif;font-size:.86rem;outline:none;transition:border-color .2s}
-        input:focus,select:focus{border-color:var(--primary)}
-        .form-divider{font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--gray);margin:1.2rem 0 .85rem}
-        .order-summary-mini{background:var(--light);border-radius:12px;padding:.95rem;margin-bottom:1.1rem}
-        .order-summary-mini h4{font-size:.78rem;font-weight:700;text-transform:uppercase;letter-spacing:.5px;margin-bottom:.65rem}
-        .summary-item{display:flex;justify-content:space-between;font-size:.8rem;margin-bottom:.28rem}
-        .summary-total{display:flex;justify-content:space-between;font-weight:800;margin-top:.65rem;padding-top:.65rem;border-top:1px solid #ddd}
-        .place-order-btn{width:100%;background:var(--grad);color:white;border:none;padding:1rem;border-radius:50px;font-family:'Poppins',sans-serif;font-weight:700;font-size:.95rem;cursor:pointer;transition:transform .2s,box-shadow .2s;margin-top:.4rem}
-        .place-order-btn:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(108,99,255,.4)}
-        .success-screen{text-align:center;padding:1rem}
-        .success-icon{width:76px;height:76px;background:linear-gradient(135deg,#56CCF2,#2F80ED);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 1.3rem;font-size:1.9rem;color:white}
+    /* ── HERO ── */
+    .hero {
+      background: var(--gradient);
+      color: #fff;
+      padding: 5rem 1.5rem 4rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.04'%3E%3Ccircle cx='30' cy='30' r='4'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+      pointer-events: none;
+    }
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(255,255,255,0.15);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255,255,255,0.25);
+      border-radius: 50px;
+      padding: 6px 16px;
+      font-size: 0.78rem;
+      font-weight: 700;
+      margin-bottom: 1.25rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    .hero h1 {
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      font-weight: 900;
+      line-height: 1.15;
+      margin-bottom: 1rem;
+    }
+    .hero h1 em { font-style: normal; color: #FCD34D; }
+    .hero p {
+      font-size: clamp(1rem, 2vw, 1.2rem);
+      opacity: 0.9;
+      max-width: 600px;
+      margin: 0 auto 2rem;
+      line-height: 1.7;
+    }
+    .hero-ctas { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+    .btn-hero-primary {
+      background: var(--accent);
+      color: var(--dark);
+      border: none;
+      border-radius: 50px;
+      padding: 14px 32px;
+      font-size: 1rem;
+      font-weight: 800;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: all .2s;
+      box-shadow: 0 4px 20px rgba(245,158,11,0.4);
+    }
+    .btn-hero-primary:hover { transform: translateY(-3px); box-shadow: 0 8px 30px rgba(245,158,11,0.5); }
+    .btn-hero-secondary {
+      background: rgba(255,255,255,0.15);
+      backdrop-filter: blur(10px);
+      color: #fff;
+      border: 2px solid rgba(255,255,255,0.5);
+      border-radius: 50px;
+      padding: 14px 32px;
+      font-size: 1rem;
+      font-weight: 700;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: all .2s;
+    }
+    .btn-hero-secondary:hover { background: rgba(255,255,255,0.25); transform: translateY(-3px); }
 
-        /* ── WHATSAPP ── */
-        .whatsapp-btn{position:fixed;bottom:5rem;right:1.5rem;background:#25D366;color:white;width:52px;height:52px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.55rem;text-decoration:none;box-shadow:0 4px 16px rgba(37,211,102,.5);z-index:1500;transition:transform .2s,box-shadow .2s}
-        .whatsapp-btn:hover{transform:scale(1.1);box-shadow:0 6px 22px rgba(37,211,102,.6)}
-        .whatsapp-tooltip{position:absolute;right:62px;background:var(--dark);color:white;padding:.35rem .75rem;border-radius:8px;font-size:.72rem;font-weight:600;white-space:nowrap;opacity:0;pointer-events:none;transition:opacity .2s}
-        .whatsapp-btn:hover .whatsapp-tooltip{opacity:1}
+    /* Stats bar hero */
+    .hero-stats {
+      display: flex;
+      gap: 2rem;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-top: 3rem;
+      padding-top: 2.5rem;
+      border-top: 1px solid rgba(255,255,255,0.2);
+    }
+    .hero-stat { text-align: center; }
+    .hero-stat .num { font-size: 1.8rem; font-weight: 900; color: #FCD34D; }
+    .hero-stat .label { font-size: 0.75rem; opacity: 0.8; font-weight: 500; }
 
-        /* ── SCROLL TOP ── */
-        .scroll-top{position:fixed;bottom:1.5rem;left:1.5rem;background:var(--grad);color:white;border:none;width:42px;height:42px;border-radius:50%;cursor:pointer;font-size:.95rem;display:flex;align-items:center;justify-content:center;box-shadow:var(--shadow);z-index:1500;opacity:0;transform:translateY(20px);transition:opacity .3s,transform .3s}
-        .scroll-top.visible{opacity:1;transform:translateY(0)}
+    /* ── TRUST BAR ── */
+    .trust-bar {
+      background: var(--white);
+      padding: 1rem 1.5rem;
+      border-bottom: 2px solid var(--light-gray);
+    }
+    .trust-bar-inner {
+      max-width: 1240px;
+      margin: 0 auto;
+      display: flex;
+      gap: 2rem;
+      justify-content: center;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+    .trust-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--dark);
+    }
+    .trust-item i { color: var(--primary); font-size: 1rem; }
 
-        /* ── RESPONSIVE ── */
-        @media(max-width:768px){
-            nav{display:none}
-            .hero{padding:2.8rem 1.5rem}
-            .hero-stats{gap:1.3rem}
-            .products-grid{grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:.9rem}
-            .product-image{height:148px}
-            .steps-grid{grid-template-columns:1fr}
-            .footer-grid{grid-template-columns:1fr 1fr}
-            .form-row{grid-template-columns:1fr}
-            #buyNotif{max-width:240px}
-        }
-        @keyframes badgePulse{0%,100%{transform:scale(1)}50%{transform:scale(1.25)}}
-        .badge-anim{animation:badgePulse .35s ease}
-        @keyframes fadeInUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
-        .fade-in{animation:fadeInUp .5s ease both}
-    </style>
+    /* ── SHIPPING PROGRESS ── */
+    .shipping-banner {
+      max-width: 1240px;
+      margin: 2rem auto 0;
+      padding: 0 1.5rem;
+    }
+    .shipping-progress-box {
+      background: var(--white);
+      border-radius: var(--radius);
+      padding: 1rem 1.5rem;
+      box-shadow: var(--shadow);
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+    .shipping-progress-box .icon { font-size: 1.5rem; }
+    .shipping-progress-box .text { flex: 1; }
+    .shipping-progress-box .text p { font-size: 0.82rem; color: var(--gray); }
+    .shipping-progress-box .text strong { font-size: 0.88rem; }
+    .progress-bar { height: 8px; background: #E5E7EB; border-radius: 50px; margin-top: 6px; overflow: hidden; }
+    .progress-fill { height: 100%; background: var(--gradient); border-radius: 50px; width: 60%; transition: width .5s; }
+
+    /* ── SECTION TITLES ── */
+    .section {
+      max-width: 1240px;
+      margin: 0 auto;
+      padding: 3rem 1.5rem;
+    }
+    .section-header { text-align: center; margin-bottom: 2.5rem; }
+    .section-header .tag {
+      display: inline-block;
+      background: rgba(124,58,237,0.1);
+      color: var(--primary);
+      border-radius: 50px;
+      padding: 4px 14px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 0.75rem;
+    }
+    .section-header h2 {
+      font-size: clamp(1.5rem, 3vw, 2.2rem);
+      font-weight: 800;
+      color: var(--dark);
+      margin-bottom: 0.5rem;
+    }
+    .section-header p { color: var(--gray); font-size: 0.95rem; }
+
+    /* ── CATEGORY FILTER ── */
+    .cat-filter {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-bottom: 2rem;
+    }
+    .cat-btn {
+      border: 2px solid #E5E7EB;
+      background: var(--white);
+      color: var(--gray);
+      border-radius: 50px;
+      padding: 8px 20px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all .2s;
+      font-family: 'Poppins', sans-serif;
+    }
+    .cat-btn.active, .cat-btn:hover {
+      background: var(--gradient);
+      color: #fff;
+      border-color: var(--primary);
+    }
+
+    /* ── PRODUCT GRID ── */
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .product-card {
+      background: var(--white);
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      transition: all .3s;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+    }
+    .product-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-hover); }
+
+    .product-badge {
+      position: absolute;
+      top: 12px; left: 12px;
+      background: var(--danger);
+      color: #fff;
+      font-size: 0.7rem;
+      font-weight: 800;
+      padding: 4px 10px;
+      border-radius: 50px;
+      z-index: 2;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .product-badge.viral { background: var(--gradient); }
+    .product-badge.hot { background: var(--gradient2); }
+
+    .product-wishlist {
+      position: absolute;
+      top: 12px; right: 12px;
+      width: 34px; height: 34px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.9);
+      border: none;
+      cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      color: var(--gray);
+      font-size: 0.9rem;
+      transition: all .2s;
+      z-index: 2;
+    }
+    .product-wishlist:hover, .product-wishlist.active { color: var(--danger); }
+
+    .product-img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+      display: block;
+      background: linear-gradient(135deg, #e0e7ff 0%, #f3e8ff 100%);
+      position: relative;
+    }
+    .product-img-placeholder {
+      width: 100%;
+      height: 220px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 3.5rem;
+      background: linear-gradient(135deg, #EDE9FE 0%, #FCE7F3 100%);
+    }
+
+    .product-body { padding: 1.2rem; flex: 1; display: flex; flex-direction: column; gap: 0.5rem; }
+
+    .product-supplier {
+      font-size: 0.68rem;
+      color: var(--primary);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .product-name {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--dark);
+      line-height: 1.3;
+    }
+
+    .product-stars { color: #F59E0B; font-size: 0.8rem; display: flex; align-items: center; gap: 4px; }
+    .product-stars span { color: var(--gray); font-size: 0.75rem; }
+
+    .product-prices { display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap; }
+    .price-now { font-size: 1.3rem; font-weight: 800; color: var(--primary); }
+    .price-old { font-size: 0.85rem; color: var(--gray); text-decoration: line-through; }
+    .price-discount { background: #FEF3C7; color: #D97706; border-radius: 50px; padding: 2px 8px; font-size: 0.7rem; font-weight: 800; }
+
+    .product-sold { font-size: 0.72rem; color: var(--gray); }
+    .product-sold strong { color: var(--success); }
+
+    .btn-add {
+      background: var(--gradient);
+      color: #fff;
+      border: none;
+      border-radius: 50px;
+      padding: 10px;
+      font-size: 0.88rem;
+      font-weight: 700;
+      cursor: pointer;
+      width: 100%;
+      margin-top: auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      transition: all .2s;
+      font-family: 'Poppins', sans-serif;
+    }
+    .btn-add:hover { transform: scale(1.02); box-shadow: var(--shadow-hover); }
+
+    /* ── HOW IT WORKS ── */
+    .how-section { background: var(--white); }
+    .steps-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 2rem;
+      text-align: center;
+    }
+    .step-card { padding: 2rem 1rem; }
+    .step-icon {
+      width: 64px; height: 64px;
+      border-radius: 50%;
+      background: rgba(124,58,237,0.1);
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 1rem;
+      font-size: 1.5rem;
+      color: var(--primary);
+      position: relative;
+    }
+    .step-num {
+      position: absolute;
+      top: -4px; right: -4px;
+      background: var(--gradient);
+      color: #fff;
+      width: 22px; height: 22px;
+      border-radius: 50%;
+      font-size: 0.65rem;
+      font-weight: 800;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .step-card h3 { font-size: 0.95rem; font-weight: 700; margin-bottom: 0.4rem; }
+    .step-card p { font-size: 0.8rem; color: var(--gray); line-height: 1.5; }
+
+    /* ── TESTIMONIALS ── */
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+    }
+    .testi-card {
+      background: var(--white);
+      border-radius: var(--radius);
+      padding: 1.5rem;
+      box-shadow: var(--shadow);
+      border-left: 4px solid var(--primary);
+    }
+    .testi-stars { color: #F59E0B; margin-bottom: 0.75rem; font-size: 0.9rem; }
+    .testi-text { font-size: 0.88rem; color: var(--dark); line-height: 1.6; margin-bottom: 1rem; font-style: italic; }
+    .testi-author { display: flex; align-items: center; gap: 0.75rem; }
+    .testi-avatar {
+      width: 40px; height: 40px;
+      border-radius: 50%;
+      background: var(--gradient);
+      display: flex; align-items: center; justify-content: center;
+      color: #fff; font-weight: 800; font-size: 0.9rem;
+    }
+    .testi-name { font-size: 0.85rem; font-weight: 700; }
+    .testi-loc { font-size: 0.72rem; color: var(--gray); }
+
+    /* ── SOCIAL PROOF ── */
+    .social-section { background: var(--dark2); color: #fff; }
+    .social-section .section-header .tag { background: rgba(255,255,255,0.1); color: #A78BFA; }
+    .social-section .section-header h2 { color: #fff; }
+    .social-section .section-header p { color: #9CA3AF; }
+    .social-grid {
+      display: flex;
+      gap: 1.5rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .social-card {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: var(--radius);
+      padding: 1.5rem 2rem;
+      text-align: center;
+      min-width: 160px;
+      transition: all .2s;
+    }
+    .social-card:hover { background: rgba(255,255,255,0.1); transform: translateY(-4px); }
+    .social-card i { font-size: 2rem; margin-bottom: 0.75rem; display: block; }
+    .social-card .plat { font-size: 0.85rem; font-weight: 700; margin-bottom: 0.25rem; }
+    .social-card .handle { font-size: 0.75rem; color: #9CA3AF; }
+    .social-card.tiktok i { color: #fff; }
+    .social-card.insta i { color: #E1306C; }
+    .social-card.fb i { color: #1877F2; }
+    .social-card.pin i { color: #E60023; }
+
+    /* ── NEWSLETTER ── */
+    .newsletter-section {
+      background: var(--gradient);
+      color: #fff;
+      text-align: center;
+    }
+    .newsletter-section .section-header h2 { color: #fff; }
+    .newsletter-section .section-header p { color: rgba(255,255,255,0.85); }
+    .newsletter-form {
+      display: flex;
+      gap: 0.75rem;
+      max-width: 480px;
+      margin: 0 auto;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .newsletter-form input {
+      flex: 1;
+      min-width: 220px;
+      padding: 12px 20px;
+      border: none;
+      border-radius: 50px;
+      font-size: 0.9rem;
+      font-family: 'Poppins', sans-serif;
+      outline: none;
+    }
+    .newsletter-form button {
+      background: var(--accent);
+      color: var(--dark);
+      border: none;
+      border-radius: 50px;
+      padding: 12px 28px;
+      font-size: 0.9rem;
+      font-weight: 800;
+      cursor: pointer;
+      font-family: 'Poppins', sans-serif;
+      transition: all .2s;
+    }
+    .newsletter-form button:hover { transform: scale(1.04); }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--dark);
+      color: #fff;
+      padding: 3rem 1.5rem 1.5rem;
+    }
+    .footer-inner {
+      max-width: 1240px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 2rem;
+      padding-bottom: 2rem;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+    .footer-brand .logo { font-size: 1.5rem; display: block; margin-bottom: 0.75rem; }
+    .footer-brand p { font-size: 0.82rem; color: #9CA3AF; line-height: 1.6; margin-bottom: 1rem; }
+    .footer-contact a {
+      display: flex; align-items: center; gap: 6px;
+      color: #9CA3AF; text-decoration: none; font-size: 0.8rem;
+      margin-bottom: 0.5rem; transition: color .2s;
+    }
+    .footer-contact a:hover { color: #fff; }
+    .footer-col h4 { font-size: 0.85rem; font-weight: 700; margin-bottom: 1rem; color: #E5E7EB; }
+    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
+    .footer-col ul li a { color: #9CA3AF; text-decoration: none; font-size: 0.8rem; transition: color .2s; }
+    .footer-col ul li a:hover { color: #fff; }
+    .footer-bottom {
+      max-width: 1240px;
+      margin: 1.5rem auto 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.75rem;
+      color: #6B7280;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+    .footer-social { display: flex; gap: 0.75rem; }
+    .footer-social a {
+      width: 34px; height: 34px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.07);
+      display: flex; align-items: center; justify-content: center;
+      color: #9CA3AF; text-decoration: none; font-size: 0.85rem;
+      transition: all .2s;
+    }
+    .footer-social a:hover { background: var(--primary); color: #fff; }
+
+    /* Payments badges */
+    .payment-badges { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-top: 0.75rem; }
+    .pay-badge {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 6px;
+      padding: 4px 10px;
+      font-size: 0.68rem;
+      font-weight: 700;
+      color: #D1D5DB;
+    }
+
+    /* ── CART SIDEBAR ── */
+    .cart-overlay {
+      position: fixed; inset: 0;
+      background: rgba(0,0,0,0.5);
+      z-index: 9000;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity .3s;
+    }
+    .cart-overlay.open { opacity: 1; pointer-events: all; }
+
+    .cart-sidebar {
+      position: fixed;
+      top: 0; right: -100%;
+      width: min(400px, 100vw);
+      height: 100vh;
+      background: var(--white);
+      z-index: 9001;
+      display: flex;
+      flex-direction: column;
+      transition: right .35s cubic-bezier(.4,0,.2,1);
+      box-shadow: -8px 0 40px rgba(0,0,0,0.15);
+    }
+    .cart-sidebar.open { right: 0; }
+    .cart-header {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1.25rem 1.5rem;
+      border-bottom: 1px solid #E5E7EB;
+      font-weight: 800;
+      font-size: 1rem;
+    }
+    .cart-header button { background: none; border: none; cursor: pointer; font-size: 1.2rem; color: var(--gray); }
+    .cart-items { flex: 1; overflow-y: auto; padding: 1rem 1.5rem; display: flex; flex-direction: column; gap: 1rem; }
+    .cart-empty { text-align: center; padding: 3rem 1rem; color: var(--gray); }
+    .cart-empty i { font-size: 3rem; opacity: 0.3; display: block; margin-bottom: 1rem; }
+    .cart-item {
+      display: flex; gap: 0.75rem; align-items: center;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid #F3F4F6;
+    }
+    .cart-item-img {
+      width: 60px; height: 60px; border-radius: 10px;
+      background: var(--light-gray);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.8rem; flex-shrink: 0;
+    }
+    .cart-item-info { flex: 1; }
+    .cart-item-name { font-size: 0.85rem; font-weight: 700; line-height: 1.2; }
+    .cart-item-price { font-size: 0.9rem; font-weight: 800; color: var(--primary); margin-top: 4px; }
+    .cart-item-qty {
+      display: flex; align-items: center; gap: 8px; margin-top: 6px;
+    }
+    .qty-btn {
+      width: 26px; height: 26px;
+      border: 1.5px solid #E5E7EB;
+      border-radius: 50%;
+      background: none;
+      cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.75rem;
+    }
+    .cart-item-del { background: none; border: none; cursor: pointer; color: var(--danger); font-size: 0.9rem; }
+    .cart-footer {
+      padding: 1.25rem 1.5rem;
+      border-top: 1px solid #E5E7EB;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+    .cart-total { display: flex; justify-content: space-between; font-size: 1rem; font-weight: 800; }
+    .btn-checkout {
+      background: var(--gradient);
+      color: #fff;
+      border: none;
+      border-radius: 50px;
+      padding: 14px;
+      font-size: 0.95rem;
+      font-weight: 800;
+      cursor: pointer;
+      font-family: 'Poppins', sans-serif;
+      transition: all .2s;
+    }
+    .btn-checkout:hover { transform: scale(1.02); box-shadow: var(--shadow-hover); }
+    .btn-wpp-cart {
+      background: #25D366;
+      color: #fff;
+      border: none;
+      border-radius: 50px;
+      padding: 12px;
+      font-size: 0.88rem;
+      font-weight: 700;
+      cursor: pointer;
+      font-family: 'Poppins', sans-serif;
+      display: flex; align-items: center; justify-content: center; gap: 8px;
+      transition: all .2s;
+    }
+    .btn-wpp-cart:hover { background: #128C7E; }
+
+    /* ── CHECKOUT MODAL ── */
+    .modal-overlay {
+      position: fixed; inset: 0;
+      background: rgba(0,0,0,0.6);
+      z-index: 9500;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 1rem;
+    }
+    .modal-overlay.open { display: flex; }
+    .modal {
+      background: var(--white);
+      border-radius: 24px;
+      width: min(540px, 100%);
+      max-height: 90vh;
+      overflow-y: auto;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+    }
+    .modal-head {
+      background: var(--gradient);
+      color: #fff;
+      padding: 1.5rem;
+      border-radius: 24px 24px 0 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .modal-head h3 { font-size: 1.1rem; font-weight: 800; }
+    .modal-head button { background: none; border: none; color: #fff; font-size: 1.2rem; cursor: pointer; }
+    .modal-body { padding: 1.5rem; }
+    .form-group { margin-bottom: 1rem; }
+    .form-group label { display: block; font-size: 0.82rem; font-weight: 600; margin-bottom: 6px; }
+    .form-group input, .form-group select, .form-group textarea {
+      width: 100%;
+      padding: 11px 14px;
+      border: 1.5px solid #E5E7EB;
+      border-radius: 10px;
+      font-size: 0.88rem;
+      font-family: 'Poppins', sans-serif;
+      outline: none;
+      transition: border .2s;
+    }
+    .form-group input:focus, .form-group select:focus { border-color: var(--primary); }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; }
+
+    .payment-opts { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; margin-bottom: 1.25rem; }
+    .pay-opt {
+      border: 2px solid #E5E7EB;
+      border-radius: 12px;
+      padding: 0.75rem;
+      cursor: pointer;
+      text-align: center;
+      transition: all .2s;
+      font-size: 0.8rem;
+      font-weight: 700;
+    }
+    .pay-opt:hover, .pay-opt.selected { border-color: var(--primary); background: rgba(124,58,237,0.05); color: var(--primary); }
+    .pay-opt i { display: block; font-size: 1.3rem; margin-bottom: 4px; }
+
+    .order-summary-mini {
+      background: var(--light-gray);
+      border-radius: 12px;
+      padding: 1rem;
+      margin-bottom: 1.25rem;
+      font-size: 0.85rem;
+    }
+    .order-summary-mini .row { display: flex; justify-content: space-between; margin-bottom: 6px; }
+    .order-summary-mini .row.total { font-weight: 800; font-size: 1rem; border-top: 1px solid #E5E7EB; padding-top: 8px; margin-top: 8px; }
+    .btn-confirm {
+      background: var(--gradient);
+      color: #fff;
+      border: none;
+      border-radius: 50px;
+      padding: 14px;
+      font-size: 1rem;
+      font-weight: 800;
+      cursor: pointer;
+      width: 100%;
+      font-family: 'Poppins', sans-serif;
+      transition: all .2s;
+    }
+    .btn-confirm:hover { transform: scale(1.02); box-shadow: var(--shadow-hover); }
+
+    /* ── UPSELL MODAL ── */
+    #upsell-modal .modal {
+      background: var(--white);
+      border-radius: 24px;
+      width: min(480px, 100%);
+    }
+    .upsell-product-card {
+      display: flex; gap: 1rem; align-items: center;
+      background: var(--light-gray); border-radius: 12px; padding: 1rem; margin: 1rem 0;
+    }
+    .upsell-product-card .emoji { font-size: 2.5rem; }
+    .upsell-product-card .info { flex: 1; }
+    .upsell-product-card .info h4 { font-size: 0.9rem; font-weight: 700; }
+    .upsell-product-card .info .prices { display: flex; gap: 0.5rem; align-items: center; }
+    .btn-upsell-yes {
+      background: var(--gradient2);
+      color: #fff; border: none;
+      border-radius: 50px; padding: 12px;
+      font-size: 0.9rem; font-weight: 800;
+      cursor: pointer; width: 100%;
+      font-family: 'Poppins', sans-serif; margin-bottom: 0.5rem;
+      transition: all .2s;
+    }
+    .btn-upsell-no {
+      background: none; border: 1.5px solid #E5E7EB;
+      border-radius: 50px; padding: 10px;
+      font-size: 0.85rem; font-weight: 600; color: var(--gray);
+      cursor: pointer; width: 100%;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    /* ── PURCHASE NOTIFICATIONS ── */
+    #purchase-notification {
+      position: fixed;
+      bottom: 1.5rem; left: 1.5rem;
+      background: var(--white);
+      border-radius: 14px;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+      padding: 0.9rem 1.1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      z-index: 8000;
+      max-width: 300px;
+      transform: translateX(-150%);
+      transition: transform .5s cubic-bezier(.4,0,.2,1);
+      border-left: 4px solid var(--primary);
+    }
+    #purchase-notification.show { transform: translateX(0); }
+    #purchase-notification .emoji { font-size: 1.8rem; }
+    #purchase-notification .text p { font-size: 0.78rem; color: var(--gray); }
+    #purchase-notification .text strong { font-size: 0.82rem; display: block; color: var(--dark); }
+
+    /* ── EXIT POPUP ── */
+    #exit-popup .modal {
+      text-align: center;
+      width: min(440px, 100%);
+      overflow: hidden;
+    }
+    .exit-popup-top {
+      background: var(--gradient);
+      color: #fff;
+      padding: 2rem 1.5rem;
+    }
+    .exit-popup-top h3 { font-size: 1.4rem; font-weight: 900; margin-bottom: 0.5rem; }
+    .exit-popup-top p { font-size: 0.9rem; opacity: 0.9; }
+    .exit-popup-body { padding: 1.5rem; }
+    .coupon-box {
+      background: var(--light-gray);
+      border: 2px dashed var(--primary);
+      border-radius: 12px;
+      padding: 1rem;
+      margin: 1rem 0;
+    }
+    .coupon-box .code { font-size: 1.5rem; font-weight: 900; color: var(--primary); letter-spacing: 3px; }
+    .coupon-box p { font-size: 0.75rem; color: var(--gray); margin-top: 4px; }
+
+    /* ── COOKIE BANNER ── */
+    #cookie-banner {
+      position: fixed;
+      bottom: 1rem; left: 50%;
+      transform: translateX(-50%);
+      background: var(--dark2);
+      color: #fff;
+      border-radius: 14px;
+      padding: 1rem 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      justify-content: center;
+      z-index: 9999;
+      max-width: 700px;
+      width: calc(100% - 2rem);
+      box-shadow: 0 8px 30px rgba(0,0,0,0.3);
+      font-size: 0.82rem;
+    }
+    #cookie-banner.hidden { display: none; }
+    .btn-cookie {
+      background: var(--primary);
+      color: #fff;
+      border: none;
+      border-radius: 50px;
+      padding: 8px 20px;
+      font-size: 0.82rem;
+      font-weight: 700;
+      cursor: pointer;
+      font-family: 'Poppins', sans-serif;
+      white-space: nowrap;
+    }
+
+    /* ── WPP FLOAT ── */
+    .wpp-float {
+      position: fixed;
+      bottom: 1.5rem; right: 1.5rem;
+      z-index: 7000;
+    }
+    .wpp-float a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 58px; height: 58px;
+      border-radius: 50%;
+      background: #25D366;
+      color: #fff;
+      font-size: 1.6rem;
+      box-shadow: 0 4px 20px rgba(37,211,102,0.4);
+      text-decoration: none;
+      transition: all .2s;
+      animation: pulse-wpp 2.5s infinite;
+    }
+    .wpp-float a:hover { transform: scale(1.1); }
+    @keyframes pulse-wpp {
+      0%, 100% { box-shadow: 0 4px 20px rgba(37,211,102,0.4); }
+      50% { box-shadow: 0 4px 30px rgba(37,211,102,0.7); }
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      .footer-inner { grid-template-columns: 1fr 1fr; }
+      nav.desktop-nav { display: none; }
+      .hamburger { display: flex; }
+    }
+    @media (max-width: 600px) {
+      .footer-inner { grid-template-columns: 1fr; }
+      .btn-whatsapp-header span { display: none; }
+      .hero-stats { gap: 1.25rem; }
+      .trust-bar-inner { gap: 1rem; }
+    }
+  </style>
 </head>
 <body>
 
-<!-- ANNOUNCEMENT BAR -->
-<div id="annoBar">
-    🔥 &nbsp;OFERTA FLASH — Envío GRATIS en todos los pedidos hoy &nbsp;|&nbsp; Termina en:
-    <span id="annoTimer">00:00:00</span>
-    &nbsp;|&nbsp; <a href="#productos">Ver Ofertas →</a>
+<!-- ── ANNOUNCEMENT BAR ── -->
+<div id="announcement-bar">
+  🔥 Envío GRATIS en compras +$50 USD &nbsp;|&nbsp; ⚡ Oferta termina en <span class="timer" id="countdown">23:59:47</span>
+  <a href="#productos">Ver ofertas &rarr;</a>
 </div>
 
-<!-- HEADER -->
+<!-- ── HEADER ── -->
 <header>
-    <div class="header-inner">
-        <a href="#" class="logo">ViralShop</a>
-        <nav>
-            <a href="#productos">Productos</a>
-            <a href="#como-funciona">Cómo funciona</a>
-            <a href="#opiniones">Opiniones</a>
-            <a href="#contacto">Contacto</a>
-        </nav>
-        <button class="cart-btn" onclick="toggleCart()">
-            <i class="fas fa-shopping-bag"></i> Carrito
-            <span class="cart-badge" id="cartBadge">0</span>
-        </button>
+  <div class="header-inner">
+    <a href="#" class="logo"><span class="trend">Trend</span><span class="hive">Hive</span></a>
+    <nav class="desktop-nav">
+      <a href="#productos">Productos</a>
+      <a href="#como-funciona">Cómo funciona</a>
+      <a href="#testimonios">Testimonios</a>
+      <a href="#plan-negocio.html">Plan de Negocio</a>
+    </nav>
+    <div class="header-actions">
+      <a href="https://wa.me/5491158452021?text=Hola%20TrendHive!%20Quiero%20hacer%20un%20pedido%20😊" target="_blank" class="btn-whatsapp-header">
+        <i class="fab fa-whatsapp"></i><span>WhatsApp</span>
+      </a>
+      <button class="cart-btn" id="cart-toggle">
+        <i class="fas fa-shopping-bag"></i>
+        <span class="cart-count" id="cart-count">0</span>
+      </button>
     </div>
+    <button class="hamburger" id="hamburger" aria-label="Menú">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <nav class="mobile-nav" id="mobile-nav">
+    <a href="#productos">🛍️ Productos</a>
+    <a href="#como-funciona">📦 Cómo funciona</a>
+    <a href="#testimonios">⭐ Testimonios</a>
+    <a href="plan-negocio.html">📊 Plan de Negocio</a>
+    <a href="anuncios.html">📢 Anuncios y Guías</a>
+    <a href="https://wa.me/5491158452021?text=Hola%20TrendHive!%20Quiero%20hacer%20un%20pedido" target="_blank">💬 WhatsApp: +54 9 11 5845-2021</a>
+  </nav>
 </header>
 
-<!-- HERO -->
+<!-- ── HERO ── -->
 <section class="hero">
-    <div class="hero-badge">🏆 +15,000 clientes satisfechos — 4.9★ media</div>
-    <h1>Los Productos Más<br>Virales del Momento</h1>
-    <p>Descubre lo que está arrasando en ventas. Calidad premium, precios imbatibles y envío rápido.</p>
-    <a href="#productos" class="hero-cta"><i class="fas fa-bolt"></i> Ver Productos</a>
-    <div class="hero-stats">
-        <div class="stat"><div class="stat-number">+15K</div><div class="stat-label">Clientes felices</div></div>
-        <div class="stat"><div class="stat-number">4.9★</div><div class="stat-label">Valoración media</div></div>
-        <div class="stat"><div class="stat-number">48h</div><div class="stat-label">Envío express</div></div>
-        <div class="stat"><div class="stat-number">100%</div><div class="stat-label">Garantía devolución</div></div>
-    </div>
+  <div class="hero-badge">🚀 #1 Tienda Viral en LATAM 2026</div>
+  <h1>Descubrí los Productos más<br><em>Virales del Año</em></h1>
+  <p>Envío rápido a Argentina, México, Colombia, Chile y toda Latinoamérica. Pago contra entrega disponible. ¡Más de 12.000 clientes satisfechos!</p>
+  <div class="hero-ctas">
+    <a href="#productos" class="btn-hero-primary"><i class="fas fa-fire"></i> Ver Productos Virales</a>
+    <a href="https://wa.me/5491158452021?text=Hola!%20Vi%20TrendHive%20y%20quiero%20saber%20m%C3%A1s" target="_blank" class="btn-hero-secondary"><i class="fab fa-whatsapp"></i> Consultar por WhatsApp</a>
+  </div>
+  <div class="hero-stats">
+    <div class="hero-stat"><div class="num">12K+</div><div class="label">Clientes Felices</div></div>
+    <div class="hero-stat"><div class="num">4.9★</div><div class="label">Calificación Promedio</div></div>
+    <div class="hero-stat"><div class="num">72hs</div><div class="label">Entrega Máxima ARG</div></div>
+    <div class="hero-stat"><div class="num">10+</div><div class="label">Países LATAM</div></div>
+  </div>
 </section>
 
-<!-- FEATURES BAR -->
-<div class="features-bar">
-    <div class="features-inner">
-        <div class="feature-item"><i class="fas fa-shipping-fast"></i><span>Envío gratis hoy</span></div>
-        <div class="feature-item"><i class="fas fa-shield-alt"></i><span>Pago 100% seguro</span></div>
-        <div class="feature-item"><i class="fas fa-undo"></i><span>30 días devolución</span></div>
-        <div class="feature-item"><i class="fas fa-headset"></i><span>Soporte 24/7</span></div>
-        <div class="feature-item"><i class="fas fa-certificate"></i><span>Calidad verificada</span></div>
-    </div>
+<!-- ── TRUST BAR ── -->
+<div class="trust-bar">
+  <div class="trust-bar-inner">
+    <div class="trust-item"><i class="fas fa-shield-alt"></i> Compra 100% segura</div>
+    <div class="trust-item"><i class="fas fa-truck"></i> Envío a toda LATAM</div>
+    <div class="trust-item"><i class="fas fa-hand-holding-usd"></i> Pago contra entrega</div>
+    <div class="trust-item"><i class="fab fa-whatsapp" style="color:#25D366"></i> Soporte 24/7</div>
+    <div class="trust-item"><i class="fas fa-undo"></i> Garantía 30 días</div>
+  </div>
 </div>
 
-<!-- PRODUCTS -->
-<section class="products-section" id="productos">
-    <div class="section-header">
-        <div class="section-tag">🔥 Productos Ganadores 2026</div>
-        <h2>Lo Más Trending Ahora Mismo</h2>
-        <p>Seleccionados por demanda real, márgenes y valoraciones verificadas</p>
+<!-- ── SHIPPING PROGRESS ── -->
+<div class="shipping-banner">
+  <div class="shipping-progress-box">
+    <div class="icon">🚚</div>
+    <div class="text">
+      <strong>¡Te faltan <span id="shipping-left">$20.00</span> para Envío GRATIS!</strong>
+      <p>Agrega más productos y obtené envío gratis en tu pedido</p>
+      <div class="progress-bar"><div class="progress-fill" id="progress-fill"></div></div>
     </div>
-    <div class="products-grid" id="productsGrid"></div>
-</section>
+  </div>
+</div>
 
-<!-- HOW IT WORKS -->
+<!-- ── PRODUCTS SECTION ── -->
+<div class="section" id="productos">
+  <div class="section-header">
+    <div class="tag">🔥 Más Vendidos</div>
+    <h2>Productos Virales 2026</h2>
+    <p>Seleccionados por su éxito en TikTok, Instagram y tendencias globales</p>
+  </div>
+
+  <!-- CATEGORY FILTER -->
+  <div class="cat-filter">
+    <button class="cat-btn active" data-cat="todos">Todos</button>
+    <button class="cat-btn" data-cat="bienestar">Bienestar</button>
+    <button class="cat-btn" data-cat="belleza">Belleza</button>
+    <button class="cat-btn" data-cat="joyeria">Joyería</button>
+    <button class="cat-btn" data-cat="moda">Moda</button>
+    <button class="cat-btn" data-cat="lifestyle">Lifestyle</button>
+    <button class="cat-btn" data-cat="personal">Personal Care</button>
+  </div>
+
+  <div class="products-grid" id="products-grid">
+
+    <!-- Producto 1 -->
+    <div class="product-card" data-cat="bienestar">
+      <div class="product-badge viral">🔥 Viral</div>
+      <button class="product-wishlist" onclick="toggleWish(this)"><i class="far fa-heart"></i></button>
+      <div class="product-img-placeholder">💆</div>
+      <div class="product-body">
+        <div class="product-supplier">📦 CJ Dropshipping · 72hs ARG</div>
+        <div class="product-name">Masajeador Cuello Eléctrico Cervical</div>
+        <div class="product-stars">★★★★★ <span>(1.247 reseñas)</span></div>
+        <div class="product-prices">
+          <span class="price-now">$34.99</span>
+          <span class="price-old">$69.99</span>
+          <span class="price-discount">-50%</span>
+        </div>
+        <div class="product-sold"><strong>+3.200 vendidos</strong> este mes</div>
+        <button class="btn-add" onclick="addToCart('Masajeador Cuello Eléctrico Cervical', 34.99, '💆')">
+          <i class="fas fa-shopping-bag"></i> Agregar al Carrito
+        </button>
+      </div>
+    </div>
+
+    <!-- Producto 2 -->
+    <div class="product-card" data-cat="personal">
+      <div class="product-badge hot">⚡ Hot</div>
+      <button class="product-wishlist" onclick="toggleWish(this)"><i class="far fa-heart"></i></button>
+      <div class="product-img-placeholder">✂️</div>
+      <div class="product-body">
+        <div class="product-supplier">📦 AliExpress · 10-15 días</div>
+        <div class="product-name">Cortauñas Eléctrico Premium Anti-Polvo</div>
+        <div class="product-stars">★★★★★ <span>(892 reseñas)</span></div>
+        <div class="product-prices">
+          <span class="price-now">$22.99</span>
+          <span class="price-old">$44.99</span>
+          <span class="price-discount">-49%</span>
+        </div>
+        <div class="product-sold"><strong>+2.100 vendidos</strong> este mes</div>
+        <button class="btn-add" onclick="addToCart('Cortauñas Eléctrico Premium', 22.99, '✂️')">
+          <i class="fas fa-shopping-bag"></i> Agregar al Carrito
+        </button>
+      </div>
+    </div>
+
+    <!-- Producto 3 -->
+    <div class="product-card" data-cat="joyeria">
+      <div class="product-badge" style="background:var(--success)">💚 Top</div>
+      <button class="product-wishlist" onclick="toggleWish(this)"><i class="far fa-heart"></i></button>
+      <div class="product-img-placeholder">📿</div>
+      <div class="product-body">
+        <div class="product-supplier">📦 CJ Dropshipping · 72hs ARG</div>
+        <div class="product-name">Collar Minimalista Personalizable con Nombre</div>
+        <div class="product-stars">★★★★★ <span>(2.134 reseñas)</span></div>
+        <div class="product-prices">
+          <span class="price-now">$18.99</span>
+          <span class="price-old">$39.99</span>
+          <span class="price-discount">-53%</span>
+        </div>
+        <div class="product-sold"><strong>+4.800 vendidos</strong> este mes</div>
+        <button class="btn-add" onclick="addToCart('Collar Minimalista Personalizable', 18.99, '📿')">
+          <i class="fas fa-shopping-bag"></i> Agregar al Carrito
+        </button>
+      </div>
+    </div>
+
+    <!-- Producto 4 -->
+    <div class="product-card" data-cat="moda">
+      <div class="product-badge viral">🔥 Viral</div>
+      <button class="product-wishlist" onclick="toggleWish(this)"><i class="far fa-heart"></i></button>
+      <div class="product-img-placeholder">👫</div>
+      <div class="product-body">
+        <div class="product-supplier">📦 CJ Dropshipping · 72hs ARG</div>
+        <div class="product-name">Hoodie Reversible Doble Cara para Parejas</div>
+        <div class="product-stars">★★★★☆ <span>(673 reseñas)</span></div>
+        <div class="product-prices">
+          <span class="price-now">$49.99</span>
+          <span class="price-old">$89.99</span>
+          <span class="price-discount">-44%</span>
+        </div>
+        <div class="product-sold"><strong>+1.500 vendidos</strong> este mes</div>
+        <button class="btn-add" onclick="addToCart('Hoodie Reversible Doble Cara Parejas', 49.99, '👫')">
+          <i class="fas fa-shopping-bag"></i> Agregar al Carrito
+        </button>
+      </div>
+    </div>
+
+    <!-- Producto 5 -->
+    <div class="product-card" data-cat="belleza">
+      <div class="product-badge hot">⚡ Hot</div>
+      <button class="product-wishlist" onclick="toggleWish(this)"><i class="far fa-heart"></i></button>
+      <div class="product-img-placeholder">✨</div>
+      <div class="product-body">
+        <div class="product-supplier">📦 AliExpress · 10-15 días</div>
+        <div class="product-name">Suero Glow Peel Vitamina C 30% Ácido Glicólico</div>
+        <div class="product-stars">★★★★★ <span>(3.421 reseñas)</span></div>
+        <div class="product-prices">
+          <span class="price-now">$29.99</span>
+          <span class="price-old">$59.99</span>
+          <span class="price-discount">-50%</span>
+        </div>
+        <div class="product-sold"><strong>+6.700 vendidos</strong> este mes</div>
+        <button class="btn-add" onclick="addToCart('Suero Glow Peel Vitamina C', 29.99, '✨')">
+          <i class="fas fa-shopping-bag"></i> Agregar al Carrito
+        </button>
+      </div>
+    </div>
+
+    <!-- Producto 6 -->
+    <div class="product-card" data-cat="belleza">
+      <div class="product-badge" style="background:#8B5CF6">💜 Premium</div>
+      <button class="product-wishlist" onclick="toggleWish(this)"><i class="far fa-heart"></i></button>
+      <div class="product-img-placeholder">💡</div>
+      <div class="product-body">
+        <div class="product-supplier">📦 CJ Dropshipping · 72hs ARG</div>
+        <div class="product-name">Masajeador Facial LED 3 Luces Anti-Edad</div>
+        <div class="product-stars">★★★★★ <span>(1.876 reseñas)</span></div>
+        <div class="product-prices">
+          <span class="price-now">$44.99</span>
+          <span class="price-old">$99.99</span>
+          <span class="price-discount">-55%</span>
+        </div>
+        <div class="product-sold"><strong>+2.900 vendidos</strong> este mes</div>
+        <button class="btn-add" onclick="addToCart('Masajeador Facial LED 3 Luces', 44.99, '💡')">
+          <i class="fas fa-shopping-bag"></i> Agregar al Carrito
+        </button>
+      </div>
+    </div>
+
+    <!-- Producto 7 -->
+    <div class="product-card" data-cat="joyeria">
+      <div class="product-badge" style="background:var(--success)">💚 Top</div>
+      <button class="product-wishlist" onclick="toggleWish(this)"><i class="far fa-heart"></i></button>
+      <div class="product-img-placeholder">💍</div>
+      <div class="product-body">
+        <div class="product-supplier">📦 AliExpress · 10-15 días</div>
+        <div class="product-name">Set de Anillos Apilables 8 piezas Acero</div>
+        <div class="product-stars">★★★★★ <span>(5.123 reseñas)</span></div>
+        <div class="product-prices">
+          <span class="price-now">$14.99</span>
+          <span class="price-old">$29.99</span>
+          <span class="price-discount">-50%</span>
+        </div>
+        <div class="product-sold"><strong>+8.400 vendidos</strong> este mes</div>
+        <button class="btn-add" onclick="addToCart('Set Anillos Apilables 8 piezas', 14.99, '💍')">
+          <i class="fas fa-shopping-bag"></i> Agregar al Carrito
+        </button>
+      </div>
+    </div>
+
+    <!-- Producto 8 -->
+    <div class="product-card" data-cat="lifestyle">
+      <div class="product-badge hot">⚡ Hot</div>
+      <button class="product-wishlist" onclick="toggleWish(this)"><i class="far fa-heart"></i></button>
+      <div class="product-img-placeholder">🌡️</div>
+      <div class="product-body">
+        <div class="product-supplier">📦 CJ Dropshipping · 72hs ARG</div>
+        <div class="product-name">Botella Térmica Magnética 1L Con Medidor</div>
+        <div class="product-stars">★★★★☆ <span>(934 reseñas)</span></div>
+        <div class="product-prices">
+          <span class="price-now">$27.99</span>
+          <span class="price-old">$54.99</span>
+          <span class="price-discount">-49%</span>
+        </div>
+        <div class="product-sold"><strong>+3.100 vendidos</strong> este mes</div>
+        <button class="btn-add" onclick="addToCart('Botella Térmica Magnética 1L', 27.99, '🌡️')">
+          <i class="fas fa-shopping-bag"></i> Agregar al Carrito
+        </button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ── HOW IT WORKS ── -->
 <section class="how-section" id="como-funciona">
-    <div class="how-inner">
-        <div class="section-header">
-            <div class="section-tag">Simple y rápido</div>
-            <h2>¿Cómo funciona?</h2>
-            <p>Comprar en ViralShop es fácil, seguro y sin complicaciones</p>
-        </div>
-        <div class="steps-grid">
-            <div class="step fade-in">
-                <div class="step-icon"><i class="fas fa-search"></i></div>
-                <h3>1. Elige tu producto</h3>
-                <p>Explora nuestra selección de productos virales seleccionados por nuestro equipo. Todos probados y verificados.</p>
-            </div>
-            <div class="step fade-in">
-                <div class="step-icon"><i class="fas fa-credit-card"></i></div>
-                <h3>2. Paga de forma segura</h3>
-                <p>Acepta tarjeta, PayPal y más. Tu información está 100% encriptada con tecnología SSL de última generación.</p>
-            </div>
-            <div class="step fade-in">
-                <div class="step-icon"><i class="fas fa-box-open"></i></div>
-                <h3>3. Recibe en casa</h3>
-                <p>Tu pedido llega en 5-12 días hábiles. Tracking en tiempo real incluido. Garantía de devolución de 30 días.</p>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- TESTIMONIALS -->
-<section class="testimonials" id="opiniones">
+  <div class="section">
     <div class="section-header">
-        <div class="section-tag">⭐ Opiniones reales</div>
-        <h2>Clientes que ya lo Compraron</h2>
-        <p>Más de 15,000 personas ya confían en ViralShop</p>
+      <div class="tag">📦 Simple y Rápido</div>
+      <h2>¿Cómo Funciona?</h2>
+      <p>Comprá en 3 pasos simples y recibí en tu casa</p>
     </div>
-    <div class="testi-grid" id="testiGrid"></div>
+    <div class="steps-grid">
+      <div class="step-card">
+        <div class="step-icon"><i class="fas fa-search"></i><span class="step-num">1</span></div>
+        <h3>Elegí tu Producto</h3>
+        <p>Explorá nuestra selección de productos virales y elegí el que más te guste</p>
+      </div>
+      <div class="step-card">
+        <div class="step-icon"><i class="fas fa-shopping-cart"></i><span class="step-num">2</span></div>
+        <h3>Hacé tu Pedido</h3>
+        <p>Completá tu información de envío. Aceptamos tarjeta, Mercado Pago y pago contra entrega</p>
+      </div>
+      <div class="step-card">
+        <div class="step-icon"><i class="fas fa-truck"></i><span class="step-num">3</span></div>
+        <h3>Recibí en Casa</h3>
+        <p>Tu pedido llega en 24-72hs en Argentina o 7-15 días en el resto de LATAM</p>
+      </div>
+      <div class="step-card">
+        <div class="step-icon"><i class="fas fa-star"></i><span class="step-num">4</span></div>
+        <h3>Disfrutá y Compartí</h3>
+        <p>Compartí tu experiencia con nosotros. ¡Cada reseña nos ayuda a mejorar!</p>
+      </div>
+    </div>
+  </div>
 </section>
 
-<!-- NEWSLETTER -->
-<section class="newsletter">
-    <h2>Sé el primero en ver nuevos productos</h2>
-    <p>Únete a +8,000 compradores que reciben ofertas exclusivas antes que nadie</p>
-    <form class="newsletter-form" onsubmit="subscribeEmail(event)">
-        <input type="email" placeholder="Tu email aquí..." required>
-        <button type="submit"><i class="fas fa-bolt"></i> Suscribirme</button>
+<!-- ── TESTIMONIALS ── -->
+<section id="testimonios">
+  <div class="section">
+    <div class="section-header">
+      <div class="tag">⭐ Opiniones Reales</div>
+      <h2>Lo que dicen nuestros clientes</h2>
+      <p>+12.000 personas ya compraron en TrendHive</p>
+    </div>
+    <div class="testimonials-grid">
+      <div class="testi-card">
+        <div class="testi-stars">★★★★★</div>
+        <div class="testi-text">"El masajeador cervical es INCREÍBLE. Llegó en 2 días y la calidad superó mis expectativas. Definitivamente volvería a comprar."</div>
+        <div class="testi-author">
+          <div class="testi-avatar">ML</div>
+          <div>
+            <div class="testi-name">María Laura G.</div>
+            <div class="testi-loc">📍 Buenos Aires, Argentina</div>
+          </div>
+        </div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-stars">★★★★★</div>
+        <div class="testi-text">"Pedí el set de anillos y llegaron perfectos. El pago contra entrega me dio mucha confianza. Super recomendado para toda Colombia."</div>
+        <div class="testi-author">
+          <div class="testi-avatar">CA</div>
+          <div>
+            <div class="testi-name">Camila A.</div>
+            <div class="testi-loc">📍 Bogotá, Colombia</div>
+          </div>
+        </div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-stars">★★★★★</div>
+        <div class="testi-text">"El suero vitamina C que compré es maravilloso. En 2 semanas ya noté diferencia. Excelente relación calidad-precio."</div>
+        <div class="testi-author">
+          <div class="testi-avatar">RP</div>
+          <div>
+            <div class="testi-name">Renata P.</div>
+            <div class="testi-loc">📍 Santiago, Chile</div>
+          </div>
+        </div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-stars">★★★★☆</div>
+        <div class="testi-text">"Los hoodies de pareja son hermosos. Mi novio y yo los usamos todo el tiempo. Llegaron bien empacados y en el tiempo prometido."</div>
+        <div class="testi-author">
+          <div class="testi-avatar">VH</div>
+          <div>
+            <div class="testi-name">Valentina H.</div>
+            <div class="testi-loc">📍 Ciudad de México, México</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── SOCIAL MEDIA ── -->
+<section class="social-section">
+  <div class="section">
+    <div class="section-header">
+      <div class="tag">📱 Seguinos</div>
+      <h2>Encontranos en Redes Sociales</h2>
+      <p>Contenido viral, descuentos exclusivos y novedades todos los días</p>
+    </div>
+    <div class="social-grid">
+      <a href="https://www.tiktok.com/@trendhive_latam" target="_blank" class="social-card tiktok" style="text-decoration:none;color:#fff">
+        <i class="fab fa-tiktok"></i>
+        <div class="plat">TikTok</div>
+        <div class="handle">@trendhive_latam</div>
+      </a>
+      <a href="https://www.instagram.com/trendhive_latam" target="_blank" class="social-card insta" style="text-decoration:none;color:#fff">
+        <i class="fab fa-instagram"></i>
+        <div class="plat">Instagram</div>
+        <div class="handle">@trendhive_latam</div>
+      </a>
+      <a href="https://www.facebook.com/trendhivelatam" target="_blank" class="social-card fb" style="text-decoration:none;color:#fff">
+        <i class="fab fa-facebook"></i>
+        <div class="plat">Facebook</div>
+        <div class="handle">trendhivelatam</div>
+      </a>
+      <a href="https://www.pinterest.com/trendhive" target="_blank" class="social-card pin" style="text-decoration:none;color:#fff">
+        <i class="fab fa-pinterest"></i>
+        <div class="plat">Pinterest</div>
+        <div class="handle">trendhive</div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ── NEWSLETTER ── -->
+<section class="newsletter-section">
+  <div class="section">
+    <div class="section-header">
+      <div class="tag" style="background:rgba(255,255,255,0.2);color:#fff">📧 Newsletter</div>
+      <h2>¡Suscribite y Ahorrá 15%!</h2>
+      <p>Recibí los mejores productos virales, ofertas exclusivas y novedades directo en tu correo</p>
+    </div>
+    <form class="newsletter-form" onsubmit="subscribeNewsletter(event)">
+      <input type="email" placeholder="Tu email aquí..." required>
+      <button type="submit">Quiero mis Descuentos 🎁</button>
     </form>
+  </div>
 </section>
 
-<!-- FOOTER -->
-<footer id="contacto">
-    <div class="footer-inner">
-        <div class="footer-grid">
-            <div class="footer-brand">
-                <a href="#" class="logo">ViralShop</a>
-                <p>Tu tienda de productos virales y ganadores. Calidad garantizada con los mejores precios del mercado online.</p>
-            </div>
-            <div class="footer-col">
-                <h4>Empresa</h4>
-                <ul>
-                    <li><a href="#">Sobre nosotros</a></li>
-                    <li><a href="#">Blog</a></li>
-                    <li><a href="#">Afiliados</a></li>
-                    <li><a href="#">Prensa</a></li>
-                </ul>
-            </div>
-            <div class="footer-col">
-                <h4>Ayuda</h4>
-                <ul>
-                    <li><a href="#">Centro de ayuda</a></li>
-                    <li><a href="#">Envíos</a></li>
-                    <li><a href="#">Devoluciones</a></li>
-                    <li><a href="#">Seguimiento</a></li>
-                </ul>
-            </div>
-            <div class="footer-col">
-                <h4>Legal</h4>
-                <ul>
-                    <li><a href="#">Privacidad</a></li>
-                    <li><a href="#">Términos</a></li>
-                    <li><a href="#">Cookies</a></li>
-                    <li><a href="#">Reembolsos</a></li>
-                </ul>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            <span>© 2026 ViralShop. Todos los derechos reservados.</span>
-            <div class="social-links">
-                <a href="#"><i class="fab fa-instagram"></i></a>
-                <a href="#"><i class="fab fa-tiktok"></i></a>
-                <a href="#"><i class="fab fa-facebook"></i></a>
-                <a href="#"><i class="fab fa-pinterest"></i></a>
-            </div>
-        </div>
+<!-- ── FOOTER ── -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <a href="#" class="logo"><span class="trend">Trend</span><span class="hive" style="color:#fff">Hive</span></a>
+      <p>La tienda de productos virales #1 en Latinoamérica. Calidad garantizada, precios imbatibles y entrega rápida a toda la región.</p>
+      <div class="footer-contact">
+        <a href="https://wa.me/5491158452021" target="_blank"><i class="fab fa-whatsapp" style="color:#25D366"></i> +54 9 11 5845-2021</a>
+        <a href="mailto:lautaro.leito@gmail.com"><i class="fas fa-envelope"></i> lautaro.leito@gmail.com</a>
+      </div>
+      <div class="payment-badges">
+        <span class="pay-badge">💳 Tarjeta</span>
+        <span class="pay-badge">🔵 Mercado Pago</span>
+        <span class="pay-badge">💵 Contra Entrega</span>
+        <span class="pay-badge">🅿️ PayPal</span>
+      </div>
     </div>
+    <div class="footer-col">
+      <h4>Tienda</h4>
+      <ul>
+        <li><a href="#productos">Todos los Productos</a></li>
+        <li><a href="#productos">Bienestar</a></li>
+        <li><a href="#productos">Belleza</a></li>
+        <li><a href="#productos">Joyería</a></li>
+        <li><a href="#productos">Moda</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Ayuda</h4>
+      <ul>
+        <li><a href="#como-funciona">Cómo Comprar</a></li>
+        <li><a href="https://wa.me/5491158452021" target="_blank">Rastrear Pedido</a></li>
+        <li><a href="https://wa.me/5491158452021" target="_blank">Devoluciones</a></li>
+        <li><a href="https://wa.me/5491158452021" target="_blank">Contacto</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Empresa</h4>
+      <ul>
+        <li><a href="plan-negocio.html">Plan de Negocio</a></li>
+        <li><a href="anuncios.html">Anuncios</a></li>
+        <li><a href="#">Política de Privacidad</a></li>
+        <li><a href="#">Términos y Condiciones</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 TrendHive. Todos los derechos reservados.</span>
+    <div class="footer-social">
+      <a href="https://www.tiktok.com/@trendhive_latam" target="_blank"><i class="fab fa-tiktok"></i></a>
+      <a href="https://www.instagram.com/trendhive_latam" target="_blank"><i class="fab fa-instagram"></i></a>
+      <a href="https://www.facebook.com/trendhivelatam" target="_blank"><i class="fab fa-facebook-f"></i></a>
+      <a href="https://www.pinterest.com/trendhive" target="_blank"><i class="fab fa-pinterest-p"></i></a>
+    </div>
+  </div>
 </footer>
 
-<!-- CART SIDEBAR -->
-<div class="cart-overlay" id="cartOverlay" onclick="toggleCart()"></div>
-<div class="cart-sidebar" id="cartSidebar">
-    <div class="cart-header">
-        <h3><i class="fas fa-shopping-bag"></i> Mi Carrito</h3>
-        <button class="close-cart" onclick="toggleCart()"><i class="fas fa-times"></i></button>
+<!-- ── CART SIDEBAR ── -->
+<div class="cart-overlay" id="cart-overlay" onclick="closeCart()"></div>
+<div class="cart-sidebar" id="cart-sidebar">
+  <div class="cart-header">
+    <span>🛍️ Mi Carrito (<span id="cart-items-count">0</span> items)</span>
+    <button onclick="closeCart()"><i class="fas fa-times"></i></button>
+  </div>
+  <div class="cart-items" id="cart-items-list">
+    <div class="cart-empty">
+      <i class="fas fa-shopping-bag"></i>
+      <p>Tu carrito está vacío</p>
+      <p style="font-size:.75rem;margin-top:.5rem">¡Agregá productos para empezar!</p>
     </div>
-    <div class="shipping-progress-wrap" id="shippingProgressWrap">
-        <div class="shipping-progress-text" id="shippingProgressText">Agrega productos para ver el progreso</div>
-        <div class="shipping-bar"><div class="shipping-fill" id="shippingFill" style="width:0%"></div></div>
+  </div>
+  <div class="cart-footer" id="cart-footer" style="display:none">
+    <div class="cart-total">
+      <span>Total:</span>
+      <span id="cart-total-price">$0.00</span>
     </div>
-    <div class="cart-items" id="cartItems">
-        <div class="cart-empty">
-            <i class="fas fa-shopping-bag"></i>
-            <p>Tu carrito está vacío</p>
-            <small>¡Agrega algo increíble!</small>
-        </div>
-    </div>
-    <div class="cart-footer" id="cartFooter" style="display:none">
-        <div class="cart-subtotal"><span>Subtotal</span><span id="cartSubtotal">$0.00</span></div>
-        <div class="cart-subtotal"><span>Envío</span><span style="color:var(--success);font-weight:700">🎉 GRATIS</span></div>
-        <div class="cart-total"><span>Total</span><span id="cartTotal">$0.00</span></div>
-        <button class="checkout-btn" onclick="openCheckout()"><i class="fas fa-lock"></i> Pagar Ahora</button>
-    </div>
+    <button class="btn-checkout" onclick="openCheckout()">
+      <i class="fas fa-lock"></i> Finalizar Compra
+    </button>
+    <button class="btn-wpp-cart" onclick="sendWhatsAppOrder()">
+      <i class="fab fa-whatsapp"></i> Pedir por WhatsApp
+    </button>
+  </div>
 </div>
 
-<!-- UPSELL MODAL -->
-<div class="upsell-overlay" id="upsellOverlay">
-    <div class="upsell-modal">
-        <div class="upsell-title">¡Espera! Los clientes también llevan...</div>
-        <div class="upsell-sub">Muchos compradores que eligieron este producto también se llevaron:</div>
-        <div class="upsell-product" id="upsellProduct"></div>
-        <div class="upsell-btns">
-            <button class="upsell-yes" id="upsellYes"><i class="fas fa-plus"></i> Sí, ¡lo quiero!</button>
-            <button class="upsell-no" onclick="closeUpsell()">No gracias</button>
-        </div>
+<!-- ── CHECKOUT MODAL ── -->
+<div class="modal-overlay" id="checkout-modal">
+  <div class="modal">
+    <div class="modal-head">
+      <h3>🔒 Finalizar Compra</h3>
+      <button onclick="closeCheckout()"><i class="fas fa-times"></i></button>
     </div>
+    <div class="modal-body">
+      <div class="order-summary-mini" id="order-summary-mini"></div>
+
+      <p style="font-size:.85rem;font-weight:700;margin-bottom:.75rem">Método de Pago</p>
+      <div class="payment-opts">
+        <div class="pay-opt selected" onclick="selectPayment(this,'tarjeta')">
+          <i class="fas fa-credit-card"></i>Tarjeta
+        </div>
+        <div class="pay-opt" onclick="selectPayment(this,'mercadopago')">
+          <i class="fas fa-mobile-alt" style="color:#009EE3"></i>Mercado Pago
+        </div>
+        <div class="pay-opt" onclick="selectPayment(this,'contraentrega')">
+          <i class="fas fa-hand-holding-usd" style="color:#10B981"></i>Contra Entrega
+        </div>
+        <div class="pay-opt" onclick="selectPayment(this,'paypal')">
+          <i class="fab fa-paypal" style="color:#003087"></i>PayPal
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label>Nombre</label>
+          <input type="text" placeholder="Tu nombre" id="chk-name">
+        </div>
+        <div class="form-group">
+          <label>Apellido</label>
+          <input type="text" placeholder="Tu apellido" id="chk-lastname">
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Email</label>
+        <input type="email" placeholder="tu@email.com" id="chk-email">
+      </div>
+      <div class="form-group">
+        <label>WhatsApp / Teléfono</label>
+        <input type="tel" placeholder="+54 9 11 xxxx xxxx" id="chk-phone">
+      </div>
+      <div class="form-group">
+        <label>País</label>
+        <select id="chk-country">
+          <option value="">Seleccioná tu país</option>
+          <option value="AR">🇦🇷 Argentina</option>
+          <option value="MX">🇲🇽 México</option>
+          <option value="CO">🇨🇴 Colombia</option>
+          <option value="CL">🇨🇱 Chile</option>
+          <option value="PE">🇵🇪 Perú</option>
+          <option value="UY">🇺🇾 Uruguay</option>
+          <option value="BO">🇧🇴 Bolivia</option>
+          <option value="EC">🇪🇨 Ecuador</option>
+          <option value="PY">🇵🇾 Paraguay</option>
+          <option value="VE">🇻🇪 Venezuela</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Dirección de Envío</label>
+        <input type="text" placeholder="Calle, número, piso, depto" id="chk-address">
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label>Ciudad</label>
+          <input type="text" placeholder="Ciudad" id="chk-city">
+        </div>
+        <div class="form-group">
+          <label>Código Postal</label>
+          <input type="text" placeholder="CP" id="chk-zip">
+        </div>
+      </div>
+      <button class="btn-confirm" onclick="confirmOrder()">
+        <i class="fas fa-check-circle"></i> Confirmar Pedido
+      </button>
+    </div>
+  </div>
 </div>
 
-<!-- CHECKOUT MODAL -->
-<div class="modal-overlay" id="checkoutModal">
-    <div class="modal">
-        <div id="checkoutContent">
-            <div class="modal-header">
-                <h3><i class="fas fa-lock"></i> Pago Seguro</h3>
-                <button class="close-modal" onclick="closeCheckout()"><i class="fas fa-times"></i></button>
-            </div>
-            <div class="order-summary-mini" id="orderSummaryMini"></div>
-            <div class="form-divider">📦 Datos de envío</div>
-            <div class="form-row">
-                <div class="form-group"><label>Nombre</label><input type="text" placeholder="Juan"></div>
-                <div class="form-group"><label>Apellido</label><input type="text" placeholder="García"></div>
-            </div>
-            <div class="form-group"><label>Email</label><input type="email" placeholder="juan@email.com"></div>
-            <div class="form-group"><label>Teléfono</label><input type="tel" placeholder="+1 555 000 0000"></div>
-            <div class="form-group"><label>Dirección</label><input type="text" placeholder="Calle Principal 123"></div>
-            <div class="form-row">
-                <div class="form-group"><label>Ciudad</label><input type="text" placeholder="Madrid"></div>
-                <div class="form-group">
-                    <label>País</label>
-                    <select>
-                        <option>España</option><option>México</option><option>Argentina</option>
-                        <option>Colombia</option><option>Chile</option><option>Perú</option>
-                        <option>Venezuela</option><option>Ecuador</option><option>Uruguay</option>
-                        <option>Bolivia</option><option>Paraguay</option><option>Costa Rica</option>
-                    </select>
-                </div>
-            </div>
-            <div class="form-divider">💳 Método de pago</div>
-            <div class="form-group">
-                <label>Número de tarjeta</label>
-                <input type="text" placeholder="1234 5678 9012 3456" maxlength="19" oninput="formatCard(this)">
-            </div>
-            <div class="form-row">
-                <div class="form-group"><label>Vencimiento</label><input type="text" placeholder="MM/AA" maxlength="5" oninput="formatExpiry(this)"></div>
-                <div class="form-group"><label>CVV</label><input type="text" placeholder="•••" maxlength="3" type="password"></div>
-            </div>
-            <button class="place-order-btn" onclick="placeOrder()"><i class="fas fa-lock"></i> Confirmar Pedido</button>
-        </div>
+<!-- ── UPSELL MODAL ── -->
+<div class="modal-overlay" id="upsell-modal">
+  <div class="modal">
+    <div class="modal-head">
+      <h3>🎁 ¡Espera! Oferta especial para vos</h3>
+      <button onclick="document.getElementById('upsell-modal').classList.remove('open')"><i class="fas fa-times"></i></button>
     </div>
+    <div class="modal-body">
+      <p style="font-size:.9rem;font-weight:600;margin-bottom:0">Clientes que compraron este producto también llevaron:</p>
+      <div class="upsell-product-card">
+        <div class="emoji">💍</div>
+        <div class="info">
+          <h4>Set Anillos Apilables 8 piezas</h4>
+          <div class="prices">
+            <span class="price-now">$14.99</span>
+            <span class="price-old">$29.99</span>
+            <span class="price-discount">-50%</span>
+          </div>
+          <div class="product-stars" style="margin-top:4px">★★★★★ <span style="color:var(--gray)">(5.123)</span></div>
+        </div>
+      </div>
+      <p style="font-size:.78rem;color:var(--gray);text-align:center;margin-bottom:1rem">
+        ¡Solo por hoy! Llevalo junto a tu pedido con 50% de descuento
+      </p>
+      <button class="btn-upsell-yes" onclick="addUpsell()">
+        ✅ ¡Sí, quiero agregarlo por $14.99!
+      </button>
+      <button class="btn-upsell-no" onclick="document.getElementById('upsell-modal').classList.remove('open')">
+        No gracias, prefiero pagar precio completo después
+      </button>
+    </div>
+  </div>
 </div>
 
-<!-- EXIT POPUP -->
-<div class="exit-overlay" id="exitOverlay">
-    <div class="exit-modal">
-        <div class="exit-top">
-            <div class="big">¡ESPERA!</div>
-            <p>Antes de irte, tenemos algo especial para ti</p>
-        </div>
-        <div class="exit-body">
-            <p>Usa este código y obtén <strong>10% de descuento</strong> en tu primer pedido:</p>
-            <div class="exit-code">VIRAL10</div>
-            <p style="font-size:.78rem;margin-bottom:.8rem">Deja tu email y te enviamos el código + ofertas exclusivas</p>
-            <div class="exit-email">
-                <input type="email" placeholder="tu@email.com" id="exitEmail">
-                <button onclick="claimDiscount()">Reclamar</button>
-            </div>
-            <span class="exit-close" onclick="closeExit()">No gracias, prefiero pagar precio completo</span>
-        </div>
+<!-- ── EXIT POPUP ── -->
+<div class="modal-overlay" id="exit-popup">
+  <div class="modal" style="overflow:hidden">
+    <div class="exit-popup-top">
+      <h3>⚠️ ¡Espera! No te vayas...</h3>
+      <p>Tenemos un regalo especial solo para vos</p>
     </div>
+    <div class="exit-popup-body">
+      <p style="font-size:.9rem;font-weight:600">Usá este código y obtené 10% OFF en tu primera compra:</p>
+      <div class="coupon-box">
+        <div class="code">VIRAL10</div>
+        <p>Válido por las próximas 24 horas. ¡No lo pierdas!</p>
+      </div>
+      <button class="btn-confirm" onclick="document.getElementById('exit-popup').classList.remove('open')">
+        🛍️ ¡Quiero mi 10% de Descuento!
+      </button>
+      <br><br>
+      <button class="btn-upsell-no" onclick="document.getElementById('exit-popup').classList.remove('open')">
+        No gracias, prefiero pagar precio completo
+      </button>
+    </div>
+  </div>
 </div>
 
-<!-- PURCHASE NOTIFICATION -->
-<div id="buyNotif">
-    <span class="notif-dot"></span>
-    <img class="notif-img" id="notifImg" src="" alt="">
-    <div class="notif-text">
-        <strong id="notifName">María G.</strong> de <span id="notifCity">Madrid</span><br>
-        acaba de comprar <strong id="notifProduct">Masajeador LED</strong><br>
-        <span id="notifTime" style="color:var(--success);font-size:.68rem">hace 2 min ✓</span>
-    </div>
+<!-- ── PURCHASE NOTIFICATION ── -->
+<div id="purchase-notification">
+  <div class="emoji" id="notif-emoji">💆</div>
+  <div class="text">
+    <strong id="notif-name">Valentina de Buenos Aires</strong>
+    <p id="notif-product">acaba de comprar Masajeador Cuello Eléctrico</p>
+    <p style="font-size:.7rem;margin-top:2px;color:#9CA3AF">hace 2 minutos ✅</p>
+  </div>
 </div>
 
-<!-- WHATSAPP -->
-<a href="https://wa.me/1234567890?text=Hola,%20me%20interesa%20un%20producto%20de%20ViralShop" target="_blank" class="whatsapp-btn">
+<!-- ── COOKIE BANNER ── -->
+<div id="cookie-banner">
+  <span>🍪 Usamos cookies para mejorar tu experiencia. Al continuar, aceptás nuestra <a href="#" style="color:#A78BFA">política de privacidad</a>.</span>
+  <button class="btn-cookie" onclick="acceptCookies()">Aceptar</button>
+</div>
+
+<!-- ── WHATSAPP FLOAT ── -->
+<div class="wpp-float">
+  <a href="https://wa.me/5491158452021?text=Hola%20TrendHive!%20Quiero%20hacer%20un%20pedido%20%F0%9F%98%8A" target="_blank" aria-label="Contactar por WhatsApp">
     <i class="fab fa-whatsapp"></i>
-    <span class="whatsapp-tooltip">Chatea con nosotros</span>
-</a>
-
-<!-- TOAST & SCROLL -->
-<div class="toast-container" id="toastContainer"></div>
-<button class="scroll-top" id="scrollTop" onclick="window.scrollTo({top:0,behavior:'smooth'})"><i class="fas fa-arrow-up"></i></button>
+  </a>
+</div>
 
 <script>
-// ═══════════════════════════════════════
-//  DATOS: PRODUCTOS GANADORES
-// ═══════════════════════════════════════
-const FREE_SHIPPING_THRESHOLD = 50;
+  // ── ESTADO ──
+  let cart = [];
+  let selectedPayment = 'tarjeta';
+  let exitPopupShown = false;
+  let upsellShown = false;
 
-const products = [
-    { id:1, name:"Masajeador de Cuello Eléctrico", category:"Bienestar",
-      description:"Alivio cervical inmediato con 6 modos, calor infrarrojo y vibración. Recargable USB.",
-      price:34.99, originalPrice:69.99, badge:"HOT", badgeClass:"",
-      rating:4.8, reviews:2847, stock:8, soldToday:47, viewers:14,
-      image:"https://images.unsplash.com/photo-1544161515-4ab6ce6db874?w=600&q=80" },
-    { id:2, name:"Cortauñas Eléctrico Premium", category:"Cuidado Personal",
-      description:"Recorta y lima uñas en segundos. Seguro para bebés, adultos y mayores. Sin dolor.",
-      price:22.99, originalPrice:44.99, badge:"BESTSELLER", badgeClass:"bestseller",
-      rating:4.9, reviews:4521, stock:5, soldToday:63, viewers:21,
-      image:"https://images.unsplash.com/photo-1583864697784-a0efc8379f70?w=600&q=80" },
-    { id:3, name:"Collar Minimalista Personalizable", category:"Joyería",
-      description:"Acero inoxidable antialérgico. Graba nombre o frase especial. El regalo perfecto.",
-      price:18.99, originalPrice:39.99, badge:"NUEVO", badgeClass:"new",
-      rating:4.7, reviews:1923, stock:15, soldToday:31, viewers:9,
-      image:"https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?w=600&q=80" },
-    { id:4, name:"Hoodie Doble Cara para Parejas", category:"Moda",
-      description:"El hoodie viral de TikTok. Dos capas para compartir momentos únicos juntos.",
-      price:49.99, originalPrice:89.99, badge:"VIRAL", badgeClass:"",
-      rating:4.8, reviews:3210, stock:12, soldToday:38, viewers:17,
-      image:"https://images.unsplash.com/photo-1556821840-3a63f15732ce?w=600&q=80" },
-    { id:5, name:"Suero Glow Peel Vitamina C", category:"Belleza",
-      description:"Elimina manchas y unifica el tono en 2 semanas. Con ácido kójico y cúrcuma natural.",
-      price:29.99, originalPrice:59.99, badge:"HOT", badgeClass:"",
-      rating:4.9, reviews:6782, stock:4, soldToday:89, viewers:26,
-      image:"https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?w=600&q=80" },
-    { id:6, name:"Masajeador Facial LED", category:"Belleza",
-      description:"Luz roja y azul. Reduce arrugas, acné y estimula colágeno desde casa. 3 modos.",
-      price:44.99, originalPrice:99.99, badge:"BESTSELLER", badgeClass:"bestseller",
-      rating:4.8, reviews:2156, stock:7, soldToday:52, viewers:19,
-      image:"https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=600&q=80" },
-    { id:7, name:"Set Anillos Apilables Minimalistas", category:"Joyería",
-      description:"Pack 3 anillos ajustables oro/plata en acero quirúrgico. Sin alergias ni manchas.",
-      price:14.99, originalPrice:29.99, badge:"NUEVO", badgeClass:"new",
-      rating:4.7, reviews:987, stock:20, soldToday:24, viewers:8,
-      image:"https://images.unsplash.com/photo-1605100804763-247f67b3557e?w=600&q=80" },
-    { id:8, name:"Botella Térmica Magnética 1L", category:"Lifestyle",
-      description:"Acero inoxidable 18/8. Temperatura 24h. Diseño minimalista antifugas. Varios colores.",
-      price:27.99, originalPrice:54.99, badge:"TRENDING", badgeClass:"",
-      rating:4.9, reviews:5431, stock:11, soldToday:71, viewers:23,
-      image:"https://images.unsplash.com/photo-1602143407151-7111542de6e8?w=600&q=80" }
-];
-
-// Upsell pairs: when product X is added, suggest Y
-const upsellMap = {1:6, 2:7, 3:7, 4:8, 5:6, 6:5, 7:3, 8:4};
-
-// Testimonials
-const testimonials = [
-    { name:"María González", city:"Madrid, España", rating:5,
-      text:"¡El masajeador de cuello es una maravilla! Llevo 3 semanas usándolo y el dolor que tenía por el trabajo en pantalla desapareció. Lo compré con dudas y ahora se lo recomiendo a todos.",
-      product:"Masajeador de Cuello Eléctrico",
-      avatar:"https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&q=80" },
-    { name:"Carlos Méndez", city:"Ciudad de México", rating:5,
-      text:"El suero Glow Peel funcionó de verdad. En 10 días ya noté la diferencia en mis manchas. Nunca había comprado online con tanta confianza. El envío llegó antes de lo esperado.",
-      product:"Suero Glow Peel Vitamina C",
-      avatar:"https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&q=80" },
-    { name:"Ana Lucía Herrera", city:"Bogotá, Colombia", rating:5,
-      text:"Compré el hoodie de pareja para mi aniversario y fue un hit. Mi novio y yo nos lo pusimos y la gente nos preguntaba dónde lo habíamos comprado. Calidad increíble para el precio.",
-      product:"Hoodie Doble Cara para Parejas",
-      avatar:"https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&q=80" },
-    { name:"Roberto Paz", city:"Santiago, Chile", rating:5,
-      text:"El masajeador facial LED lo compré escéptico pero llevo 1 mes usándolo y mi piel está notablemente mejor. El acné casi desapareció. Relación calidad-precio es brutal.",
-      product:"Masajeador Facial LED",
-      avatar:"https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100&q=80" }
-];
-
-// Purchase notifications
-const notifications = [
-    { name:"María G.", city:"Madrid", product:"Masajeador de Cuello", time:"hace 2 min", img:products[0].image },
-    { name:"Carlos M.", city:"México DF", product:"Suero Glow Peel", time:"hace 5 min", img:products[4].image },
-    { name:"Ana L.", city:"Buenos Aires", product:"Cortauñas Eléctrico", time:"hace 8 min", img:products[1].image },
-    { name:"Roberto P.", city:"Bogotá", product:"Masajeador Facial LED", time:"hace 11 min", img:products[5].image },
-    { name:"Laura S.", city:"Santiago", product:"Hoodie Doble Cara", time:"hace 14 min", img:products[3].image },
-    { name:"Diego F.", city:"Lima", product:"Collar Minimalista", time:"hace 18 min", img:products[2].image },
-    { name:"Sofía V.", city:"Monterrey", product:"Botella Térmica", time:"hace 22 min", img:products[7].image },
-    { name:"Pablo R.", city:"Caracas", product:"Set Anillos", time:"hace 25 min", img:products[6].image }
-];
-
-// ═══════════════════════════════════════
-//  CART STATE
-// ═══════════════════════════════════════
-let cart = [];
-let exitShown = false;
-let pendingUpsellId = null;
-
-// ═══════════════════════════════════════
-//  RENDER PRODUCTS
-// ═══════════════════════════════════════
-function renderProducts() {
-    document.getElementById('productsGrid').innerHTML = products.map(p => {
-        const savings = (p.originalPrice - p.price).toFixed(0);
-        const stockWarning = p.stock <= 5
-            ? `<span class="social-pill pill-red"><i class="fas fa-fire"></i> ¡Solo ${p.stock} disponibles!</span>`
-            : `<span class="social-pill pill-green"><i class="fas fa-check"></i> En stock</span>`;
-        return `
-        <div class="product-card">
-            ${p.badge ? `<div class="product-badge ${p.badgeClass}">${p.badge}</div>` : ''}
-            <div class="savings-badge">Ahorra $${savings}</div>
-            <img class="product-image" src="${p.image}" alt="${p.name}" loading="lazy"
-                 onerror="this.src='https://placehold.co/600x400/667eea/white?text=${encodeURIComponent(p.name)}'">
-            <div class="product-info">
-                <div class="product-category">${p.category}</div>
-                <div class="product-name">${p.name}</div>
-                <div class="product-description">${p.description}</div>
-                <div class="product-rating">
-                    <span class="stars">${'★'.repeat(Math.floor(p.rating))}</span>
-                    <span class="rating-count">${p.rating} (${p.reviews.toLocaleString()} reseñas)</span>
-                </div>
-                <div class="product-social">
-                    ${stockWarning}
-                    <span class="social-pill pill-purple"><i class="fas fa-eye"></i> ${p.viewers} viendo</span>
-                    <span class="social-pill pill-green"><i class="fas fa-shopping-cart"></i> ${p.soldToday} hoy</span>
-                </div>
-                <div class="product-footer">
-                    <div>
-                        <div class="price-current">$${p.price.toFixed(2)}</div>
-                        <div class="price-original">$${p.originalPrice.toFixed(2)}</div>
-                    </div>
-                    <button class="add-to-cart" onclick="addToCart(${p.id})">
-                        <i class="fas fa-plus"></i> Agregar
-                    </button>
-                </div>
-            </div>
-        </div>`;
-    }).join('');
-}
-
-// ═══════════════════════════════════════
-//  RENDER TESTIMONIALS
-// ═══════════════════════════════════════
-function renderTestimonials() {
-    document.getElementById('testiGrid').innerHTML = testimonials.map(t => `
-        <div class="testi-card fade-in">
-            <div class="testi-header">
-                <img class="testi-avatar" src="${t.avatar}" alt="${t.name}"
-                     onerror="this.src='https://placehold.co/46x46/667eea/white?text=${t.name[0]}'">
-                <div><div class="testi-name">${t.name}</div><div class="testi-loc">${t.city}</div></div>
-            </div>
-            <div class="testi-stars">${'★'.repeat(t.rating)}</div>
-            <div class="testi-text">"${t.text}"</div>
-            <div class="testi-product"><i class="fas fa-tag"></i> ${t.product}</div>
-            <div class="verified"><i class="fas fa-check-circle"></i> Compra verificada</div>
-        </div>`).join('');
-}
-
-// ═══════════════════════════════════════
-//  CART FUNCTIONS
-// ═══════════════════════════════════════
-function addToCart(id) {
-    const p = products.find(x => x.id === id);
-    const ex = cart.find(x => x.id === id);
-    ex ? ex.qty++ : cart.push({...p, qty:1});
-    updateCart();
-    showToast(`${p.name} agregado`);
-    animateBadge();
-    // Show upsell after short delay
-    const upsellId = upsellMap[id];
-    if (upsellId && !cart.find(x => x.id === upsellId)) {
-        pendingUpsellId = upsellId;
-        setTimeout(() => showUpsell(upsellId), 800);
+  // ── COUNTDOWN ──
+  (function() {
+    let saved = localStorage.getItem('th_countdown');
+    let end = saved ? parseInt(saved) : Date.now() + 24 * 60 * 60 * 1000;
+    if (!saved) localStorage.setItem('th_countdown', end);
+    function update() {
+      let rem = Math.max(0, end - Date.now());
+      let h = String(Math.floor(rem / 3600000)).padStart(2, '0');
+      let m = String(Math.floor((rem % 3600000) / 60000)).padStart(2, '0');
+      let s = String(Math.floor((rem % 60000) / 1000)).padStart(2, '0');
+      let el = document.getElementById('countdown');
+      if (el) el.textContent = h + ':' + m + ':' + s;
+      if (rem > 0) setTimeout(update, 1000);
     }
-}
+    update();
+  })();
 
-function removeFromCart(id) {
-    cart = cart.filter(x => x.id !== id);
+  // ── HAMBURGER ──
+  const hamburger = document.getElementById('hamburger');
+  const mobileNav = document.getElementById('mobile-nav');
+  hamburger.addEventListener('click', () => {
+    hamburger.classList.toggle('open');
+    mobileNav.classList.toggle('open');
+  });
+
+  // ── CATEGORY FILTER ──
+  document.querySelectorAll('.cat-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.cat-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      let cat = btn.dataset.cat;
+      document.querySelectorAll('.product-card').forEach(card => {
+        card.style.display = (cat === 'todos' || card.dataset.cat === cat) ? '' : 'none';
+      });
+    });
+  });
+
+  // ── WISHLIST ──
+  function toggleWish(btn) {
+    btn.classList.toggle('active');
+    btn.innerHTML = btn.classList.contains('active')
+      ? '<i class="fas fa-heart" style="color:var(--danger)"></i>'
+      : '<i class="far fa-heart"></i>';
+  }
+
+  // ── CART ──
+  function addToCart(name, price, emoji) {
+    let existing = cart.find(i => i.name === name);
+    if (existing) {
+      existing.qty++;
+    } else {
+      cart.push({ name, price, emoji, qty: 1 });
+    }
     updateCart();
-}
+    openCart();
 
-function changeQty(id, delta) {
-    const item = cart.find(x => x.id === id);
-    if (!item) return;
-    item.qty += delta;
-    if (item.qty <= 0) removeFromCart(id);
-    else updateCart();
-}
+    if (!upsellShown && cart.length === 1) {
+      setTimeout(() => {
+        upsellShown = true;
+        document.getElementById('upsell-modal').classList.add('open');
+      }, 1200);
+    }
+  }
 
-function updateCart() {
-    const totalQty = cart.reduce((s,i) => s+i.qty, 0);
-    document.getElementById('cartBadge').textContent = totalQty;
-    const subtotal = cart.reduce((s,i) => s+i.price*i.qty, 0);
+  function updateCart() {
+    let total = cart.reduce((s, i) => s + i.price * i.qty, 0);
+    let count = cart.reduce((s, i) => s + i.qty, 0);
+    document.getElementById('cart-count').textContent = count;
+    document.getElementById('cart-items-count').textContent = count;
+    document.getElementById('cart-total-price').textContent = '$' + total.toFixed(2);
 
     // Shipping progress
-    const progress = Math.min((subtotal / FREE_SHIPPING_THRESHOLD) * 100, 100);
-    document.getElementById('shippingFill').style.width = progress + '%';
-    const remaining = FREE_SHIPPING_THRESHOLD - subtotal;
-    document.getElementById('shippingProgressText').innerHTML = remaining > 0
-        ? `🚚 ¡Solo te faltan <strong>$${remaining.toFixed(2)}</strong> para envío gratis!`
-        : `🎉 <strong>¡Tienes envío GRATIS!</strong>`;
+    let freeAt = 50;
+    let pct = Math.min(100, (total / freeAt) * 100);
+    document.getElementById('progress-fill').style.width = pct + '%';
+    let left = Math.max(0, freeAt - total);
+    document.getElementById('shipping-left').textContent = '$' + left.toFixed(2);
 
-    const itemsEl  = document.getElementById('cartItems');
-    const footerEl = document.getElementById('cartFooter');
-
+    // Render items
+    let listEl = document.getElementById('cart-items-list');
     if (cart.length === 0) {
-        itemsEl.innerHTML = `<div class="cart-empty"><i class="fas fa-shopping-bag"></i><p>Tu carrito está vacío</p><small>¡Agrega algo increíble!</small></div>`;
-        footerEl.style.display = 'none';
-        return;
-    }
-
-    itemsEl.innerHTML = cart.map(item => `
+      listEl.innerHTML = '<div class="cart-empty"><i class="fas fa-shopping-bag"></i><p>Tu carrito está vacío</p></div>';
+      document.getElementById('cart-footer').style.display = 'none';
+    } else {
+      listEl.innerHTML = cart.map((item, idx) => `
         <div class="cart-item">
-            <img src="${item.image}" alt="${item.name}" onerror="this.src='https://placehold.co/66x66/667eea/white?text=P'">
-            <div class="cart-item-info">
-                <div class="cart-item-name">${item.name}</div>
-                <div class="cart-item-price">$${(item.price*item.qty).toFixed(2)}</div>
-                <div class="cart-item-controls">
-                    <button class="qty-btn" onclick="changeQty(${item.id},-1)">−</button>
-                    <span class="qty-display">${item.qty}</span>
-                    <button class="qty-btn" onclick="changeQty(${item.id},1)">+</button>
-                </div>
+          <div class="cart-item-img">${item.emoji}</div>
+          <div class="cart-item-info">
+            <div class="cart-item-name">${item.name}</div>
+            <div class="cart-item-price">$${(item.price * item.qty).toFixed(2)}</div>
+            <div class="cart-item-qty">
+              <button class="qty-btn" onclick="changeQty(${idx}, -1)">−</button>
+              <span>${item.qty}</span>
+              <button class="qty-btn" onclick="changeQty(${idx}, 1)">+</button>
             </div>
-            <button class="remove-item" onclick="removeFromCart(${item.id})"><i class="fas fa-trash"></i></button>
-        </div>`).join('');
-
-    footerEl.style.display = 'block';
-    document.getElementById('cartSubtotal').textContent = '$'+subtotal.toFixed(2);
-    document.getElementById('cartTotal').textContent    = '$'+subtotal.toFixed(2);
-}
-
-function toggleCart() {
-    document.getElementById('cartOverlay').classList.toggle('active');
-    document.getElementById('cartSidebar').classList.toggle('active');
-}
-
-function animateBadge() {
-    const b = document.getElementById('cartBadge');
-    b.classList.remove('badge-anim');
-    void b.offsetWidth;
-    b.classList.add('badge-anim');
-}
-
-// ═══════════════════════════════════════
-//  UPSELL
-// ═══════════════════════════════════════
-function showUpsell(id) {
-    const p = products.find(x => x.id === id);
-    document.getElementById('upsellProduct').innerHTML = `
-        <img class="upsell-img" src="${p.image}" alt="${p.name}"
-             onerror="this.src='https://placehold.co/65x65/667eea/white?text=P'">
-        <div class="upsell-info">
-            <div class="upsell-pname">${p.name}</div>
-            <div class="upsell-pprice">$${p.price.toFixed(2)}</div>
-            <div class="upsell-orig">Antes $${p.originalPrice.toFixed(2)}</div>
-        </div>`;
-    document.getElementById('upsellYes').onclick = () => { addToCart(id); closeUpsell(); };
-    document.getElementById('upsellOverlay').classList.add('active');
-}
-function closeUpsell() { document.getElementById('upsellOverlay').classList.remove('active'); }
-
-// ═══════════════════════════════════════
-//  CHECKOUT
-// ═══════════════════════════════════════
-function openCheckout() {
-    if (!cart.length) return;
-    toggleCart();
-    const subtotal = cart.reduce((s,i) => s+i.price*i.qty, 0);
-    document.getElementById('orderSummaryMini').innerHTML = `
-        <h4>Resumen del pedido</h4>
-        ${cart.map(i=>`<div class="summary-item"><span>${i.name} ×${i.qty}</span><span>$${(i.price*i.qty).toFixed(2)}</span></div>`).join('')}
-        <div class="summary-item"><span>Envío</span><span style="color:var(--success)">Gratis</span></div>
-        <div class="summary-total"><span>Total</span><span>$${subtotal.toFixed(2)}</span></div>`;
-    document.getElementById('checkoutModal').classList.add('active');
-}
-function closeCheckout() { document.getElementById('checkoutModal').classList.remove('active'); }
-
-function placeOrder() {
-    const orderId = '#VS' + Math.floor(Math.random()*90000+10000);
-    document.getElementById('checkoutContent').innerHTML = `
-        <div class="success-screen">
-            <div class="success-icon"><i class="fas fa-check"></i></div>
-            <h3 style="font-size:1.35rem;margin-bottom:.4rem">¡Pedido Confirmado! 🎉</h3>
-            <p style="color:var(--gray);margin-bottom:1.3rem;font-size:.88rem">Gracias por tu compra. Recibirás un email de confirmación en breve con el número de tracking.</p>
-            <div style="background:var(--light);border-radius:12px;padding:1rem;margin-bottom:1.2rem">
-                <p style="font-size:.78rem;color:var(--gray)">Número de pedido</p>
-                <p style="font-size:1.2rem;font-weight:800;color:var(--primary)">${orderId}</p>
-            </div>
-            <p style="font-size:.78rem;color:var(--gray)">Entrega estimada: 5–12 días hábiles</p>
-            <button onclick="finishOrder()" style="margin-top:1.3rem;background:var(--grad);color:white;border:none;padding:.8rem 2rem;border-radius:50px;font-family:Poppins,sans-serif;font-weight:700;cursor:pointer;font-size:.88rem">
-                Seguir comprando
-            </button>
-        </div>`;
-}
-function finishOrder() { cart=[]; updateCart(); closeCheckout(); setTimeout(()=>location.reload(),300); }
-
-// ═══════════════════════════════════════
-//  EXIT POPUP
-// ═══════════════════════════════════════
-document.addEventListener('mouseleave', e => {
-    if (e.clientY < 0 && !exitShown && cart.length === 0) {
-        document.getElementById('exitOverlay').classList.add('active');
-        exitShown = true;
+          </div>
+          <button class="cart-item-del" onclick="removeItem(${idx})"><i class="fas fa-trash-alt"></i></button>
+        </div>
+      `).join('');
+      document.getElementById('cart-footer').style.display = 'flex';
     }
-});
-function closeExit() { document.getElementById('exitOverlay').classList.remove('active'); }
-function claimDiscount() {
-    const email = document.getElementById('exitEmail').value;
-    if (email) {
-        closeExit();
-        showToast('¡Código VIRAL10 guardado para tu próxima compra!');
+  }
+
+  function changeQty(idx, delta) {
+    cart[idx].qty = Math.max(1, cart[idx].qty + delta);
+    updateCart();
+  }
+
+  function removeItem(idx) {
+    cart.splice(idx, 1);
+    updateCart();
+  }
+
+  function openCart() {
+    document.getElementById('cart-sidebar').classList.add('open');
+    document.getElementById('cart-overlay').classList.add('open');
+  }
+
+  function closeCart() {
+    document.getElementById('cart-sidebar').classList.remove('open');
+    document.getElementById('cart-overlay').classList.remove('open');
+  }
+
+  document.getElementById('cart-toggle').addEventListener('click', () => {
+    document.getElementById('cart-sidebar').classList.contains('open') ? closeCart() : openCart();
+  });
+
+  // ── CHECKOUT ──
+  function openCheckout() {
+    closeCart();
+    let total = cart.reduce((s, i) => s + i.price * i.qty, 0);
+    let shipping = total >= 50 ? 0 : 5.99;
+    let summaryEl = document.getElementById('order-summary-mini');
+    summaryEl.innerHTML = `
+      <div class="row"><span>Subtotal</span><span>$${total.toFixed(2)}</span></div>
+      <div class="row"><span>Envío</span><span>${shipping === 0 ? '🎉 GRATIS' : '$' + shipping.toFixed(2)}</span></div>
+      <div class="row total"><span>TOTAL</span><span>$${(total + shipping).toFixed(2)} USD</span></div>
+    `;
+    document.getElementById('checkout-modal').classList.add('open');
+  }
+
+  function closeCheckout() {
+    document.getElementById('checkout-modal').classList.remove('open');
+  }
+
+  function selectPayment(el, method) {
+    document.querySelectorAll('.pay-opt').forEach(o => o.classList.remove('selected'));
+    el.classList.add('selected');
+    selectedPayment = method;
+  }
+
+  function confirmOrder() {
+    let name = document.getElementById('chk-name').value;
+    let email = document.getElementById('chk-email').value;
+    let phone = document.getElementById('chk-phone').value;
+    let country = document.getElementById('chk-country').value;
+    let address = document.getElementById('chk-address').value;
+
+    if (!name || !email || !phone || !country || !address) {
+      alert('Por favor, completá todos los campos obligatorios.');
+      return;
     }
-}
 
-// ═══════════════════════════════════════
-//  TOAST
-// ═══════════════════════════════════════
-function showToast(msg) {
-    const c = document.getElementById('toastContainer');
-    const t = document.createElement('div');
-    t.className = 'toast';
-    t.innerHTML = `<i class="fas fa-check-circle"></i> ${msg}`;
-    c.appendChild(t);
-    requestAnimationFrame(()=>requestAnimationFrame(()=>t.classList.add('show')));
-    setTimeout(()=>{ t.classList.remove('show'); setTimeout(()=>t.remove(),300); }, 2500);
-}
+    let items = cart.map(i => `• ${i.name} x${i.qty} = $${(i.price * i.qty).toFixed(2)}`).join('\n');
+    let total = cart.reduce((s, i) => s + i.price * i.qty, 0);
+    let shipping = total >= 50 ? 0 : 5.99;
+    let msg = encodeURIComponent(
+      `🛍️ *NUEVO PEDIDO - TrendHive*\n\n` +
+      `👤 *Cliente:* ${name}\n` +
+      `📧 *Email:* ${email}\n` +
+      `📱 *Teléfono:* ${phone}\n` +
+      `🌍 *País:* ${country}\n` +
+      `📍 *Dirección:* ${address}\n` +
+      `💳 *Pago:* ${selectedPayment}\n\n` +
+      `📦 *Productos:*\n${items}\n\n` +
+      `💰 *Total:* $${(total + shipping).toFixed(2)} USD\n\n` +
+      `¡Gracias por elegir TrendHive! 🚀`
+    );
 
-// ═══════════════════════════════════════
-//  NEWSLETTER
-// ═══════════════════════════════════════
-function subscribeEmail(e) {
-    e.preventDefault();
-    showToast('¡Suscrito! Revisa tu email para las ofertas 🎉');
-    e.target.reset();
-}
+    closeCheckout();
+    cart = [];
+    updateCart();
 
-// ═══════════════════════════════════════
-//  PURCHASE NOTIFICATIONS
-// ═══════════════════════════════════════
-let notifIdx = 0;
-function showNextNotif() {
-    const n = notifications[notifIdx % notifications.length];
-    notifIdx++;
-    document.getElementById('notifName').textContent    = n.name;
-    document.getElementById('notifCity').textContent    = n.city;
-    document.getElementById('notifProduct').textContent = n.product;
-    document.getElementById('notifTime').textContent    = n.time + ' ✓';
-    document.getElementById('notifImg').src             = n.img;
-    const el = document.getElementById('buyNotif');
+    window.open(`https://wa.me/5491158452021?text=${msg}`, '_blank');
+
+    setTimeout(() => alert('✅ ¡Pedido enviado! Te contactaremos en breve por WhatsApp para confirmar y coordinar el envío.'), 500);
+  }
+
+  function sendWhatsAppOrder() {
+    if (cart.length === 0) { alert('Tu carrito está vacío.'); return; }
+    let items = cart.map(i => `• ${i.name} x${i.qty}`).join('\n');
+    let total = cart.reduce((s, i) => s + i.price * i.qty, 0);
+    let msg = encodeURIComponent(`Hola TrendHive! Quiero hacer este pedido:\n\n${items}\n\n💰 Total: $${total.toFixed(2)} USD`);
+    window.open(`https://wa.me/5491158452021?text=${msg}`, '_blank');
+  }
+
+  // ── UPSELL ──
+  function addUpsell() {
+    addToCart('Set Anillos Apilables 8 piezas', 14.99, '💍');
+    document.getElementById('upsell-modal').classList.remove('open');
+  }
+
+  // ── EXIT POPUP ──
+  document.addEventListener('mouseleave', (e) => {
+    if (e.clientY < 10 && !exitPopupShown) {
+      exitPopupShown = true;
+      document.getElementById('exit-popup').classList.add('open');
+    }
+  });
+
+  // ── PURCHASE NOTIFICATIONS ──
+  const notifications = [
+    { name: 'Valentina de Buenos Aires', product: 'compró Masajeador Cuello Eléctrico', emoji: '💆' },
+    { name: 'Camila de Bogotá', product: 'compró Set de Anillos Apilables', emoji: '💍' },
+    { name: 'Renata de Santiago', product: 'compró Suero Vitamina C Glow', emoji: '✨' },
+    { name: 'Sofía de CDMX', product: 'compró Masajeador Facial LED', emoji: '💡' },
+    { name: 'Lucía de Montevideo', product: 'compró Collar Personalizable', emoji: '📿' },
+    { name: 'Fernanda de Lima', product: 'compró Cortauñas Eléctrico', emoji: '✂️' },
+    { name: 'Diego de Córdoba', product: 'compró Hoodie Doble Cara Parejas', emoji: '👫' },
+    { name: 'Martina de Rosario', product: 'compró Botella Térmica 1L', emoji: '🌡️' },
+  ];
+
+  let notifIdx = 0;
+  function showNotification() {
+    let notif = notifications[notifIdx % notifications.length];
+    document.getElementById('notif-emoji').textContent = notif.emoji;
+    document.getElementById('notif-name').textContent = notif.name;
+    document.getElementById('notif-product').textContent = notif.product;
+    let el = document.getElementById('purchase-notification');
     el.classList.add('show');
-    setTimeout(()=>el.classList.remove('show'), 4000);
-}
-// Start notifications after 6s, repeat every 9s
-setTimeout(()=>{ showNextNotif(); setInterval(showNextNotif, 9000); }, 6000);
+    setTimeout(() => el.classList.remove('show'), 3500);
+    notifIdx++;
+    setTimeout(showNotification, Math.random() * 8000 + 7000);
+  }
+  setTimeout(showNotification, 5000);
 
-// ═══════════════════════════════════════
-//  ANNOUNCEMENT BAR COUNTDOWN (24h)
-// ═══════════════════════════════════════
-function updateAnnoTimer() {
-    const key = 'vs_anno_end';
-    let end = localStorage.getItem(key);
-    if (!end) {
-        end = Date.now() + 24*60*60*1000;
-        localStorage.setItem(key, end);
-    }
-    const diff = Math.max(0, end - Date.now());
-    const h = String(Math.floor(diff/3600000)).padStart(2,'0');
-    const m = String(Math.floor((diff%3600000)/60000)).padStart(2,'0');
-    const s = String(Math.floor((diff%60000)/1000)).padStart(2,'0');
-    document.getElementById('annoTimer').textContent = `${h}:${m}:${s}`;
-    if (diff <= 0) { localStorage.removeItem(key); }
-}
-setInterval(updateAnnoTimer, 1000);
-updateAnnoTimer();
+  // ── NEWSLETTER ──
+  function subscribeNewsletter(e) {
+    e.preventDefault();
+    let email = e.target.querySelector('input').value;
+    alert('✅ ¡Gracias! Te enviamos tu cupón de 15% OFF a ' + email + '. Revisá tu bandeja de entrada.');
+    e.target.reset();
+  }
 
-// ═══════════════════════════════════════
-//  FORM HELPERS
-// ═══════════════════════════════════════
-function formatCard(el) {
-    let v = el.value.replace(/\D/g,'').substring(0,16);
-    el.value = v.replace(/(.{4})/g,'$1 ').trim();
-}
-function formatExpiry(el) {
-    let v = el.value.replace(/\D/g,'').substring(0,4);
-    if (v.length>=2) v=v.substring(0,2)+'/'+v.substring(2);
-    el.value=v;
-}
-
-// ═══════════════════════════════════════
-//  SCROLL TOP
-// ═══════════════════════════════════════
-window.addEventListener('scroll',()=>{
-    document.getElementById('scrollTop').classList.toggle('visible', window.scrollY>300);
-});
-
-// ═══════════════════════════════════════
-//  INIT
-// ═══════════════════════════════════════
-renderProducts();
-renderTestimonials();
+  // ── COOKIE BANNER ──
+  function acceptCookies() {
+    document.getElementById('cookie-banner').classList.add('hidden');
+    localStorage.setItem('th_cookies', '1');
+  }
+  if (localStorage.getItem('th_cookies') === '1') {
+    document.getElementById('cookie-banner').classList.add('hidden');
+  }
 </script>
 </body>
 </html>
